@@ -208,7 +208,7 @@ To use Delve inside Atom, install the
 To run your Go code in Atom, install the
 [atom-runner](https://atom.io/packages/atom-runner) package.
 
-*** e. acme
+### e. acme
 
 [acme](https://ilanpillemer.github.io/subjects/acme.html)
 
