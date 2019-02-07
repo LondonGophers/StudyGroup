@@ -210,7 +210,15 @@ To run your Go code in Atom, install the
 
 ### e. acme
 
-[acme](https://ilanpillemer.github.io/subjects/acme.html)
+There are three kinds of IDEs.
+
+* a character driven IDE such as unix, emacs or vi
+* a closed environment with its own bespoke tooling such as eclipse, visual code, intellij, atom, GoLand
+* an integrating environment that integrates tools from outside inwards such as plan9 and acme.
+
+#### Vague Installation Guide
+ 
+* [acme](https://ilanpillemer.github.io/subjects/acme.html)
 
 ## 6. Links
 
