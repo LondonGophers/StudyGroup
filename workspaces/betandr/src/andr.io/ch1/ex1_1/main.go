@@ -1,4 +1,5 @@
-// Echo2 prints its command-line arguments.
+// Modify the `echo` program to also allow print `os.Args[0]`, the name of the
+// command that invoked it.
 package main
 
 import (
