@@ -1,10 +1,12 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+// Find a web site that produces a large amount of data. Investigate caching by
+// running `fetchall` twice in succession to see whether the reported time changes
+// much. Do you get the same content each time? Modify `fetchall` to print its
+// output to a file so that it can be examined.
 
-// See page 17.
-//!+
-
-// Fetchall fetches URLs in parallel and reports their times and sizes.
+// Try `fetchall` with longer argument lists, such as samples from the top million
+// web sites available at `alexa.com`. How does the program behave if a web site
+// just doesn't respond? (Section 8.9 describes mechanisms for coping in such
+// cases.)
 package main
 
 import (
@@ -41,7 +43,6 @@ func fetch(url string, ch chan<- string) {
 		return
 	}
 
-	//
 	addr := url[strings.LastIndex(url, "/")+1:]
 	filename := strings.Replace(addr, ".", "_", -1) + ".html"
 
@@ -61,5 +62,3 @@ func fetch(url string, ch chan<- string) {
 	secs := time.Since(start).Seconds()
 	ch <- fmt.Sprintf("%.2fs  %7d  %s", secs, len(b), url)
 }
-
-//!-

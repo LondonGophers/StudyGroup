@@ -1,10 +1,5 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 16.
-//!+
-
-// Fetch prints the content found at each specified URL.
+// Modify `fetch` to add the prefix `http://` to each argument URL, if it is
+// missing. You might want to use `strings.HasPrefix`.
 package main
 
 import (
@@ -32,5 +27,3 @@ func main() {
 		}
 	}
 }
-
-//!-
