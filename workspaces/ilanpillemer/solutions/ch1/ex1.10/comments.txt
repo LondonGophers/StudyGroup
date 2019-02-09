@@ -1,0 +1,19 @@
+I investigated a website with a large graphic.
+The times ranged a bit, but the website content did indeed change as well.
+See included files, as well as two sample comparisons for details
+
+ex1.10 (master) -> fetchall http://www.levehytter.no/ http://www.levehytter.no/  http://www.levehytter.no/  http://www.levehytter.no/  http://www.levehytter.no/  http://www.levehytter.no/  http://www.levehytter.no/  http://www.levehytter.no/  http://www.levehytter.no/  http://www.levehytter.no/  http://www.levehytter.no/  http://www.levehytter.no/ http://www.levehytter.no/ 
+2.56s   100066  http://www.levehytter.no/
+2.58s   100056  http://www.levehytter.no/
+2.62s   100061  http://www.levehytter.no/
+2.67s   100051  http://www.levehytter.no/
+2.67s   100061  http://www.levehytter.no/
+2.73s   100061  http://www.levehytter.no/
+2.73s   100051  http://www.levehytter.no/
+2.76s   100046  http://www.levehytter.no/
+2.77s   100061  http://www.levehytter.no/
+2.86s   100051  http://www.levehytter.no/
+2.94s   100056  http://www.levehytter.no/
+2.95s   100061  http://www.levehytter.no/
+3.00s   100056  http://www.levehytter.no/
+3.00s elapsed

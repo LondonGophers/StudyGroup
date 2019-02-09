@@ -1,0 +1,583 @@
+<!doctype html>
+
+
+
+
+
+<html class="no-js" lang="nb">
+
+<head>
+    
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta charset="UTF-8">
+
+
+<link rel="dns-prefetch" href="//levehytter-aws.imgix.net">
+
+<link rel="home" href="http://levehytter.no/"/>
+<link rel="canonical" href="http://levehytter.no/">
+<meta property="og:url" content="http://levehytter.no/"/>
+<meta name="twitter:url" content="http://levehytter.no/"/>
+<meta property="og:locale" content="nb"/>
+
+
+
+
+<title>Leve Hytter | Tidløst design, solid håndverk</title>
+<meta name="description" content="Ei hytte skal vare i mange generasjoner. Derfor er vi opptatt av den skal fremstå som tidløs, i motsetning til gammeldags. Hytta vi bygger heter Vy, og er utviklet i samarbeid med en av Norges fremste arkitekter. Den kommer i flere grunnmodeller og størrelser, med gode valgmuligheter. Du får ei gjennomtenkt hytte, akkurat tilpasset deg."/>
+<meta name="image" content="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fm=jpg&fp-x=0.5&fp-y=0.5&h=675&q=90&w=1200&s=b28184f043f5c83c352b01107c47912d"/>
+<meta property="og:title" content="Tidløst design, solid håndverk">
+<meta property="og:description" content="Ei hytte skal vare i mange generasjoner. Derfor er vi opptatt av den skal fremstå som tidløs, i motsetning til gammeldags. Hytta vi bygger heter Vy, og er utviklet i samarbeid med en av Norges fremste arkitekter. Den kommer i flere grunnmodeller og størrelser, med gode valgmuligheter. Du får ei gjennomtenkt hytte, akkurat tilpasset deg.">
+<meta property="og:image" content="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fm=jpg&fp-x=0.5&fp-y=0.5&h=600&q=90&w=1120&s=42bebab9d3c50be5af8d6cf2d73e72b4">
+<meta name="twitter:title" content="Tidløst design, solid håndverk"/>
+<meta name="twitter:description" content="Ei hytte skal vare i mange generasjoner. Derfor er vi opptatt av den skal fremstå som tidløs, i motsetning til gammeldags. Hytta vi bygger heter Vy, og er utviklet i samarbeid med en av Norges fremste arkitekter. Den kommer i flere grunnmodeller og størrelser, med gode valgmuligheter. Du får ei gjennomtenkt hytte, akkurat tilpasset deg."/>
+<meta name="twitter:image" content="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fm=jpg&fp-x=0.5&fp-y=0.5&h=630&q=90&w=1200&s=56277a167520a99f86b2a9ea3e80af1a"/>
+<meta property="og:image:type" content="image/jpg">
+<meta property="og:image:width" content="1120">
+<meta property="og:image:height" content="600">
+<meta name="twitter:card" content="summary_large_image"/>
+<meta property="og:type" content="website">
+<meta property="og:see_also" content="https://www.facebook.com/levehytter/"><meta property="og:see_also" content="http://instagram.com/levehytter"><meta property="og:see_also" content="https://vimeo.com/user70206319">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<meta name="twitter:widgets:csp" content="on">
+
+<script>
+                                        !function(t){function e(s){if(n[s])return n[s].exports;var i=n[s]={i:s,l:!1,exports:{}};return t[s].call(i.exports,i,i.exports,e),i.l=!0,i.exports}var n={};e.m=t,e.c=n,e.d=function(t,n,s){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:s})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="/assets/",e(e.s=88)}({88:function(t,e,n){"use strict";n(89)},89:function(t,e,n){"use strict";!function(t,e,n){function s(e,n){return!!a()&&(n=2===arguments.length?n:"inherit","CSS"in t&&"supports"in t.CSS?t.CSS.supports(e,n):"supportsCSS"in t?t.supportsCSS(e,n):i(e,n))}function i(s,i){var o=e.createElement("link"),r=e.getElementsByTagName("HEAD")[0],a=[],u=s.replace(/(^|-)([a-z])/g,function(t,e,n){return n.toUpperCase()});a[s]=s,a["Webkit"+u]="-webkit-"+s,a["Moz"+u]="-moz-"+s,a["ms"+u]="-ms-"+s,r.insertBefore(o,null);for(var c in a)o.style[c]!==n&&(o.style[c]=i);var l=t.getComputedStyle(o,null),d=l.getPropertyValue("-webkit-"+s)||l.getPropertyValue("-moz-"+s)||l.getPropertyValue("-ms-"+s)||l.getPropertyValue(s);return o.parentNode.removeChild(o),d===i}function o(){var t=e.createElement("style");return t.appendChild(e.createTextNode("")),e.head.appendChild(t),t.sheet}function r(t,e,n,s){s=s||0,"insertRule"in t?t.insertRule(e+"{"+n+"}",s):"addRule"in t&&t.addRule(e,n,s)}function a(){return e.addEventListener&&e.querySelectorAll&&t.getComputedStyle}function u(){return null!==g.match(/(iPhone|iPad|iPod|Android|BlackBerry|webOS|Windows Phone)/gi)}function c(){return null!==g.match(/(iPhone|iPad|iPod)/gi)}function l(){return!!g.match(/safari/i)&&!!g.match(/iphone|ipad|ipod/i)&&!g.match(/chrome|crios|fxios|edgios/i)}function d(){return null!==g.match(/(Edge)/gi)}function h(){return(t.pageYOffset||v.scrollTop)-(v.clientTop||0)>0}function f(){return"ontouchstart"in t||navigator.maxTouchPoints>0||navigator.msMaxTouchPoints>0}function m(){return""!==e.location.hash}function p(){var t=this;return this.test("js",!0),this.test("outline",!1),this.test("modern",a),this.test("anchor",m),this.test("touch",f),this.test("autoplay",function(){return!u()}),this.test("flexbox",s("display","flex")),this.test("csstransforms",s("transform-origin","50% 50%")),this.test("csstransitions",s("transition-duration","1s")),this.test("cssanimations",s("animation-duration","1s")),this.test("objectfit","objectFit"in e.documentElement.style!=!1),this.ready(function(){t.test("scrolled",h)}),this.sheet=o(),c()&&r(this.sheet,"*","cursor: pointer"),l()&&this.addClass("ios-safari"),d()&&this.addClass("is-msedge"),e.addEventListener&&(e.addEventListener("keydown",function(e){9!==e.keyCode&&9!==e.which||t.test("outline",!0)}),e.addEventListener("mousedown",function(e){t.test("outline",!1)}),e.addEventListener("touchstart",function(e){y||(y=!0,C=!1,t.addClass("using-touch"),t.removeClass("using-mouse")),E=Date.now()}),e.addEventListener("touchend",function(t){E=Date.now()}),e.addEventListener("mousemove",function(e){C||Date.now()-E>300&&(y=!1,C=!0,t.removeClass("using-touch"),t.addClass("using-mouse"))})),this}var g=navigator.userAgent,v=e.documentElement,C=!1,y=!1,E=Date.now();p.prototype={getCookie:function(t){t=t.replace(/([.*+?^=!:${}()|[\]\/\\])/g,"\\$1");var n=new RegExp("(?:^|;)\\s?"+t+"=(.*?)(?:;|$)","i"),s=e.cookie.match(n);return s&&unescape(s[1])},deleteCookie:function(t){return this.getCookie(t)&&this.setCookie(t,"",-1),this},setCookie:function(t,n,s,i){var o="";if(s){var r=new Date;r.setTime(r.getTime()+24*s*60*60*1e3),o=";expires="+r.toGMTString()}return i=";path="+(i||"/"),e.cookie=t+"="+n+o+i,this},addClass:function(t,e){return e=e||v,"classList"in e?e.classList.add(t):this.hasClass(t,e)||(e.className+=" "+t),this},hasClass:function(t,e){return e=e||v,"classList"in e?e.classList.contains(t):!!e.className.match(new RegExp("(\\s|^)"+t+"(\\s|$)"))},removeClass:function(t,e){return e=e||v,"classList"in e?e.classList.remove(t):e.className=e.className.replace(new RegExp("(^|\\b)"+t.split(" ").join("|")+"(\\b|$)","gi")," "),this},ready:function(t){"interactive"===e.readyState||"complete"===e.readyState?t():e.addEventListener?e.addEventListener("DOMContentLoaded",t):e.attachEvent&&e.attachEvent("onreadystatechange",t)},test:function(t,e){("function"==typeof e?e():e)?this.removeClass("no-"+t).addClass(t):this.removeClass(t).addClass("no-"+t)}},t.vrsg=new p}(window,document)}});
+//# sourceMappingURL=/assets/inline.js.map
+                            !function(t){function e(o){if(n[o])return n[o].exports;var i=n[o]={i:o,l:!1,exports:{}};return t[o].call(i.exports,i,i.exports,e),i.l=!0,i.exports}var n={};e.m=t,e.c=n,e.d=function(t,n,o){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:o})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="/assets/",e(e.s=90)}({90:function(t,e,n){"use strict";var o=n(91),i=function(t){return t&&t.__esModule?t:{default:t}}(o);window.vrsg.getCookie("webfonts-loaded")||Promise.all([new i.default("Moderat",{weight:400}),new i.default("Moderat",{weight:700})].map(function(t){return t.load(null,1e4)})).then(function(){window.vrsg.setCookie("webfonts-loaded","1"),window.vrsg.addClass("webfonts-loaded")}).catch(function(){window.vrsg.addClass("webfonts-failed")})},91:function(t,e,n){!function(){"use strict";function t(t){u.push(t),1==u.length&&f()}function e(){for(;u.length;)u[0](),u.shift()}function n(t){this.a=l,this.b=void 0,this.f=[];var e=this;try{t(function(t){r(e,t)},function(t){a(e,t)})}catch(t){a(e,t)}}function o(t){return new n(function(e,n){n(t)})}function i(t){return new n(function(e){e(t)})}function r(t,e){if(t.a==l){if(e==t)throw new TypeError;var n=!1;try{var o=e&&e.then;if(null!=e&&"object"==typeof e&&"function"==typeof o)return void o.call(e,function(e){n||r(t,e),n=!0},function(e){n||a(t,e),n=!0})}catch(e){return void(n||a(t,e))}t.a=0,t.b=e,s(t)}}function a(t,e){if(t.a==l){if(e==t)throw new TypeError;t.a=1,t.b=e,s(t)}}function s(e){t(function(){if(e.a!=l)for(;e.f.length;){var t=e.f.shift(),n=t[0],o=t[1],i=t[2],t=t[3];try{0==e.a?i("function"==typeof n?n.call(void 0,e.b):e.b):1==e.a&&("function"==typeof o?i(o.call(void 0,e.b)):t(e.b))}catch(e){t(e)}}})}function c(t){return new n(function(e,n){var o=0,r=[];0==t.length&&e(r);for(var a=0;a<t.length;a+=1)i(t[a]).c(function(n){return function(i){r[n]=i,(o+=1)==t.length&&e(r)}}(a),n)})}function d(t){return new n(function(e,n){for(var o=0;o<t.length;o+=1)i(t[o]).c(e,n)})}var f,u=[];f=function(){setTimeout(e)};var l=2;n.prototype.g=function(t){return this.c(void 0,t)},n.prototype.c=function(t,e){var o=this;return new n(function(n,i){o.f.push([t,e,n,i]),s(o)})},window.Promise||(window.Promise=n,window.Promise.resolve=i,window.Promise.reject=o,window.Promise.race=d,window.Promise.all=c,window.Promise.prototype.then=n.prototype.c,window.Promise.prototype.catch=n.prototype.g)}(),function(){function e(t,e){document.addEventListener?t.addEventListener("scroll",e,!1):t.attachEvent("scroll",e)}function n(t){document.body?t():document.addEventListener?document.addEventListener("DOMContentLoaded",function e(){document.removeEventListener("DOMContentLoaded",e),t()}):document.attachEvent("onreadystatechange",function e(){"interactive"!=document.readyState&&"complete"!=document.readyState||(document.detachEvent("onreadystatechange",e),t())})}function o(t){this.a=document.createElement("div"),this.a.setAttribute("aria-hidden","true"),this.a.appendChild(document.createTextNode(t)),this.b=document.createElement("span"),this.c=document.createElement("span"),this.h=document.createElement("span"),this.f=document.createElement("span"),this.g=-1,this.b.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;",this.c.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;",this.f.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;",this.h.style.cssText="display:inline-block;width:200%;height:200%;font-size:16px;max-width:none;",this.b.appendChild(this.h),this.c.appendChild(this.f),this.a.appendChild(this.b),this.a.appendChild(this.c)}function i(t,e){t.a.style.cssText="max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;white-space:nowrap;font-synthesis:none;font:"+e+";"}function r(t){var e=t.a.offsetWidth,n=e+100;return t.f.style.width=n+"px",t.c.scrollLeft=n,t.b.scrollLeft=t.b.scrollWidth+100,t.g!==e&&(t.g=e,!0)}function a(t,n){function o(){var t=i;r(t)&&t.a.parentNode&&n(t.g)}var i=t;e(t.b,o),e(t.c,o),r(t)}function s(t,e){var n=e||{};this.family=t,this.style=n.style||"normal",this.weight=n.weight||"normal",this.stretch=n.stretch||"normal"}function c(){if(null===h)if(d()&&/Apple/.test(window.navigator.vendor)){var t=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);h=!!t&&603>parseInt(t[1],10)}else h=!1;return h}function d(){return null===w&&(w=!!document.fonts),w}function f(){if(null===p){var t=document.createElement("div");try{t.style.font="condensed 100px sans-serif"}catch(t){}p=""!==t.style.font}return p}function u(t,e){return[t.style,t.weight,f()?t.stretch:"","100px",e].join(" ")}var l=null,h=null,p=null,w=null;s.prototype.load=function(t,e){var r=this,s=t||"BESbswy",f=0,h=e||3e3,p=(new Date).getTime();return new Promise(function(t,e){if(d()&&!c()){var w=new Promise(function(t,e){function n(){(new Date).getTime()-p>=h?e():document.fonts.load(u(r,'"'+r.family+'"'),s).then(function(e){1<=e.length?t():setTimeout(n,25)},function(){e()})}n()}),m=new Promise(function(t,e){f=setTimeout(e,h)});Promise.race([m,w]).then(function(){clearTimeout(f),t(r)},function(){e(r)})}else n(function(){function n(){var e;(e=-1!=v&&-1!=y||-1!=v&&-1!=g||-1!=y&&-1!=g)&&((e=v!=y&&v!=g&&y!=g)||(null===l&&(e=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent),l=!!e&&(536>parseInt(e[1],10)||536===parseInt(e[1],10)&&11>=parseInt(e[2],10))),e=l&&(v==b&&y==b&&g==b||v==x&&y==x&&g==x||v==E&&y==E&&g==E)),e=!e),e&&(C.parentNode&&C.parentNode.removeChild(C),clearTimeout(f),t(r))}function c(){if((new Date).getTime()-p>=h)C.parentNode&&C.parentNode.removeChild(C),e(r);else{var t=document.hidden;!0!==t&&void 0!==t||(v=d.a.offsetWidth,y=w.a.offsetWidth,g=m.a.offsetWidth,n()),f=setTimeout(c,50)}}var d=new o(s),w=new o(s),m=new o(s),v=-1,y=-1,g=-1,b=-1,x=-1,E=-1,C=document.createElement("div");C.dir="ltr",i(d,u(r,"sans-serif")),i(w,u(r,"serif")),i(m,u(r,"monospace")),C.appendChild(d.a),C.appendChild(w.a),C.appendChild(m.a),document.body.appendChild(C),b=d.a.offsetWidth,x=w.a.offsetWidth,E=m.a.offsetWidth,c(),a(d,function(t){v=t,n()}),i(d,u(r,'"'+r.family+'",sans-serif')),a(w,function(t){y=t,n()}),i(w,u(r,'"'+r.family+'",serif')),a(m,function(t){g=t,n()}),i(m,u(r,'"'+r.family+'",monospace'))})})},t.exports=s}()}});
+//# sourceMappingURL=/assets/fontfaceobserver.js.map
+                    
+                            window.csrfTokenName = "CRAFT_CSRF_TOKEN";
+            window.csrfTokenValue = "731Tss79sXfRx1FNXX\u002DBbUl6eHidSKG93rCPWCnKQw98TOcWcrZ3IIoMP9O5y9o\u002Dv7UpLGkR9CgmDy4vxQKU_pTZvzxCmQ5pDC2JeEfXDnM\u003D";
+                        window.vrsgConfig = {
+            bps: '\u007B\u0022small\u0022\u003A420,\u0022medium\u0022\u003A750,\u0022large\u0022\u003A1210,\u0022xlarge\u0022\u003A2000\u007D',
+            siteUrl: 'http://levehytter.no/',
+            pageTrigger: 'p',
+                            modalTriggers: {
+                    search: 'sok'
+                }
+                    };
+    </script>
+        
+<link rel="stylesheet" href="/assets/1547462898/style.css">
+    <script>;</script>
+<link rel="apple-touch-icon" sizes="180x180" href="http://levehytter.no/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://levehytter.no/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://levehytter.no/favicon-16x16.png">
+<link rel="manifest" href="http://levehytter.no/site.webmanifest">
+<link rel="mask-icon" href="http://levehytter.no/safari-pinned-tab.svg" color="#32261b">
+<meta name="msapplication-TileColor" content="#f7f4ed">
+<meta name="theme-color" content="#f7f4ed">
+    
+            <meta name="google-site-verification" content="lojhH-J7yKc5I3R_XQPUVXDv6E7l4XUnG_9KLmdPB4I" />
+    </head>
+
+<body class="invert-header">
+
+    <div id="top" class="page l-flex l-flex-c">
+
+                    
+<header class="page-header" role="banner" data-component="PageHeader">
+
+    
+    <div class="page-header__wrap l-pos-abs l-fill-w" data-pageheader-wrap>
+                <div class="l-wrap">
+                    <div class="page-header__inner l-flex l-flex-j-c l-flex-a-c l-pos-rel">
+                        <h1 class="page-header__branding l-block l-pos-abs">
+                            <a href="https://levehytter.no/" class="l-block l-fill">
+                                <span class="u-sr-only">Leve Hytter</span>
+                                <span class="page-header__branding-logo l-block l-fill">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 43" enable-background="new 0 0 240 43" aria-hidden="true" class="-header-offset"><g><g><path class="st0" d="M0 8.6V34h16.3v-3.2h-13V8.6z" /><g><path class="st0" d="M21.3 23.122h10.3c-.4-2.8-2.2-4.7-5-4.7-2.7-.1-4.7 1.8-5.3 4.7m13.5 2.6H21.1c.3 3.4 2.4 5.5 5.5 5.5 2.1 0 3.6-.9 4.5-2.3h3.3c-1.4 3.3-4.5 5.3-7.8 5.3-4.6 0-8.6-3.7-8.6-9.4 0-5.6 4.1-9.1 8.6-9.1 4.4-.1 8.6 3.2 8.2 10" /><path class="st0" d="M52.6 15.822l-5.8 18.1H42l-5.9-18.1h3.3l4.7 15.5h.5l4.7-15.5z" /><path class="st0" d="M56.7 23.122H67c-.4-2.8-2.2-4.7-5-4.7-2.7-.1-4.7 1.8-5.3 4.7m13.5 2.6H56.5c.3 3.4 2.4 5.5 5.5 5.5 2.1 0 3.6-.9 4.5-2.3h3.3c-1.4 3.3-4.5 5.3-7.8 5.3-4.6 0-8.6-3.7-8.6-9.4 0-5.6 4.1-9.1 8.6-9.1 4.4-.1 8.6 3.2 8.2 10" /><path class="st0" d="M163 8.622v25.3h-3.4v-11.2h-12.1v11.2h-3.4v-25.3h3.4v11h12.1v-11z" /><path class="st0" d="M183.4 15.822l-6.7 18.8c-.9 2.7-2 6.7-6.5 6.7-1.7 0-3.2-.6-3.7-1.2l1.4-2.2c.3.2 1.1.7 2.2.7 1.9 0 2.4-1.5 3-3.2l.5-1.5h-1.5l-6.6-18.1h3.3l5.5 15h.4l5.3-15h3.4zm13.6 17.2c-.5.5-1.5 1.2-3.2 1.2-3.2 0-5.1-2.4-5.1-5.7v-10h-3.2v-2.4h1.1c1.4 0 2.4-1 2.4-2.5v-3.3h2.7v5.4h4.4v2.6h-4.3v9.7c0 2.3 1.1 3.1 2.3 3.1.7 0 1.1-.3 1.4-.5l1.5 2.4zm12.4 0c-.5.5-1.5 1.2-3.2 1.2-3.2 0-5.1-2.4-5.1-5.7v-10h-3.2v-2.4h1.1c1.4 0 2.4-1 2.4-2.5v-3.3h2.7v5.4h4.4v2.6h-4.3v9.7c0 2.3 1.1 3.1 2.3 3.1.7 0 1.1-.3 1.4-.5l1.5 2.4zm4.9-9.9h10.3c-.4-2.8-2.2-4.7-5-4.7-2.7-.1-4.8 1.8-5.3 4.7m13.5 2.6h-13.7c.3 3.4 2.4 5.5 5.5 5.5 2.1 0 3.6-.9 4.5-2.3h3.3c-1.4 3.3-4.5 5.3-7.8 5.3-4.6 0-8.6-3.7-8.6-9.4 0-5.6 4.1-9.1 8.6-9.1 4.3-.1 8.6 3.2 8.2 10" /><g transform="translate(230.234 15.51)"><path d="M9.6.2v3.1c-.4-.1-1-.1-1.5-.1-2.3 0-4.6 1.3-4.6 4.6v10.7H.3V.3h2.1l.6 2h.5C4.2 1.5 5.7.1 8.4.1h1.2z" fill-rule="evenodd" clip-rule="evenodd" /></g></g></g></g><g><g><path class="st4" d="M127.3 21.3h-.7c0 5.4-2.2 10.3-5.7 13.9-3.5 3.5-8.4 5.7-13.8 5.7s-10.3-2.2-13.8-5.7-5.7-8.4-5.7-13.9c0-5.4 2.2-10.3 5.7-13.9 3.5-3.5 8.4-5.7 13.8-5.7s10.3 2.2 13.8 5.7 5.7 8.4 5.7 13.9h1.4c0-5.8-2.3-11-6.1-14.8-3.8-3.8-9-6.1-14.8-6.1-5.8 0-11 2.3-14.8 6.1-3.8 3.8-6.1 9-6.1 14.8 0 5.8 2.3 11 6.1 14.8 3.8 3.8 9 6.1 14.8 6.1 5.8 0 11-2.3 14.8-6.1 3.8-3.8 6.1-9 6.1-14.8h-.7z" /><path class="st4" d="M106.4 1v40.7h1.3V1" /><path class="st4" d="M113.9 2.4v31.9h1.4V2.4" /><path class="st4" d="M122.6 33.6h-15.7V35h15.7" /><path class="st4" d="M121.4 7.4v26.9h1.3V7.4" /><path class="st4" d="M87.9 28.3h14.6c.4 0 .7-.3.7-.7 0-.4-.3-.7-.7-.7H87.9c-.4 0-.7.3-.7.7 0 .4.3.7.7.7" /><path class="st4" d="M106.6 25c-1 .2-2.1.5-3.2 1.1-1.1.7-2.3 1.7-3.9 3.3l.5.5-.5-.5.3.3-.3-.3.3.3-.3-.3c-.1.1-.7.6-1.9 1.1-1.2.5-3 1.1-5.4 1.1-.6 0-1.3 0-2-.1l-.1 1.3c.8.1 1.5.1 2.2.1 2.8 0 4.8-.6 6.2-1.3 1.4-.6 2-1.3 2.1-1.3 1.5-1.5 2.6-2.5 3.6-3.1 1-.6 1.7-.8 2.7-1l-.3-1.2z" /><path class="st4" d="M107.2 14.9c-.4-.3-.9-.6-1.5-.9-.6-.3-1.3-.4-2.1-.4-1 0-2 .3-3.1.9l.3.6-.3-.6s-.4.2-1 .6c-.6.4-1.3.9-1.9 1.6-.3.3-.3.7 0 1 .3.3.7.3 1 0 .6-.6 1.2-1.1 1.7-1.4.2-.2.5-.3.6-.4.1 0 .1-.1.2-.1l-.1-.2.1.2-.1-.2.1.2c.9-.5 1.7-.7 2.5-.7.6 0 1.1.1 1.6.3.5.2.9.5 1.2.7.3.2.7.2.9-.1.2-.5.2-.9-.1-1.1z" /><path class="st4" d="M88.1 14.7h.4c.1-.1.3-.1.5-.2s.4-.2.7-.3c.5-.2 1.1-.3 1.6-.3.4 0 .7 0 1.1.2.3.1.7.3 1 .6l.4-.5-.5.5s1.1 1 2.5 2c.7.5 1.5 1 2.3 1.5l1.2.6c.4.2.8.3 1.1.4l.3-1.3-.9-.3c-.6-.2-1.2-.6-1.9-1-1-.6-1.9-1.3-2.6-1.9-.3-.3-.6-.5-.8-.7l-.2-.2-.1-.1c-.5-.4-1-.7-1.5-.8-.5-.2-1-.2-1.5-.2-.8 0-1.5.2-2.1.4-.4.1-.8.3-1 .4-.1.1-.2.1-.3.1h-.1l.2.4-.1-.4.2.4-.1-.4.2.6-.1-.6h-.1l.2.6-.1-.6.2.6v-.7H88l.2.6v-.7 1.3z" /><path class="st4" d="M93.9 30c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7s.3-.7.7-.7c.4 0 .7.3.7.7" /><g><path class="st4" d="M104.6 4c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7s.3-.7.7-.7c.4 0 .7.3.7.7" /><path class="st4" d="M96.8 7.9c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7s.3-.7.7-.7c.4 0 .7.3.7.7" /><path class="st4" d="M105.1 7.6c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7s.3-.7.7-.7c.4 0 .7.4.7.7" /><path class="st4" d="M100.2 8.6c.6.7-.3 1.6-1 1-.6-.8.3-1.6 1-1" /><path class="st4" d="M103.4 10.3c.6.7-.3 1.6-1 1-.6-.7.3-1.5 1-1" /><path class="st4" d="M101.2 5.3c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.4 0 .7.3.7.7" /><path class="st4" d="M95.8 20.2c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.4 0 .7.3.7.7" /><path class="st4" d="M92.5 24.3c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.4 0 .7.3.7.7" /><path class="st4" d="M100.5 21.9c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.4 0 .7.3.7.7" /><path class="st4" d="M96.5 24.1c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.4 0 .7.3.7.7" /><path class="st4" d="M104.3 17.5c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7s.3-.7.7-.7c.4.1.7.4.7.7" /><path class="st4" d="M105.3 22.2c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7s.3-.7.7-.7c.4 0 .7.3.7.7" /><path class="st4" d="M101.8 25c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.4 0 .7.3.7.7" /><path class="st4" d="M96.1 11.5c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.4 0 .7.4.7.7" /><path class="st4" d="M100.1 12.8c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.4 0 .7.3.7.7" /><path class="st4" d="M92.5 16.9c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7s.3-.7.7-.7c.4 0 .7.3.7.7" /><path class="st4" d="M89.6 21.8c0 .4-.3.7-.7.7-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.4 0 .7.3.7.7" /></g><path class="st4" d="M106.8 31.8h-.6c-.6 0-1.7.1-2.8.5-.5.2-1.1.6-1.5 1.1-.5.5-.8 1.1-1 1.9l1.3.4c.2-.6.4-1 .7-1.3.2-.3.5-.4.8-.6.4-.2.9-.4 1.4-.5.5-.1.9-.1 1.2-.1h.4v-.3.3-.3.3l.1-1.4z" /><path class="st4" d="M102.6 33.1s-.8-.2-1.8-.2c-.7 0-1.4.1-2.2.3-.8.2-1.6.6-2.2 1.2l.9 1c.5-.4 1.1-.7 1.7-.9.6-.2 1.3-.2 1.8-.2.4 0 .8 0 1.1.1h.4v-.2.2-.2.2l.3-1.3z" /><path class="st4" d="M105.5 38s-.4-.2-1-.4-1.5-.4-2.5-.4c-.7 0-1.5.1-2.3.4-.8.3-1.6.8-2.3 1.5l1 .9c.5-.6 1.1-.9 1.8-1.2.6-.2 1.3-.3 1.9-.3.8 0 1.5.2 2.1.3.3.1.5.2.6.2.1 0 .1.1.2.1l.1-.3-.1.3.1-.3-.1.3.5-1.1z" /></g></g></svg></span>
+                            </a>
+                        </h1>
+                        <div class="page-header__nav l-pos-abs l-fill l-flex l-flex-a-c">
+                            
+
+
+
+<nav id="meny" class="page-menu l-fill" role="navigation" aria-label="Meny" data-component="PageNav"><div class="l-pos-rel l-fill l-flex l-flex-j-sb l-flex-a-c">
+
+        <noscript>
+                        <a href="#meny" class="page-menu__toggle open l-block l-pos-rel l-flex-00 m-hit u-nojs-only">
+                <span class="u-sr-only">Menu</span>
+                <span class="page-menu__toggle-icon l-block l-fill l-pos-abs">
+                    <svg class="icon-hamburger" width="25px" height="23px" viewBox="0 0 25 23"><g stroke="none" stroke-width="1" fill-rule="evenodd"><g transform="translate(-8.000000, -9.000000)"><g transform="translate(8.000000, 9.000000)"><g transform="translate(0.000000, 1.000000)" fill-rule="nonzero"><polygon class="icon-hamburger__line icon-hamburger__line--middle" points="0 12 0 10 25 10 25 12" /><polygon class="icon-hamburger__line icon-hamburger__line--middle-copy" points="0 12 0 10 25 10 25 12" /><polygon class="icon-hamburger__line icon-hamburger__line--bottom" points="2.22044605e-16 22 0 20 25 20 25 22" /></g><g class="icon-hamburger__line-and-dot" transform="translate(12.500000, 2.500000) rotate(-360.000000) translate(-12.500000, -2.500000) "><polygon fill-rule="nonzero" points="0 3 0 1 17 1 17 3" /><path d="M20,2.49998247 C20,3.88068911 21.1192758,5 22.5000175,5 C23.8806891,5 25,3.88068911 25,2.49998247 C25,1.11927583 23.8806891,0 22.5000175,0 C21.1192758,0 20,1.11927583 20,2.49998247" /></g></g></g></g></svg></span>
+            </a>
+        </noscript>
+
+                <button aria-expanded="false" class="page-menu__toggle l-block l-pos-rel l-flex-00 m-hit u-js-only" data-pagenav-toggle>
+            <span class="u-sr-only">Menu</span>
+            <span class="page-menu__toggle-icon l-block l-fill l-pos-abs">
+                <svg class="icon-hamburger" width="25px" height="23px" viewBox="0 0 25 23"><g stroke="none" stroke-width="1" fill-rule="evenodd"><g transform="translate(-8.000000, -9.000000)"><g transform="translate(8.000000, 9.000000)"><g transform="translate(0.000000, 1.000000)" fill-rule="nonzero"><polygon class="icon-hamburger__line icon-hamburger__line--middle" points="0 12 0 10 25 10 25 12" /><polygon class="icon-hamburger__line icon-hamburger__line--middle-copy" points="0 12 0 10 25 10 25 12" /><polygon class="icon-hamburger__line icon-hamburger__line--bottom" points="2.22044605e-16 22 0 20 25 20 25 22" /></g><g class="icon-hamburger__line-and-dot" transform="translate(12.500000, 2.500000) rotate(-360.000000) translate(-12.500000, -2.500000) "><polygon fill-rule="nonzero" points="0 3 0 1 17 1 17 3" /><path d="M20,2.49998247 C20,3.88068911 21.1192758,5 22.5000175,5 C23.8806891,5 25,3.88068911 25,2.49998247 C25,1.11927583 23.8806891,0 22.5000175,0 C21.1192758,0 20,1.11927583 20,2.49998247" /></g></g></g></g></svg></span>
+        </button>
+
+        <div class="page-menu__wrap l-pos-fix l-fill l-flex-00 l-flex-11@l u-noselect" data-pagenav-wrap hidden>
+
+            <div class="page-menu__inner l-wrap l-pos-rel l-fill m-bg-brown-dark m-c-beige" data-pagenav-inner>
+
+                <div class="l-pos-rel l-fill">
+
+                    <div class="page-menu__content l-pos-rel l-fill l-flex l-flex-c" data-pagenav-content>
+
+                        <p class="page-menu__content-title t-23 t-30@m l-flex-00">Velkommen!</p>
+
+                        
+                        <ul class="l-fill-w l-flex@l l-flex-a-s@l">
+
+                            
+                            
+                                
+                                
+                                    
+                                    
+                                
+                            
+                                
+                                
+                                    
+                                    
+                                
+                            
+                                
+                                
+                                    
+                                    
+                                
+                            
+                                
+                                
+                                    
+                                    
+                                
+                            
+                                
+                                
+                                    
+                                    
+                                
+                            
+                                
+                                
+                                    
+                                    
+                                
+                            
+                            
+                            
+                                                                
+                                
+                                <li class="page-menu__content-item l-pos-rel" data-pagenav-item>
+                                    
+                                                                            <a href="/hytter" class="l-pos-rel" data-nav-path="hytter">Våre hytter</a>
+                                                                    
+                                </li>
+                            
+                                                                
+                                
+                                <li class="page-menu__content-item l-pos-rel" data-pagenav-item>
+                                    
+                                                                            <a href="/hyttefelt" class="l-pos-rel" data-nav-path="hyttefelt">Hyttefelt</a>
+                                                                    
+                                </li>
+                            
+                                                                
+                                
+                                <li class="page-menu__content-item l-pos-rel" data-pagenav-item>
+                                    
+                                                                            <a href="/interior" class="l-pos-rel" data-nav-path="interior">Interiør</a>
+                                                                    
+                                </li>
+                            
+                                                                
+                                
+                                <li class="page-menu__content-item page-menu__content-item--has-sub is-middle l-pos-rel" data-pagenav-item>
+                                    
+                                    
+                                                                                                                        
+                                        <a href="/om-oss/var-historie" data-nav-path="om-oss/var-historie|om-oss/prosessen|om-oss/hvorfor-velge-oss|om-oss/samarbeidspartnere|aktuelt" class="l-pos-rel" data-pagenav-submenutoggle>
+                                            Om oss <span class="l-ib arrow" aria-hidden="true">↓</span>
+                                        </a>
+                                        <div class="l-flex l-flex-c l-pos-rel m-crop" data-pagenav-submenu>
+                                            <ul class="l-flex l-flex-c m-bg-beige m-c-brown"><li>
+                                                        <a href="/om-oss/var-historie" class="l-pos-rel" data-nav-path="om-oss/var-historie">Vår historie</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/om-oss/prosessen" class="l-pos-rel" data-nav-path="om-oss/prosessen">Prosessen</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/om-oss/hvorfor-velge-oss" class="l-pos-rel" data-nav-path="om-oss/hvorfor-velge-oss">Hvorfor velge oss?</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/om-oss/samarbeidspartnere" class="l-pos-rel" data-nav-path="om-oss/samarbeidspartnere">Samarbeidspartnere</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/aktuelt" class="l-pos-rel" data-nav-path="aktuelt">Aktuelt</a>
+                                                    </li>
+                                                                                            </ul></div>
+                                                                    
+                                </li>
+                            
+                                                                
+                                
+                                <li class="page-menu__content-item l-pos-rel" data-pagenav-item>
+                                    
+                                                                            <a href="/vanlige-sporsmal" class="l-pos-rel" data-nav-path="vanlige-sporsmal">Vanlige spørsmål</a>
+                                                                    
+                                </li>
+                            
+                                                                
+                                
+                                <li class="page-menu__content-item l-pos-rel" data-pagenav-item>
+                                    
+                                                                            <a href="/kontakt" class="l-pos-rel" data-nav-path="kontakt">Ta kontakt</a>
+                                                                    
+                                </li>
+                            
+                        </ul><div class="page-menu__content-blurb l-flex-00"><p>Finner du ikke det du leter etter? <br>Ta kontakt med oss på <a href="mailto:kontakt@levehytter.no">kontakt@levehytter.no</a></p></div>
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="page-menu__wrap-overlay l-fill l-pos-fix u-js-only" data-pagenav-overlay>
+                <div class="l-fill l-pos-abs m-bg-brown"></div>
+            </div>
+
+            <noscript>
+                <a href="#top" class="page-menu__wrap-overlay l-block l-fill l-pos-fix">
+                    <div class="l-fill l-pos-abs m-bg-brown"></div>
+                </a>
+            </noscript>
+
+        </div>
+
+                            <a href="https://levehytter.no/sok" class="page-menu__searchtoggle l-block l-pos-rel l-flex-00 m-hit" data-pagenav-searchbtn>
+                <span class="u-sr-only">Søk</span>
+                <span class="icon l-block l-fill">    <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><g fill-rule="evenodd" stroke="#F7F4EC" stroke-width="2"><path d="M19.462 10.23A9.23 9.23 0 1 1 1 10.23a9.23 9.23 0 0 1 18.462 0zM25 25l-8.205-8.205" /></g></svg></span>
+            </a>
+        
+    </div>
+
+</nav></div>
+                    </div>
+                </div>
+            </div>
+                
+
+                                                
+
+
+    <div class="l-pos-rel m-c-beige" data-component="Parallaxer" data-component-props="{&quot;factor&quot;:1.5}">
+
+        <div class="hero-frontpage l-pos-rel l-flex@l" data-component="FrontpageHero">
+
+            
+                                                                
+                <div class="hero-frontpage__slide l-pos-abs l-fill m-crop is-active-slide" style="z-index: 2" data-frontpagehero-slide data-hasimage>
+                    <div class="l-flex l-fill l-pos-rel m-crop" data-frontpagehero-mask>
+                        <div class="hero-frontpage__slide-inner l-fill l-pos-rel l-flex-00 l-flex l-flex-a-c l-flex-j-c m-bg-gray" data-frontpagehero-inner>
+
+                                                                                        <div class="hero-frontpage__slide-text l-wrap l-pos-rel t-center" data-frontpagehero-text>
+                                    <p class="t-h-1" data-parallaxer-content>Et sted å puste,<br />
+nær naturen</p>
+                                </div>
+                            
+                            <div class="hero-frontpage__slide-visuals l-pos-abs l-fill m-crop" style="background-image: url(data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAMAAgDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABAb/xAAaEAACAwEBAAAAAAAAAAAAAAACAwAEEQES/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQD/xAAXEQEBAQEAAAAAAAAAAAAAAAAAARFB/9oADAMBAAIRAxEAPwC0s1m85oDCQ6bUcbG+SzIcT//Z);background-size:cover;" data-parallaxer-visual>
+                                                                                                    <figure class="hero-frontpage__slide-image l-pos-abs l-fill m-crop" data-image>
+                                        <picture class="lazyload l-pos-abs l-fill">
+
+                                            
+                                            
+                                            
+                                                                                                                                            
+                                            
+                                            
+                                                                                                                                                                                                                                                                                                    <source srcset="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271%27%20height%3D%271%27%20style%3D%27background%3Atransparent%27%2F%3E" data-srcset="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&amp;crop=focalpoint&amp;fit=crop&amp;fp-x=0.5&amp;fp-y=0.5&amp;h=1067&amp;q=90&amp;w=600&amp;s=c7e3482b670f205c324f13b0a0121d61 600w, https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&amp;crop=focalpoint&amp;fit=crop&amp;fp-x=0.5&amp;fp-y=0.5&amp;h=2489&amp;q=90&amp;w=1400&amp;s=d4da678b01fb842d460ea9409a853955 1400w" media="(orientation: portrait)" />
+                                            
+                                                                                                                                                                                                                                                                                                                                                                                                        <source srcset="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271%27%20height%3D%271%27%20style%3D%27background%3Atransparent%27%2F%3E" data-srcset="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&amp;crop=focalpoint&amp;fit=crop&amp;fp-x=0.5&amp;fp-y=0.5&amp;h=450&amp;q=90&amp;w=800&amp;s=cbffb1e7ae27d1586696e704b188b6db 800w, https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&amp;crop=focalpoint&amp;fit=crop&amp;fp-x=0.5&amp;fp-y=0.5&amp;h=1350&amp;q=90&amp;w=2400&amp;s=b0067e8fc9dc88eb0f10f11df7c85f3a 2400w" media="(orientation: landscape) and (max-width: 1210px)" />
+                                            
+                                                                                                                                                                                                                                                                                                                                                                                                        <source srcset="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271%27%20height%3D%271%27%20style%3D%27background%3Atransparent%27%2F%3E" data-srcset="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&amp;crop=focalpoint&amp;fit=crop&amp;fp-x=0.5&amp;fp-y=0.5&amp;h=1422&amp;q=90&amp;w=800&amp;s=b5fb1c887c550a16fee0f23d7401a2d6 800w, https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&amp;crop=focalpoint&amp;fit=crop&amp;fp-x=0.5&amp;fp-y=0.5&amp;h=4267&amp;q=90&amp;w=2400&amp;s=af7485215897e8e674e3e30ac14efe4f 2400w" media="(orientation: landscape) and (min-width: 1210px)" />
+                                            
+                                            <img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27600%27%20height%3D%27900%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=900&q=90&w=600&s=7f98ea8656ca1af1aa4492590fbd83a1" data-srcset="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=900&q=90&w=600&s=7f98ea8656ca1af1aa4492590fbd83a1 600w, https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=1500&q=90&w=1000&s=cbaf3dfff516ab3f9cf15f8277e630fd 1000w, https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=2101&q=90&w=1400&s=00fe999e984059796055159b199729ea 1400w, https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=2701&q=90&w=1800&s=f106329c5fedf5f85a210d1f823f2a61 1800w" alt="Ingermariegrini Levehytter Nest 63B3469" width="600" height="900" class="l-pos-abs l-fill l-objectfit lazyload">
+                                        </picture>
+                                        <noscript>
+                                            <img src="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3469.jpg?auto=compress%2Cformat&amp;fit=clip&amp;q=90&amp;w=1280&amp;s=8316cbccecea60fde2fdf282d2a75080" class="l-pos-abs l-fill l-objectfit" alt="" />
+                                        </noscript>
+                                    </figure>
+                                
+                                                                                            </div>
+                            <div class="hero-frontpage__slide-overlay l-pos-abs l-fill m-bg-brown"></div>
+                        </div>
+                    </div>
+                </div>
+
+            
+                                                                
+                <div class="hero-frontpage__slide l-pos-abs l-fill m-crop" data-frontpagehero-slide data-hasimage>
+                    <div class="l-flex l-fill l-pos-rel m-crop" data-frontpagehero-mask>
+                        <div class="hero-frontpage__slide-inner l-fill l-pos-rel l-flex-00 l-flex l-flex-a-c l-flex-j-c m-bg-gray" data-frontpagehero-inner>
+
+                                                                                        <div class="hero-frontpage__slide-text l-wrap l-pos-rel t-center" data-frontpagehero-text>
+                                    <p class="t-h-1" data-parallaxer-content>Tidløst design,<br />
+solid håndverk</p>
+                                </div>
+                            
+                            <div class="hero-frontpage__slide-visuals l-pos-abs l-fill m-crop" style="background-image: url(data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAALAAgDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUG/8QAHBAAAgICAwAAAAAAAAAAAAAAAQIAAwQSBQYR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAP/xAAYEQACAwAAAAAAAAAAAAAAAAAAEQIDMf/aAAwDAQACEQMRAD8A1XG2NTk7qPYlDrqK9p2AMRBIrZp//9k=);background-size:cover;" data-parallaxer-visual>
+                                                                                                    <figure class="hero-frontpage__slide-image l-pos-abs l-fill m-crop" data-image>
+                                        <picture class="lazyload l-pos-abs l-fill">
+
+                                            
+                                            
+                                            
+                                                                                                                                            
+                                            
+                                            
+                                                                                                                                                                                                                                                                                                    <source srcset="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271%27%20height%3D%271%27%20style%3D%27background%3Atransparent%27%2F%3E" data-srcset="https://levehytter-aws.imgix.net/Stemningsbilde12-low-res_180709_140450.jpg?auto=compress%2Cformat&amp;crop=focalpoint&amp;fit=crop&amp;fp-x=0.5&amp;fp-y=0.5&amp;h=1067&amp;q=90&amp;w=600&amp;s=8d4169107353c1909a0681bbfc753e2a 600w, https://levehytter-aws.imgix.net/Stemningsbilde12-low-res_180709_140450.jpg?auto=compress%2Cformat&amp;crop=focalpoint&amp;fit=crop&amp;fp-x=0.5&amp;fp-y=0.5&amp;h=2489&amp;q=90&amp;w=1400&amp;s=3900fcb3895b9307df448297943d1b91 1400w" media="(orientation: portrait)" />
+                                            
+                                                                                                                                                                                                                                                                                                                                                                                                        <source srcset="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271%27%20height%3D%271%27%20style%3D%27background%3Atransparent%27%2F%3E" data-srcset="https://levehytter-aws.imgix.net/Stemningsbilde12-low-res_180709_140450.jpg?auto=compress%2Cformat&amp;crop=focalpoint&amp;fit=crop&amp;fp-x=0.5&amp;fp-y=0.5&amp;h=450&amp;q=90&amp;w=800&amp;s=7c0b58785f0d5cb2827260e26451a0c6 800w, https://levehytter-aws.imgix.net/Stemningsbilde12-low-res_180709_140450.jpg?auto=compress%2Cformat&amp;crop=focalpoint&amp;fit=crop&amp;fp-x=0.5&amp;fp-y=0.5&amp;h=1350&amp;q=90&amp;w=2400&amp;s=64eebcbe23a3ea680a3f69e953d3e800 2400w" media="(orientation: landscape) and (max-width: 1210px)" />
+                                            
+                                                                                                                                                                                                                                                                                                                                                                                                        <source srcset="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271%27%20height%3D%271%27%20style%3D%27background%3Atransparent%27%2F%3E" data-srcset="https://levehytter-aws.imgix.net/Stemningsbilde12-low-res_180709_140450.jpg?auto=compress%2Cformat&amp;crop=focalpoint&amp;fit=crop&amp;fp-x=0.5&amp;fp-y=0.5&amp;h=1422&amp;q=90&amp;w=800&amp;s=d932103fefb20f5ad547cbc9a6eff904 800w, https://levehytter-aws.imgix.net/Stemningsbilde12-low-res_180709_140450.jpg?auto=compress%2Cformat&amp;crop=focalpoint&amp;fit=crop&amp;fp-x=0.5&amp;fp-y=0.5&amp;h=4267&amp;q=90&amp;w=2400&amp;s=63a35c3543e7d027b171f710337e5321 2400w" media="(orientation: landscape) and (min-width: 1210px)" />
+                                            
+                                            <img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27600%27%20height%3D%27900%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/Stemningsbilde12-low-res_180709_140450.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=900&q=90&w=600&s=a0b48c552071b181a0743a01a35ad8a0" data-srcset="https://levehytter-aws.imgix.net/Stemningsbilde12-low-res_180709_140450.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=900&q=90&w=600&s=a0b48c552071b181a0743a01a35ad8a0 600w, https://levehytter-aws.imgix.net/Stemningsbilde12-low-res_180709_140450.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=1499&q=90&w=1000&s=bd62051bfdd5a8a568a49d4e37bfe019 1000w, https://levehytter-aws.imgix.net/Stemningsbilde12-low-res_180709_140450.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=2099&q=90&w=1400&s=0471098fe34ed07e2a60407c39f34bb1 1400w, https://levehytter-aws.imgix.net/Stemningsbilde12-low-res_180709_140450.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=2699&q=90&w=1800&s=a3d1fdde47d4a27474acb385c09931da 1800w" alt="Stemningsbilde12 Low Res" width="600" height="900" class="l-pos-abs l-fill l-objectfit lazyload">
+                                        </picture>
+                                        <noscript>
+                                            <img src="https://levehytter-aws.imgix.net/Stemningsbilde12-low-res_180709_140450.jpg?auto=compress%2Cformat&amp;fit=clip&amp;q=90&amp;w=1280&amp;s=7bc35ed0991c3fcc88116bc35fc557e1" class="l-pos-abs l-fill l-objectfit" alt="" />
+                                        </noscript>
+                                    </figure>
+                                
+                                                                                            </div>
+                            <div class="hero-frontpage__slide-overlay l-pos-abs l-fill m-bg-brown"></div>
+                        </div>
+                    </div>
+                </div>
+
+            
+        </div>
+
+        
+<a href="#innhold" class="hero-scroll-helper l-pos-abs l-flex l-flex-c l-flex-a-c u-noselect u-gpu" data-component="ScrollTo">
+    <span class="hero-scroll-helper__label l-ib t-ellipsis">Se våre hytter</span>
+    <span class="hero-scroll-helper__icon l-ib" aria-hidden="true">↓</span>
+</a>
+
+    </div>
+
+    
+
+</header>
+        
+        <main id="main" class="page-content l-flex-10 l-pos-rel">
+            
+            <div id="innhold" class="l-pos-rel m-bg-beige" style="z-index:2;">
+                    
+
+
+
+        
+                    
+    
+    
+                                
+
+        
+                    
+    
+    
+                                
+
+        
+                    
+    
+    
+                                
+
+        
+                    
+    
+    
+                                
+
+        
+                    
+    
+    
+                                
+
+
+
+        
+        
+        <div class="block block-short-text-frontpage l-wrap l-flex l-flex-c l-flex-a-c@m block--odd block--first" data-reveal><div class="block-short-text-frontpage__heading"><h2 class="t-26 t-35@m t-40@l t-45@xl">Vi lager moderne kvalitetshytter, med god arkitektur</h2></div><div class="block-short-text-frontpage__text t-b-1"><p>Ei hytte skal vare i mange generasjoner. Derfor er vi opptatt av den skal fremstå som tidløs, i motsetning til gammeldags. Hytta vi bygger heter Vy, og er utviklet i samarbeid med en av Norges fremste arkitekter. Den kommer i flere grunnmodeller og størrelser, med gode valgmuligheter. Du får ei gjennomtenkt hytte, akkurat tilpasset deg.</p></div></div>
+
+    
+        
+        <div class="block block-plugs block--even"><div class="g-wrap"><div class="l-flex@m l-flex-wrap@m l-flex-j-c l-fill-w"><div class="block-plugs__plug block-plugs__plug--first l-flex@m g-col g-6@m"><a href="http://levehytter.no/hytter" class="plug l-pos-rel l-flex l-flex-c l-fill-w m-bg-beige-dark u-gpu" data-reveal><div class="plug__image l-flex-00 l-pos-rel" style="background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAECAMAAACEE47CAAAAYFBMVEWGnrSKpbyOq8SSsMqVssyWscmVrcOUqLuSpbWWq7ybscSgtsmjucykucqktsWjsr+hrrils76qusWwv8uzws61w821wcq0vsWvt720vcO6w8m/yM7DzNLFzdPGzdHFy84hVAKAAAAALElEQVQI12NgYGRiZmFlY2fg4OTi5uHl42cQEBQSFhEVE2eQkJSSlpGVkwcAFxwB8RHZNnMAAAAASUVORK5CYII=);background-size:cover;"><div class="l-block l-fill m-crop"><div class="plug__image-wrap l-pos-abs l-fill"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27400%27%20height%3D%27204%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/Leve_Hytter-Vy_23ATH-Overblikk-revidert3-www.mir.no.png?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=204&q=90&w=400&s=3e786d4f222594626e23d8f5effef38b" data-srcset="https://levehytter-aws.imgix.net/Leve_Hytter-Vy_23ATH-Overblikk-revidert3-www.mir.no.png?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=204&q=90&w=400&s=3e786d4f222594626e23d8f5effef38b 400w, https://levehytter-aws.imgix.net/Leve_Hytter-Vy_23ATH-Overblikk-revidert3-www.mir.no.png?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=408&q=90&w=800&s=35646703186636e381501f78b6f2e4b3 800w, https://levehytter-aws.imgix.net/Leve_Hytter-Vy_23ATH-Overblikk-revidert3-www.mir.no.png?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=612&q=90&w=1200&s=f65d6ffc62cc8e63a09bbd028f9d958b 1200w" alt="Leve Hytter Vy 23Ath Overblikk Revidert3 Www Mir No" width="400" height="204" class="l-fill l-pos-abs l-objectfit lazyload"><noscript><img src="https://levehytter-aws.imgix.net/Leve_Hytter-Vy_23ATH-Overblikk-revidert3-www.mir.no.png?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=204&q=90&w=400&s=3e786d4f222594626e23d8f5effef38b" width="400" height="204" alt="Leve Hytter Vy 23Ath Overblikk Revidert3 Www Mir No" class="l-fill l-pos-abs l-objectfit"></noscript></div></div></div><div class="plug__text l-pos-rel l-flex-11 l-flex l-flex-c l-flex-j-c t-center m-crop"><div class="plug__text-strapline t-strap u-no-select"><p>Se våre hyttemodeller</p></div><div class="plug__text-copy"><h3 class="plug__text-heading t-23 t-30@l t-35@xl">Gjør Vy til din egen</h3></div><div><p class="button l-ib t-center u-noselect l-pos-rel"><span class="button__inner l-flex l-flex-a-c l-flex-j-c t-ellipsis l-pos-rel" data-button-inner><span class="l-ib">Les mer</span><span class="button__arrow button__arrow--right" aria-hidden="true">→</span></span></p></div></div></a></div><div class="block-plugs__plug block-plugs__plug--last l-flex@m g-col g-6@m"><a href="http://levehytter.no/hyttefelt" class="plug l-pos-rel l-flex l-flex-c l-fill-w m-bg-beige-dark u-gpu" data-reveal><div class="plug__image l-flex-00 l-pos-rel" style="background-image: url(data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAFAAgDASEAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAZEAABBQAAAAAAAAAAAAAAAAAAAgMEFDL/xAAUAQEAAAAAAAAAAAAAAAAAAAAB/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMAwEAAhEDEQA/AKgic9V0Bgr/2Q==);background-size:cover;"><div class="l-block l-fill m-crop"><div class="plug__image-wrap l-pos-abs l-fill"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27400%27%20height%3D%27267%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/2016-02-29-15.23.49.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=232c8abf35d580366fe3a04672d3a5eb" data-srcset="https://levehytter-aws.imgix.net/2016-02-29-15.23.49.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=232c8abf35d580366fe3a04672d3a5eb 400w, https://levehytter-aws.imgix.net/2016-02-29-15.23.49.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=533&q=90&w=800&s=7e168e26ce78ab71ce825aba0f9ef0f5 800w, https://levehytter-aws.imgix.net/2016-02-29-15.23.49.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=800&q=90&w=1200&s=ba5b90084525152b38756a5e2ff30835 1200w" alt="2016 02 29 15 23 49" width="400" height="267" class="l-fill l-pos-abs l-objectfit lazyload"><noscript><img src="https://levehytter-aws.imgix.net/2016-02-29-15.23.49.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=232c8abf35d580366fe3a04672d3a5eb" width="400" height="267" alt="2016 02 29 15 23 49" class="l-fill l-pos-abs l-objectfit"></noscript></div></div></div><div class="plug__text l-pos-rel l-flex-11 l-flex l-flex-c l-flex-j-c t-center m-crop"><div class="plug__text-strapline t-strap u-no-select"><p>Våre hyttefelt</p></div><div class="plug__text-copy"><h3 class="plug__text-heading t-23 t-30@l t-35@xl">Vi bygger i flotte omgivelser</h3></div><div><p class="button l-ib t-center u-noselect l-pos-rel"><span class="button__inner l-flex l-flex-a-c l-flex-j-c t-ellipsis l-pos-rel" data-button-inner><span class="l-ib">Se hyttefeltene våre</span><span class="button__arrow button__arrow--right" aria-hidden="true">→</span></span></p></div></div></a></div></div></div></div>
+
+    
+        
+        <div class="block block-plugs-slider block--odd"><div class="plug-slider plug-slider--hasnav total-9 m-crop" data-component="PlugSlider" data-component-props="{&quot;displayNav&quot;:true}"><div class="plug-slider__inner l-pos-rel m-bg-brown m-c-beige"><div class="l-wrap t-center" data-reveal="fade"><h3 class="plug-slider__heading l-ib l-center t-23 t-35@m t-40@l t-45@xl">Informasjon og inspirasjon</h3></div><div class="plug-slider__plugs g-wrap l-flex l-fill-w"><div class="plug-slider__slider g-wrap l-flex l-fill-w l-flex-00" data-plugslider-slider><div class="plug-slider__plug plug-slider__plug--first l-flex l-flex-00 g-col g-6 g-4@l" data-plugslider-slide><a href="http://levehytter.no/aktuelt/ny-visningshytte" class="plug-card l-flex l-flex-c l-fill-w m-bg-beige-dark m-c-brown" data-reveal="fade"><div class="plug-card__image l-flex-00 l-pos-rel m-crop m-bg-gray" style="background-image: url(data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAFAAgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAYEAADAQEAAAAAAAAAAAAAAAAAAQMFIv/EABUBAQEAAAAAAAAAAAAAAAAAAAED/8QAGBEBAAMBAAAAAAAAAAAAAAAAAQACAxH/2gAMAwEAAhEDEQA/AKnUkrLtsAEcrLXrBJ//2Q==);background-size:cover;"><div class="l-pos-abs l-fill"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27400%27%20height%3D%27267%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/2014.08.26-Hellerud-11-low-res_180709_211841.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=b4fffb27fa47b607da0d33420d1fc550" data-srcset="https://levehytter-aws.imgix.net/2014.08.26-Hellerud-11-low-res_180709_211841.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=b4fffb27fa47b607da0d33420d1fc550 400w, https://levehytter-aws.imgix.net/2014.08.26-Hellerud-11-low-res_180709_211841.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=534&q=90&w=800&s=2bfea3aa9c252e9768c2a03339d3c47c 800w" alt="2014 08 26 Hellerud 11 Low Res" width="400" height="267" class="l-fill l-pos-abs l-objectfit lazyload" draggable="false"><noscript><img src="https://levehytter-aws.imgix.net/2014.08.26-Hellerud-11-low-res_180709_211841.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=b4fffb27fa47b607da0d33420d1fc550" width="400" height="267" alt="2014 08 26 Hellerud 11 Low Res" class="l-fill l-pos-abs l-objectfit" draggable="false"></noscript></div></div><div class="plug-card__text l-flex-11 l-flex l-flex-c l-flex-j-c l-flex-a-c t-center l-pos-rel"><div class="plug-card__text-strapline l-pos-abs u-noselect"><p class="l-pos-rel l-ib t-ellipsis m-bg-brown m-c-beige">Aktuelt</p></div><div class="plug-card__text-heading t-20 t-23@m t-25@l t-30@xl"><h3>Vi bygger ny visningshytte</h3></div><div class="plug-card__text-readmore"><p>Les mer <span class="l-ib" aria-hidden="true">→</span></p></div></div></a></div><div class="plug-slider__plug l-flex l-flex-00 g-col g-6 g-4@l" data-plugslider-slide><a href="http://levehytter.no/aktuelt/mot-arkitekt-einar-jarmund" class="plug-card l-flex l-flex-c l-fill-w m-bg-beige-dark m-c-brown" data-reveal="fade"><div class="plug-card__image l-flex-00 l-pos-rel m-crop m-bg-gray" style="background-image: url(data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAFAAgDAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAABv/EABsQAAEEAwAAAAAAAAAAAAAAAAMAAQIEBREi/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAWEQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhEDEQA/AEuDvncvUtoNKo//2Q==);background-size:cover;"><div class="l-pos-abs l-fill"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27400%27%20height%3D%27281%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/Aktuelt/Einar3.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=281&q=90&w=400&s=5261799e9d156fbdf7138aaba507294d" data-srcset="https://levehytter-aws.imgix.net/Aktuelt/Einar3.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=281&q=90&w=400&s=5261799e9d156fbdf7138aaba507294d 400w, https://levehytter-aws.imgix.net/Aktuelt/Einar3.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=563&q=90&w=800&s=1d7751f3e2a808b987b2840ae1dd1d21 800w" alt="Einar3" width="400" height="281" class="l-fill l-pos-abs l-objectfit lazyload" draggable="false"><noscript><img src="https://levehytter-aws.imgix.net/Aktuelt/Einar3.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=281&q=90&w=400&s=5261799e9d156fbdf7138aaba507294d" width="400" height="281" alt="Einar3" class="l-fill l-pos-abs l-objectfit" draggable="false"></noscript></div></div><div class="plug-card__text l-flex-11 l-flex l-flex-c l-flex-j-c l-flex-a-c t-center l-pos-rel"><div class="plug-card__text-strapline l-pos-abs u-noselect"><p class="l-pos-rel l-ib t-ellipsis m-bg-brown m-c-beige">Aktuelt</p></div><div class="plug-card__text-heading t-20 t-23@m t-25@l t-30@xl"><h3>Møt arkitekt<br>
+Einar Jarmund</h3></div><div class="plug-card__text-readmore"><p>Les mer <span class="l-ib" aria-hidden="true">→</span></p></div></div></a></div><div class="plug-slider__plug l-flex l-flex-00 g-col g-6 g-4@l" data-plugslider-slide><a href="http://levehytter.no/aktuelt/tips-til-planleggingen-av-din-nye-vy-hytte" class="plug-card l-flex l-flex-c l-fill-w m-bg-beige-dark m-c-brown" data-reveal="fade"><div class="plug-card__image l-flex-00 l-pos-rel m-crop m-bg-gray" style="background-image: url(data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAFAAgDAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAACP/EABgQAAMBAQAAAAAAAAAAAAAAAAECAwAF/8QAFAEBAAAAAAAAAAAAAAAAAAAAA//EABYRAAMAAAAAAAAAAAAAAAAAAAABEv/aAAwDAQACEQMRAD8AQ1OdJ6BiTkphwj//2Q==);background-size:cover;"><div class="l-pos-abs l-fill"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27400%27%20height%3D%27267%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/Eksteriorbilder/IngerMarieGrini_LeveHytter_Eksterior_Sjusjoen_63B0077.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=de2317cbed4aae71d34e9e75ac4b2a95" data-srcset="https://levehytter-aws.imgix.net/Eksteriorbilder/IngerMarieGrini_LeveHytter_Eksterior_Sjusjoen_63B0077.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=de2317cbed4aae71d34e9e75ac4b2a95 400w, https://levehytter-aws.imgix.net/Eksteriorbilder/IngerMarieGrini_LeveHytter_Eksterior_Sjusjoen_63B0077.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=535&q=90&w=800&s=e5f4589205139c7a5bd4ed08e6e3c69c 800w" alt="Ingermariegrini Levehytter Eksterior Sjusjoen 63B0077" width="400" height="267" class="l-fill l-pos-abs l-objectfit lazyload" draggable="false"><noscript><img src="https://levehytter-aws.imgix.net/Eksteriorbilder/IngerMarieGrini_LeveHytter_Eksterior_Sjusjoen_63B0077.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=de2317cbed4aae71d34e9e75ac4b2a95" width="400" height="267" alt="Ingermariegrini Levehytter Eksterior Sjusjoen 63B0077" class="l-fill l-pos-abs l-objectfit" draggable="false"></noscript></div></div><div class="plug-card__text l-flex-11 l-flex l-flex-c l-flex-j-c l-flex-a-c t-center l-pos-rel"><div class="plug-card__text-strapline l-pos-abs u-noselect"><p class="l-pos-rel l-ib t-ellipsis m-bg-brown m-c-beige">Aktuelt</p></div><div class="plug-card__text-heading t-20 t-23@m t-25@l t-30@xl"><h3>Tips til planleggingen av din nye Vy-hytte</h3></div><div class="plug-card__text-readmore"><p>Les mer <span class="l-ib" aria-hidden="true">→</span></p></div></div></a></div><div class="plug-slider__plug l-flex l-flex-00 g-col g-6 g-4@l" data-plugslider-slide><a href="http://levehytter.no/om-oss/var-historie" class="plug-card l-flex l-flex-c l-fill-w m-bg-beige-dark m-c-brown" data-reveal="fade"><div class="plug-card__image l-flex-00 l-pos-rel m-crop m-bg-gray" style="background-image: url(data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAFAAgDAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAAB//EABgQAQADAQAAAAAAAAAAAAAAAAIABREh/8QAFAEBAAAAAAAAAAAAAAAAAAAAAv/EABYRAAMAAAAAAAAAAAAAAAAAAAACMf/aAAwDAQACEQMRAD8AUrtak87C0EtP/9k=);background-size:cover;"><div class="l-pos-abs l-fill"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27400%27%20height%3D%27267%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Linge_63B3646.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=850bafc02521507409ac9dfacacf657c" data-srcset="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Linge_63B3646.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=850bafc02521507409ac9dfacacf657c 400w, https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Linge_63B3646.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=533&q=90&w=800&s=57d80c30d70c01dad6ecbb350e35c8ae 800w" alt="Ingermariegrini Levehytter Linge 63B3646" width="400" height="267" class="l-fill l-pos-abs l-objectfit lazyload" draggable="false"><noscript><img src="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Linge_63B3646.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=850bafc02521507409ac9dfacacf657c" width="400" height="267" alt="Ingermariegrini Levehytter Linge 63B3646" class="l-fill l-pos-abs l-objectfit" draggable="false"></noscript></div></div><div class="plug-card__text l-flex-11 l-flex l-flex-c l-flex-j-c l-flex-a-c t-center l-pos-rel"><div class="plug-card__text-strapline l-pos-abs u-noselect"><p class="l-pos-rel l-ib t-ellipsis m-bg-brown m-c-beige">Vår historie</p></div><div class="plug-card__text-heading t-20 t-23@m t-25@l t-30@xl"><h3>Bli kjent med<br>
+Leve Hytter</h3></div><div class="plug-card__text-readmore"><p>Les mer <span class="l-ib" aria-hidden="true">→</span></p></div></div></a></div><div class="plug-slider__plug l-flex l-flex-00 g-col g-6 g-4@l" data-plugslider-slide><a href="http://levehytter.no/aktuelt/leve-djs-vares-in-house-dj-crew" class="plug-card l-flex l-flex-c l-fill-w m-bg-beige-dark m-c-brown" data-reveal="fade"><div class="plug-card__image l-flex-00 l-pos-rel m-crop m-bg-gray" style="background-image: url(data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAFAAgDAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAABv/EABkQAAIDAQAAAAAAAAAAAAAAAAEDAAIFIv/EABQBAQAAAAAAAAAAAAAAAAAAAAH/xAAWEQEBAQAAAAAAAAAAAAAAAAAAATH/2gAMAwEAAhEDEQA/AFW4yxWVE8wml//Z);background-size:cover;"><div class="l-pos-abs l-fill"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27400%27%20height%3D%27267%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/Diverse/01.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=9870ea683180bbaca42d9aaa1892977f" data-srcset="https://levehytter-aws.imgix.net/Diverse/01.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=9870ea683180bbaca42d9aaa1892977f 400w, https://levehytter-aws.imgix.net/Diverse/01.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=533&q=90&w=800&s=54da123c1b37151c236012e33862c958 800w" alt="01" width="400" height="267" class="l-fill l-pos-abs l-objectfit lazyload" draggable="false"><noscript><img src="https://levehytter-aws.imgix.net/Diverse/01.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=9870ea683180bbaca42d9aaa1892977f" width="400" height="267" alt="01" class="l-fill l-pos-abs l-objectfit" draggable="false"></noscript></div></div><div class="plug-card__text l-flex-11 l-flex l-flex-c l-flex-j-c l-flex-a-c t-center l-pos-rel"><div class="plug-card__text-strapline l-pos-abs u-noselect"><p class="l-pos-rel l-ib t-ellipsis m-bg-brown m-c-beige">Møt Leve DJs</p></div><div class="plug-card__text-heading t-20 t-23@m t-25@l t-30@xl"><h3>Leve Hytter sitt "in house" DJ crew</h3></div><div class="plug-card__text-readmore"><p>Les mer <span class="l-ib" aria-hidden="true">→</span></p></div></div></a></div><div class="plug-slider__plug l-flex l-flex-00 g-col g-6 g-4@l" data-plugslider-slide><a href="http://levehytter.no/aktuelt/interior-pa-hytta-med-personlighet" class="plug-card l-flex l-flex-c l-fill-w m-bg-beige-dark m-c-brown" data-reveal="fade"><div class="plug-card__image l-flex-00 l-pos-rel m-crop m-bg-gray" style="background-image: url(data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAFAAgDAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAAB//EABoQAAICAwAAAAAAAAAAAAAAAAIDAAQFEjH/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/EABYRAQEBAAAAAAAAAAAAAAAAABEAEv/aAAwDAQACEQMRAD8ARcnVWg9x7AatF//Z);background-size:cover;"><div class="l-pos-abs l-fill"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27400%27%20height%3D%27259%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Linge_63B3717.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=259&q=90&w=400&s=3c6b673d199d6f874ab7c37d89f7411f" data-srcset="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Linge_63B3717.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=259&q=90&w=400&s=3c6b673d199d6f874ab7c37d89f7411f 400w, https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Linge_63B3717.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=518&q=90&w=800&s=07687ccabab4170670c80bee59652f9c 800w" alt="Ingermariegrini Levehytter Linge 63B3717" width="400" height="259" class="l-fill l-pos-abs l-objectfit lazyload" draggable="false"><noscript><img src="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Linge_63B3717.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=259&q=90&w=400&s=3c6b673d199d6f874ab7c37d89f7411f" width="400" height="259" alt="Ingermariegrini Levehytter Linge 63B3717" class="l-fill l-pos-abs l-objectfit" draggable="false"></noscript></div></div><div class="plug-card__text l-flex-11 l-flex l-flex-c l-flex-j-c l-flex-a-c t-center l-pos-rel"><div class="plug-card__text-strapline l-pos-abs u-noselect"><p class="l-pos-rel l-ib t-ellipsis m-bg-brown m-c-beige">Aktuelt</p></div><div class="plug-card__text-heading t-20 t-23@m t-25@l t-30@xl"><h3>Interiør på hytta med personlighet</h3></div><div class="plug-card__text-readmore"><p>Les mer <span class="l-ib" aria-hidden="true">→</span></p></div></div></a></div><div class="plug-slider__plug l-flex l-flex-00 g-col g-6 g-4@l" data-plugslider-slide><a href="http://levehytter.no/aktuelt/livet-i-leve-hytter" class="plug-card l-flex l-flex-c l-fill-w m-bg-beige-dark m-c-brown" data-reveal="fade"><div class="plug-card__image l-flex-00 l-pos-rel m-crop m-bg-gray" style="background-image: url(data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAFAAgDAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAABv/EABoQAAICAwAAAAAAAAAAAAAAAAECBAUAAyL/xAAVAQEBAAAAAAAAAAAAAAAAAAABA//EABgRAAIDAAAAAAAAAAAAAAAAAAABAhEx/9oADAMBAAIRAxEAPwBPLtZKWh1BuQclDBao/9k=);background-size:cover;"><div class="l-pos-abs l-fill"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27400%27%20height%3D%27292%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/Ansatte/IngerMarieGrini_LeveHytter_63B4228_artikkel_180824_133801.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5203&fp-y=0.3069&h=292&q=90&w=400&s=3c063fe850525dfe40a84ad018a57841" data-srcset="https://levehytter-aws.imgix.net/Ansatte/IngerMarieGrini_LeveHytter_63B4228_artikkel_180824_133801.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5203&fp-y=0.3069&h=292&q=90&w=400&s=3c063fe850525dfe40a84ad018a57841 400w, https://levehytter-aws.imgix.net/Ansatte/IngerMarieGrini_LeveHytter_63B4228_artikkel_180824_133801.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5203&fp-y=0.3069&h=584&q=90&w=800&s=fdb3bbad3f6dee3fc7905a5e08d8be5b 800w" alt="Ingermariegrini Levehytter 63B4228 Artikkel" width="400" height="292" class="l-fill l-pos-abs l-objectfit lazyload" draggable="false"><noscript><img src="https://levehytter-aws.imgix.net/Ansatte/IngerMarieGrini_LeveHytter_63B4228_artikkel_180824_133801.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5203&fp-y=0.3069&h=292&q=90&w=400&s=3c063fe850525dfe40a84ad018a57841" width="400" height="292" alt="Ingermariegrini Levehytter 63B4228 Artikkel" class="l-fill l-pos-abs l-objectfit" draggable="false"></noscript></div></div><div class="plug-card__text l-flex-11 l-flex l-flex-c l-flex-j-c l-flex-a-c t-center l-pos-rel"><div class="plug-card__text-strapline l-pos-abs u-noselect"><p class="l-pos-rel l-ib t-ellipsis m-bg-brown m-c-beige">Aktuelt</p></div><div class="plug-card__text-heading t-20 t-23@m t-25@l t-30@xl"><h3>Livet i<br>
+Leve Hytter</h3></div><div class="plug-card__text-readmore"><p>Les mer <span class="l-ib" aria-hidden="true">→</span></p></div></div></a></div><div class="plug-slider__plug l-flex l-flex-00 g-col g-6 g-4@l" data-plugslider-slide><a href="http://levehytter.no/min-leve-hytte" class="plug-card l-flex l-flex-c l-fill-w m-bg-beige-dark m-c-brown" data-reveal="fade"><div class="plug-card__image l-flex-00 l-pos-rel m-crop m-bg-gray" style="background-image: url(data:image/jpg;base64,/9j/4AAQSkZJRgABAQEA8ADwAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAGAAgDAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAAB//EABoQAAICAwAAAAAAAAAAAAAAAAECAAMEBlH/xAAUAQEAAAAAAAAAAAAAAAAAAAAD/8QAFxEBAQEBAAAAAAAAAAAAAAAAAQIAEf/aAAwDAQACEQMRAD8ARNesL4iA8j3XHBMCb//Z);background-size:cover;"><div class="l-pos-abs l-fill"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27400%27%20height%3D%27320%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/IMG_5243.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=320&q=90&w=400&s=edb376bae158b00c8c0b0b5213da887c" data-srcset="https://levehytter-aws.imgix.net/IMG_5243.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=320&q=90&w=400&s=edb376bae158b00c8c0b0b5213da887c 400w, https://levehytter-aws.imgix.net/IMG_5243.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=640&q=90&w=800&s=76d584e6765616ca983392b16cce2a9f 800w" alt="Img 5243" width="400" height="320" class="l-fill l-pos-abs l-objectfit lazyload" draggable="false"><noscript><img src="https://levehytter-aws.imgix.net/IMG_5243.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=320&q=90&w=400&s=edb376bae158b00c8c0b0b5213da887c" width="400" height="320" alt="Img 5243" class="l-fill l-pos-abs l-objectfit" draggable="false"></noscript></div></div><div class="plug-card__text l-flex-11 l-flex l-flex-c l-flex-j-c l-flex-a-c t-center l-pos-rel"><div class="plug-card__text-strapline l-pos-abs u-noselect"><p class="l-pos-rel l-ib t-ellipsis m-bg-brown m-c-beige">Min Leve Hytte</p></div><div class="plug-card__text-heading t-20 t-23@m t-25@l t-30@xl"><h3>Våre kunders egne <br>
+Leve Hytter</h3></div><div class="plug-card__text-readmore"><p>Les mer <span class="l-ib" aria-hidden="true">→</span></p></div></div></a></div><div class="plug-slider__plug plug-slider__plug--last l-flex l-flex-00 g-col g-6 g-4@l" data-plugslider-slide><a href="http://levehytter.no/om-oss/samarbeidspartnere" class="plug-card l-flex l-flex-c l-fill-w m-bg-beige-dark m-c-brown" data-reveal="fade"><div class="plug-card__image l-flex-00 l-pos-rel m-crop m-bg-gray" style="background-image: url(data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAFAAgDAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAABv/EABsQAAIBBQAAAAAAAAAAAAAAAAEDAgAFBxET/8QAFAEBAAAAAAAAAAAAAAAAAAAAA//EABYRAQEBAAAAAAAAAAAAAAAAAAEAAv/aAAwDAQACEQMRAD8AdZdjwsjWLJEtUDkWY0l//9k=);background-size:cover;"><div class="l-pos-abs l-fill"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27400%27%20height%3D%27267%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/Diverse/7b82a0e83f4aae5492b4bb41935e84f6.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=4c5005b732110582c37ff09f1ad77e6b" data-srcset="https://levehytter-aws.imgix.net/Diverse/7b82a0e83f4aae5492b4bb41935e84f6.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=4c5005b732110582c37ff09f1ad77e6b 400w, https://levehytter-aws.imgix.net/Diverse/7b82a0e83f4aae5492b4bb41935e84f6.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=533&q=90&w=800&s=87e571747d142656e656c283b9ae3476 800w" alt="7B82A0E83F4Aae5492B4Bb41935E84F6" width="400" height="267" class="l-fill l-pos-abs l-objectfit lazyload" draggable="false"><noscript><img src="https://levehytter-aws.imgix.net/Diverse/7b82a0e83f4aae5492b4bb41935e84f6.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=267&q=90&w=400&s=4c5005b732110582c37ff09f1ad77e6b" width="400" height="267" alt="7B82A0E83F4Aae5492B4Bb41935E84F6" class="l-fill l-pos-abs l-objectfit" draggable="false"></noscript></div></div><div class="plug-card__text l-flex-11 l-flex l-flex-c l-flex-j-c l-flex-a-c t-center l-pos-rel"><div class="plug-card__text-strapline l-pos-abs u-noselect"><p class="l-pos-rel l-ib t-ellipsis m-bg-brown m-c-beige">Samarbeidspartnere</p></div><div class="plug-card__text-heading t-20 t-23@m t-25@l t-30@xl"><h3>Bli kjent med<br>
+våre samarbeidspartnere</h3></div><div class="plug-card__text-readmore"><p>Les mer <span class="l-ib" aria-hidden="true">→</span></p></div></div></a></div></div></div><div class="plug-slider__nextprev l-wrap t-center"><button class="plug-slider__nextprev-btn plug-slider__nextprev-btn--prev l-ib l-pos-rel m-circle m-crop m-hit m-bg-brown-light m-c-beige brand-profile-bg brand-profile-text" data-plugslider-nav="prev"><span class="u-sr-only">Forrige</span><span class="l-flex l-flex-j-c l-flex-a-c l-fill l-pos-abs"><span class="plug-slider__nextprev-arrow l-ib l-pos-rel" aria-hidden="true">→</span></span></button><button class="plug-slider__nextprev-btn plug-slider__nextprev-btn--next l-ib l-pos-rel m-circle m-crop m-hit m-bg-brown-light m-c-beige brand-profile-bg brand-profile-text" data-plugslider-nav="next"><span class="u-sr-only">Neste</span><span class="l-flex l-flex-j-c l-flex-a-c l-fill l-pos-abs"><span class="plug-slider__nextprev-arrow l-ib l-pos-rel" aria-hidden="true">→</span></span></button></div></div></div></div>
+
+    
+        
+        <div class="block block-plugs block--even"><div class="g-wrap"><div class="l-flex@m l-flex-wrap@m l-flex-j-c l-fill-w"><div class="block-plugs__plug l-flex@m g-col"><a href="http://levehytter.no/interior" class="plug plug--horizontal l-pos-rel l-flex l-flex-c l-flex-r@m l-flex-a-st@m l-fill-w m-bg-beige-dark u-gpu" data-reveal><div class="plug__image l-flex-00 l-pos-rel" style="background-image: url(data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAFAAgDAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAAB//EABoQAAICAwAAAAAAAAAAAAAAAAIDAAQFEjH/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/EABYRAQEBAAAAAAAAAAAAAAAAABEAEv/aAAwDAQACEQMRAD8ARcnVWg9x7AatF//Z);background-size:cover;"><div class="l-block l-fill m-crop"><div class="plug__image-wrap l-pos-abs l-fill"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27400%27%20height%3D%27259%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Linge_63B3717.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=259&q=90&w=400&s=3c6b673d199d6f874ab7c37d89f7411f" data-srcset="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Linge_63B3717.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=259&q=90&w=400&s=3c6b673d199d6f874ab7c37d89f7411f 400w, https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Linge_63B3717.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=518&q=90&w=800&s=07687ccabab4170670c80bee59652f9c 800w, https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Linge_63B3717.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=777&q=90&w=1200&s=2822a100e0123e36aab47b287a3d0ae1 1200w" alt="Ingermariegrini Levehytter Linge 63B3717" width="400" height="259" class="l-fill l-pos-abs l-objectfit lazyload"><noscript><img src="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Linge_63B3717.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=259&q=90&w=400&s=3c6b673d199d6f874ab7c37d89f7411f" width="400" height="259" alt="Ingermariegrini Levehytter Linge 63B3717" class="l-fill l-pos-abs l-objectfit"></noscript></div></div></div><div class="plug__text l-pos-rel l-flex-11 l-flex l-flex-c l-flex-j-c t-center m-crop"><div class="plug__text-strapline t-strap u-no-select"><p>Interiør</p></div><div class="plug__text-copy"><h3 class="plug__text-heading t-23 t-30@l t-35@xl">Hytteglede i hver detalj.<br>
+Se våre interiørløsninger</h3></div><div><p class="button l-ib t-center u-noselect l-pos-rel"><span class="button__inner l-flex l-flex-a-c l-flex-j-c t-ellipsis l-pos-rel" data-button-inner><span class="l-ib">Bli inspirert</span><span class="button__arrow button__arrow--right" aria-hidden="true">→</span></span></p></div></div></a></div></div></div></div>
+
+    
+        
+        <div class="block block--bleed block-banner block--odd block--last"><aside class="banner l-pos-rel m-bg-brown m-c-beige brand-profile-bg brand-profile-text m-crop" data-dark data-component="HeroVideo" data-component-props="{&quot;sources&quot;:{&quot;desktop&quot;:&quot;https:\/\/levehytter-www.s3.amazonaws.com\/BY_nettside_FooterVideo-Small.mp4?mtime=20180829144057&quot;,&quot;mobile&quot;:null}}"><div class="banner__text l-pos-rel u-gpu" data-reveal><div class="l-wrap t-center"><p class="banner__text-strapline t-strap">Ta kontakt</p><div class="banner__text-heading l-center t-23 t-35@m t-40@l t-45@xl"><h3>Vi hjelper deg med å skape <br>
+din egen Leve Hytte</h3></div><div class="banner__text-actions"><a href="/kontakt" class="button button--beige l-ib t-center u-noselect l-pos-rel brand-profile-bg-inverted brand-profile-text-inverted"><span class="button__inner l-flex l-flex-a-c l-flex-j-c t-ellipsis l-pos-rel" data-button-inner><span class="l-ib">Ta kontakt</span><span class="button__arrow button__arrow--right" aria-hidden="true">→</span></span></a></div></div></div><div class="banner__image l-pos-abs l-fill" data-image><div class="l-pos-abs l-fill m-crop"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27600%27%20height%3D%27215%27%20style%3D%27background%3Atransparent%27%2F%3E" data-sizes="auto" data-src="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3360.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=215&q=90&w=600&s=0cf342ac2c7f52cd6f45a7681d374d86" data-srcset="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3360.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=215&q=90&w=600&s=0cf342ac2c7f52cd6f45a7681d374d86 600w, https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3360.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=359&q=90&w=1000&s=5c22248800beb4b71c5414f085e404b6 1000w, https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3360.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=502&q=90&w=1400&s=46269add24c8fca1a8fcac021013ad4a 1400w, https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3360.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=646&q=90&w=1800&s=48d75cb3ba71d1166026f2b2d4a4d7d9 1800w" alt="Ingermariegrini Levehytter Nest 63B3360" width="600" height="215" class="l-objectfit l-pos-abs "><noscript><img src="https://levehytter-aws.imgix.net/Interiorbilder/IngerMarieGrini_LeveHytter_Nest_63B3360.jpg?auto=compress%2Cformat&bg=%23FFFFFF&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=215&q=90&w=600&s=0cf342ac2c7f52cd6f45a7681d374d86" width="600" height="215" alt="Ingermariegrini Levehytter Nest 63B3360" class="l-objectfit l-pos-abs"></noscript></div></div><figure class="banner__video l-pos-abs l-fill"><video class="l-fill l-pos-abs l-objectfit" loop muted playsinline></video></figure><div class="banner__overlay l-pos-abs l-fill m-bg-brown brand-profile-bg" style="opacity:0.88;"></div></aside></div>
+
+    
+        </div>
+            </main>
+
+                    
+
+<footer id="bottom" class="page-footer l-flex-00 l-pos-rel m-bg-brown-dark m-c-beige" role="contentinfo" data-component="PageFooter" data-pagefooter><div class="g-wrap">
+                <div class="l-flex l-flex-wrap">
+                    <div class="page-footer__branding g-col g-4@m g-3@l">
+                        <a href="https://levehytter.no/" class="l-block">
+                            <div class="l-pos-rel l-fill" data-pagefooter-logo>
+                                <svg width="134" height="134" viewBox="0 0 134 134" aria-hidden="true" class="page-footer__branding-logo"><g><path d="M66.83 133.65c-27.032.004-51.404-16.277-61.751-41.25C-5.268 67.425.449 38.678 19.564 19.563 38.68.45 67.426-5.268 92.4 5.08c24.974 10.347 41.255 34.719 41.251 61.751-.044 36.885-29.935 66.776-66.82 66.82zm0-128.56c-34.098 0-61.74 27.642-61.74 61.74s27.642 61.74 61.74 61.74 61.74-27.642 61.74-61.74c-.033-34.084-27.656-61.707-61.74-61.74z" /><path d="M64.01 2.54h5.09v128.74h-5.09V2.54zm23.34 4.61h5.09v100.41h-5.09V7.15z" /><path d="M66.55 105.01h49.41v5.09H66.55z" /><path d="M110.68 22.23h5.09v85.32h-5.09z" /><g><path d="M23 103.18a56.71 56.71 0 0 1-11.81-1.34l1.06-5c18.36 3.91 26.56-2.41 29.81-6.53C49.72 80.6 58.9 74.8 66.6 74.8v5.09c-6.06 0-13.94 5.2-20.55 13.57-3.2 4.01-10 9.72-23.05 9.72zm3.71-48.67A30.89 30.89 0 0 0 7 45.27l.4-5.07a35.46 35.46 0 0 1 23.18 11l-3.87 3.31z" /><path d="M16.18 61.48v-5.09c7.06 0 10.26-3.48 14.32-7.89 1.37-1.49 2.79-3 4.44-4.51 15.1-13.56 26.44-9.13 33.3-3l-3.38 3.8c-7.83-7-16.51-6-26.52 3-1.47 1.31-2.8 2.77-4.1 4.17-4.31 4.67-8.77 9.52-18.06 9.52z" /></g><path d="M5.55 80.7h61v5.09h-61z" /><path d="M5.55 80.7h47.03v5.09H5.55z" /></g></svg></div>
+                        </a>
+                    </div>
+                    <div class="page-footer__cols l-flex l-flex-wrap g-col g-8@m g-9@l g-col--has-sub">
+                        <div class="page-footer__col g-col g-6@s g-12@m g-4@l g-col--has-sub">
+                            <h4 class="page-footer__col-heading t-w-bold g-col g-5@m g-12@l">Kontakt</h4>
+                            <div class="g-col g-7@m g-12@l">
+                                                                    <p>
+                                                                                                                                                                    <a href="https://www.google.no/maps/place/?q=place_id:ChIJYzoBv6-LakYRoHLgZHmaKlY" target="_blank" rel="noopener noreferrer">
+                                                                                                                                        <span class="l-ib">Granrudveien 6,</span>
+                                                                                            <span class="l-ib"> 2636 Øyer</span>
+                                                                                    
+                                            </a>
+                                                                            </p>
+                                                                                                    <p>
+                                        <a href="tel:+4747670400">+47 476 70 400</a>
+                                    </p>
+                                                                                                    <p>
+                                        <a href="mailto:kontakt@levehytter.no">kontakt@levehytter.no</a>
+                                    </p>
+                                                            </div>
+                        </div>
+                                                                            <div class="page-footer__col g-col g-6@s g-12@m g-4@l g-col--has-sub l-pos-rel">
+                                <h4 class="page-footer__col-heading t-w-bold g-col g-5@m g-12@l">Informasjon</h4>
+                                <div class="g-col g-7@m g-12@l">
+                                                                            <p>
+                                                                                        <a href="https://levehytter.no/last-ned-katalog" data-nav-path="last-ned-katalog">Last ned katalog</a>
+                                        </p>
+                                                                            <p>
+                                                                                        <a href="https://levehytter.no/visningshytter" data-nav-path="visningshytter">Besøk våre visningshytter</a>
+                                        </p>
+                                                                            <p>
+                                                                                        <a href="https://levehytter.no/ledige-stillinger" data-nav-path="ledige-stillinger">Ledige stillinger</a>
+                                        </p>
+                                                                    </div>
+                            </div>
+                                                <div class="page-footer__col g-col g-6@s g-12@m g-4@l g-col--has-sub">
+                            <h4 class="page-footer__col-heading t-w-bold g-col g-5@m g-12@l">Sosiale medier</h4>
+                            <div class="g-col g-7@m g-12@l">
+                                                                    <p>
+                                        <a href="https://www.facebook.com/levehytter/" target="_blank" rel="noopener noreferrer">Facebook</a>
+                                    </p>
+                                                                                                    <p>
+                                        <a href="http://instagram.com/levehytter" target="_blank" rel="noopener noreferrer">Instagram</a>
+                                    </p>
+                                                                                                    <p>
+                                        <a href="https://vimeo.com/user70206319" target="_blank" rel="noopener noreferrer">Vimeo</a>
+                                    </p>
+                                                            </div>
+                        </div>
+                        <div class="page-footer__col g-col g-6@s g-12@m g-col--has-sub">
+                            <div class="g-col g-12@m g-8@l g-col--has-sub">
+                                <div class="l-flex l-flex-wrap">
+                                    <div class="page-footer__col-hygiene g-col g-7@m g-6@l">
+                                                                                                                            <p>
+                                                <a href="https://levehytter.no/personvern" data-nav-path="personvern">Personvern</a>
+                                            </p>
+                                                                                                                                                                    <p>
+                                                <a href="https://levehytter.no/cookies" data-nav-path="cookies">Bruk av cookies</a>
+                                            </p>
+                                                                            </div>
+                                    <div class="page-footer__col-credits g-col g-5@m g-6@l">
+                                        <p>
+                                            Design: <a href="https://bielkeyang.com/" target="_blank" rel="noopener noreferrer">Bielke&Yang</a>
+                                        </p>
+                                        <p>
+                                            Kode: <a href="https://vaersaagod.no/" target="_blank" rel="noopener noreferrer">Værsågod</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page-footer__col-toplink g-col g-4@l g-col--has-sub">
+                                <div class="g-col g-7@m g-12@l g-right">
+                                    <a href="#top" data-component="ScrollTo">Til toppen <span class="l-ib" aria-hidden="true">↑</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>        
+        
+        
+            <script src="/assets/1547462898/bundle.js" async></script>
+        </div>
+
+            <div class="cookie-bar l-pos-fix l-fill-w m-c-beige" data-component="CookieBar" data-component-props='{"name": "cookieconsent_1", "duration": 180}'>
+    <div class="g-wrap">
+
+        <div class="l-fill-w l-flex@m">
+
+            <div class="cookie-bar__text g-col wysiwyg">
+                <p>Vi bruker ulike verktøy som informasjonskapsler, for å samle inn data om hvordan besøkende samhandler med nettstedet vårt. Ved å klikke på Godta, godtar du bruken av disse verktøyene.</p>
+            </div>
+
+            <div class="cookie-bar__actions g-col">
+                <div class="l-flex l-flex-wrap l-flex-nowrap@m l-flex-c@m l-flex-r@l">
+                    <button type="button" class="button button--beige l-ib t-center u-noselect l-pos-rel cookie-bar__actions-btn" data-cookiebar-button>
+                <span class="button__inner l-flex l-flex-a-c l-flex-j-c t-ellipsis l-pos-rel" data-button-inner>
+        <span class="l-ib">Godta</span>
+            </span>
+
+                    </button>                                                                            
+
+
+
+
+
+
+
+                <a href="http://levehytter.no/cookies" class="button button--beige l-ib t-center u-noselect l-pos-rel cookie-bar__actions-btn">
+                <span class="button__inner l-flex l-flex-a-c l-flex-j-c t-ellipsis l-pos-rel" data-button-inner>
+        <span class="l-ib">Les mer</span>
+            </span>
+
+        </a>                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+    
+            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-NSBL3L4');</script>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSBL3L4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+    
+</body>
+</html>

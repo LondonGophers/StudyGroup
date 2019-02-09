@@ -35,7 +35,7 @@ func fetch(url string, ch chan<- string) {
 		ch <- fmt.Sprint(err) // send to channel ch
 		return
 	}
-	f, err := os.Create(strings.Replace(url, "/", "-", -1))
+	f, err := os.Create(strings.Replace(url, "/", "-", -1) + "-" + time.Now().Format("20060102150405"))
 	nbytes, err := io.Copy(f, resp.Body)
 	if err != nil {
 		ch <- fmt.Sprintf("while creating file %s: %v", url, err)
