@@ -1,0 +1,1 @@
+awk {'FS=","; print $2'} top500.domains.05.18.csv | sed s/\"//g | sed s-\/--g > top500

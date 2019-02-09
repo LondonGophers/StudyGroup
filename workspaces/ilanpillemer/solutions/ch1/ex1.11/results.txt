@@ -1,0 +1,35 @@
+ex1.11 (master) -> cat top500 | head -n 30 | fetch
+Get https://Root: dial tcp: lookup Root: no such host
+0.43s    83448  https://wikipedia.org
+0.45s   192317  https://twitter.com
+0.45s    11203  https://google.com
+0.50s    37648  https://wordpress.org
+0.53s   140437  https://wordpress.com
+0.55s   139680  https://goo.gl
+0.60s   694587  https://nytimes.com
+0.61s    31609  https://vimeo.com
+0.64s     1064  https://reddit.com
+0.70s    75873  https://adobe.com
+0.75s    28418  https://instagram.com
+0.81s   615357  https://facebook.com
+0.81s     9290  https://vk.com
+0.83s    48356  https://linkedin.com
+0.88s     6400  https://amazon.com
+0.89s    37736  https://w3.org
+0.95s    69165  https://tumblr.com
+1.00s   150680  https://microsoft.com
+1.05s    54152  https://apple.com
+1.16s   301320  https://youtu.be
+1.30s    23133  https://bit.ly
+1.30s    94478  https://blogspot.com
+1.35s   359547  https://youtube.com
+1.36s   473632  https://yahoo.com
+1.59s   228795  https://flickr.com
+1.82s    45242  https://pinterest.com
+1.83s   153225  https://baidu.com
+1.96s   312708  https://godaddy.com
+Get https://qq.com: dial tcp 111.161.64.40:443: i/o timeout
+30.00s elapsed
+ex1.11 (master) -> 
+
+GET timee out at 30 seconds if website doesnt respond.
