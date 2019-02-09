@@ -32,4 +32,4 @@ Get https://qq.com: dial tcp 111.161.64.40:443: i/o timeout
 30.00s elapsed
 ex1.11 (master) -> 
 
-GET timee out at 30 seconds if website doesnt respond.
+GET times out at 30 seconds if website doesnt respond.
