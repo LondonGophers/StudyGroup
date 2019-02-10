@@ -1,0 +1,8 @@
+$ go test
+2019/02/10 22:55:29 32
+2019/02/10 22:55:29 32
+PopCount took an average of 91ns
+PopCountLoop took an average of 100ns
+PASS
+ok  	_/Users/ilanpillemer/git/study-group/workspaces/ilanpillemer/solutions/ch2/ex2.3	0.366s
+$
