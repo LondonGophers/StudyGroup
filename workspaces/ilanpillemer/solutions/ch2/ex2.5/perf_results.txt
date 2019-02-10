@@ -1,0 +1,26 @@
+NB: Some other stuff was running on my computer at this time
+so the benchmarks are slower than for ex2.4 and ex2.5....
+but running ex2.4 and ex2.5 now would show the same times as here.
+
+However the relative results remain the same, and the
+expected timing of clearing being half that of shifting is shown.
+
+Using a lookup table remained consistently the fastest and not using a 
+loop remains a little slower when consulting the loop.
+
+$ go test -v
+=== RUN   TestAllPopCountsAreEqual
+2019/02/10 23:28:01 32
+2019/02/10 23:28:01 32
+2019/02/10 23:28:01 32
+2019/02/10 23:28:01 32
+--- PASS: TestAllPopCountsAreEqual (0.00s)
+=== RUN   TestTimings
+PopCount took an average of 238ns
+PopCountLoop took an average of 235ns
+PopCountShift took an average of 500ns
+PopCountClear took an average of 248ns
+--- PASS: TestTimings (2.15s)
+PASS
+ok  	_/Users/ilanpillemer/git/study-group/workspaces/ilanpillemer/solutions/ch2/ex2.5	2.163s
+$
