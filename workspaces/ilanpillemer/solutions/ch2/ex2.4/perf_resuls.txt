@@ -1,0 +1,14 @@
+$ go test -v
+=== RUN   TestAllPopCountsAreEqual
+2019/02/10 23:12:45 32
+2019/02/10 23:12:45 32
+2019/02/10 23:12:45 32
+--- PASS: TestAllPopCountsAreEqual (0.00s)
+=== RUN   TestTimings
+PopCount took an average of 92ns
+PopCountLoop took an average of 101ns
+PopCountShift took an average of 148ns
+--- PASS: TestTimings (0.60s)
+PASS
+ok  	_/Users/ilanpillemer/git/study-group/workspaces/ilanpillemer/solutions/ch2/ex2.4	0.607s
+$
