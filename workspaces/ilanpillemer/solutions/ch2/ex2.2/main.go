@@ -15,6 +15,7 @@ import (
 	"strings"
 
 	tempconv "gitlab.com/london-gophers/study-group/workspaces/ilanpillemer/solutions/ch2/ex2.1"
+	"gitlab.com/london-gophers/study-group/workspaces/ilanpillemer/solutions/ch2/ex2.2/distconv"
 )
 
 func main() {
@@ -35,8 +36,11 @@ func main() {
 			}
 			f := tempconv.Fahrenheit(t)
 			c := tempconv.Celsius(t)
-			fmt.Printf("%s = %s, %s = %s\n",
-				f, tempconv.FtoC(f), c, tempconv.CtoF(c))
+			mi := distconv.Mile(t)
+			fmt.Printf("%s = %s, %s = %s, %s = %s\n",
+				f, tempconv.FtoC(f), c, tempconv.CtoF(c), c, tempconv.CtoK(c))
+			fmt.Printf("%s = %s = %s = %s\n",
+				mi, distconv.MiToKi(mi), distconv.MiToNautMi(mi), distconv.MiToChiMi(mi))
 		}
 	}
 }
