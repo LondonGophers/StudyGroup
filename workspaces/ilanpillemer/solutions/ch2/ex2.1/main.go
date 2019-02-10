@@ -15,3 +15,5 @@ func FtoC(f Fahrenheit) Celsius { return Celsius((f - 32) * 5 / 9) }
 func FtoK(f Fahrenheit) Kelvin  { return Kelvin(CtoK(FtoC(f))) }
 func KtoC(k Kelvin) Celsius     { return Celsius(k - 273.15) }
 func KtoF(k Kelvin) Fahrenheit  { return CtoF(KtoC(k)) }
+
+
