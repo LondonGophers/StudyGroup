@@ -8,15 +8,26 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 
 	tempconv "gitlab.com/london-gophers/study-group/workspaces/ilanpillemer/solutions/ch2/ex2.1"
 )
 
-func main() { 
-	for _, arg := range os.Args[1:] {
+func main() {
+
+	var w *bufio.Scanner
+	if len(os.Args) > 1 {
+		w = bufio.NewScanner(strings.NewReader(strings.Join(os.Args[1:], "\n")))
+	} else {
+		w = bufio.NewScanner(os.Stdin)
+	}
+	for w.Scan() {
+		args := strings.Fields(w.Text())
+		for _, arg := range args {
 		t, err := strconv.ParseFloat(arg, 64)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "cf: %v\n", err)
@@ -26,6 +37,7 @@ func main() {
 		c := tempconv.Celsius(t)
 		fmt.Printf("%s = %s, %s = %s\n",
 			f, tempconv.FtoC(f), c, tempconv.CtoF(c))
+			}
 	}
 }
 
