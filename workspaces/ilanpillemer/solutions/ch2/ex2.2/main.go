@@ -15,7 +15,7 @@ import (
 	tempconv "gitlab.com/london-gophers/study-group/workspaces/ilanpillemer/solutions/ch2/ex2.1"
 )
 
-func main() {
+func main() { 
 	for _, arg := range os.Args[1:] {
 		t, err := strconv.ParseFloat(arg, 64)
 		if err != nil {
