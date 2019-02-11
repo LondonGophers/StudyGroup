@@ -8,7 +8,7 @@ func main() {
 
 ## The Workshop
 
-Find us on Slack in the `#london` channel of the gophers.slack.com workspace.
+Find us on Slack in the `#london` channel of the `gophers.slack.com` workspace.
 
 Our workshop text is:
 [The Go Programming Language by Alan Donovan and Brian W. Kernighan](https://www.gopl.io/)
