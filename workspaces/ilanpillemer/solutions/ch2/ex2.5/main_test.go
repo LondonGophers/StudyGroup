@@ -12,6 +12,7 @@ func TestAllPopCountsAreEqual(t *testing.T) {
 	log.Println(PopCountLoop(0x1234567890ABCDEF))
 	log.Println(PopCountShift(0x1234567890ABCDEF))
 	log.Println(PopCountClear(0x1234567890ABCDEF))
+	log.Println(PopCountRecurse(0x1234567890ABCDEF))
 
 	if PopCount(0x1234567890ABCDEF) != PopCountLoop(0x1234567890ABCDEF) {
 		t.Errorf("%d should equal %d", PopCount(0x1234567890ABCDEF), PopCountLoop(0x1234567890ABCDEF))
@@ -25,6 +26,10 @@ func TestAllPopCountsAreEqual(t *testing.T) {
 		t.Errorf("%d should equal (PopCountClear) %d", PopCount(0x1234567890ABCDEF), PopCountClear(0x1234567890ABCDEF))
 	}
 
+	if PopCount(0x1234567890ABCDEF) != PopCountRecurse(0x1234567890ABCDEF) {
+		t.Errorf("%d should equal (PopCountClear) %d", PopCount(0x1234567890ABCDEF), PopCountRecurse(0x1234567890ABCDEF))
+	}
+
 }
 func timeMe(name string, f func(uint64) int) int64 {
 	start := time.Now()
@@ -35,17 +40,19 @@ func timeMe(name string, f func(uint64) int) int64 {
 }
 
 func TestTimings(t *testing.T) {
-	var pcTime, pcLoopTime, pcLoopShift, pcLoopClear int64
+	var pcTime, pcLoopTime, pcLoopShift, pcLoopClear, pcLoopRecurse int64
 	for i := 0; i < 1000000; i++ {
 		pcTime += timeMe("PopCount", PopCount)
 		pcLoopTime += timeMe("PopCountLoop", PopCountLoop)
 		pcLoopShift += timeMe("PopCountShift", PopCountShift)
 		pcLoopClear += timeMe("PopCountClear", PopCountClear)
+		pcLoopRecurse += timeMe("PopCountClear", PopCountRecurse)
 	}
 
 	fmt.Printf("PopCount took an average of %dns\n", pcTime/1000000)
 	fmt.Printf("PopCountLoop took an average of %dns\n", pcLoopTime/1000000)
 	fmt.Printf("PopCountShift took an average of %dns\n", pcLoopShift/1000000)
 	fmt.Printf("PopCountClear took an average of %dns\n", pcLoopClear/1000000)
+	fmt.Printf("PopCountRecurse took an average of %dns\n", pcLoopRecurse/1000000)
 
 }

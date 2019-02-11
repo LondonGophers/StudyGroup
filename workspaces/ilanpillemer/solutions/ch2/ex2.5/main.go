@@ -12,7 +12,9 @@ var pc [256]byte
 
 func init() {
 	for i := range pc {
-		pc[i] = pc[i/2] + byte(i&1)
+		//pc[i] = pc[i/2] + byte(i&1)
+		// note i/2 is equivalent to i>>1
+		pc[i] = pc[i>>1] + byte(i&1)
 	}
 }
 
@@ -34,6 +36,22 @@ func PopCountLoop(x uint64) (count int) {
 		count += int(pc[byte(x>>(i*8))])
 	}
 	return
+}
+
+// PopCountRecurse is deliberately not
+// done tail recursive, to make its logic
+// clear
+func PopCountRecurse(x uint64) int {
+	if x == 0 {
+		return 0
+	}
+	if x == 1 {
+		return 1
+	}
+
+	//note return PopCountRecurse(x>>1) is equivalent to PopCountRecurse(x/2)
+	return PopCountRecurse(x/2) + PopCountRecurse(x&1)
+
 }
 
 func PopCountShift(x uint64) (count int) {
