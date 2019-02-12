@@ -12,6 +12,22 @@ import (
 	"golang.org/x/net/html"
 )
 
+func main() {
+
+	h := "<!DOCTYPE html><html></html>"
+
+	r := NewSimpleReader(h)
+	doc, err := html.Parse(r)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "findlinks: %v\n", err)
+		os.Exit(1)
+	}
+
+	for element, count := range visit(nil, doc) {
+		fmt.Printf("%s %d\n", element, count)
+	}
+}
+
 // SimpleReader is a simple `io.Reader`
 type SimpleReader struct {
 	s        string // string to read
@@ -34,22 +50,6 @@ func (r *SimpleReader) Read(buf []byte) (n int, err error) {
 // NewSimpleReader returns a simple `io.Reader`
 func NewSimpleReader(s string) *SimpleReader {
 	return &SimpleReader{s, 0, -1}
-}
-
-func main() {
-
-	h := "<!DOCTYPE html><html></html>"
-
-	r := NewSimpleReader(h)
-	doc, err := html.Parse(r)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "findlinks: %v\n", err)
-		os.Exit(1)
-	}
-
-	for element, count := range visit(nil, doc) {
-		fmt.Printf("%s %d\n", element, count)
-	}
 }
 
 func visit(elements map[string]int, n *html.Node) map[string]int {
