@@ -40,7 +40,7 @@ type SimpleReader struct {
 	prevRune int    // previous rune index
 }
 
-// Read reads string 's' into byte slice 'buf' rune by rune and returns the number
+// Read reads string 's' into byte slice 'buf' and returns the number
 // bytes read from the string and any error.
 func (r *SimpleReader) Read(buf []byte) (n int, err error) {
 	if r.i >= int64(len(r.s)) {
