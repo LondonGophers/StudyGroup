@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	width, height = 600, 600
+	width, height = 1200, 600
 	cells         = 200
 	xyrange       = 30.0
 	zrange        = 600.0
