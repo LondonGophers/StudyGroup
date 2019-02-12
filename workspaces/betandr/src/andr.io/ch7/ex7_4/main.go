@@ -28,6 +28,11 @@ func main() {
 	}
 }
 
+// NewSimpleReader returns a simple `io.Reader`
+func NewSimpleReader(s string) *SimpleReader {
+	return &SimpleReader{s, 0, -1}
+}
+
 // SimpleReader is a simple `io.Reader`
 type SimpleReader struct {
 	s        string // string to read
@@ -45,11 +50,6 @@ func (r *SimpleReader) Read(buf []byte) (n int, err error) {
 	n = copy(buf, r.s[r.i:])
 	r.i += int64(n)
 	return
-}
-
-// NewSimpleReader returns a simple `io.Reader`
-func NewSimpleReader(s string) *SimpleReader {
-	return &SimpleReader{s, 0, -1}
 }
 
 func visit(elements map[string]int, n *html.Node) map[string]int {
