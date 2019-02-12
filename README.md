@@ -6,6 +6,14 @@ func main() {
 }
 ```
 
+## Code of Conduct
+
+We follow the [Go Code of Conduct](https://golang.org/conduct), in summary:
+
+- Treat everyone with respect and kindness.
+- Be thoughtful in how you communicate.
+- Don’t be destructive or inflammatory.
+
 ## The Workshop
 
 Find us on Slack in the `#london` channel of the `gophers.slack.com` workspace.
@@ -217,7 +225,7 @@ There are three kinds of IDEs.
 * an integrating environment that integrates tools from outside inwards such as plan9 and acme.
 
 #### Vague Installation Guide
- 
+
 * [acme](https://ilanpillemer.github.io/subjects/acme.html)
 
 ## 6. Links
