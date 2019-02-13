@@ -68,8 +68,14 @@ func toFunc(n string) (f func(x, y float64) float64) {
 		return monkeySaddle
 	case "sin":
 		return sin
-		case "saddle":
+	case "saddle":
 		return saddle
+	case "cos":
+		return cos
+	case "tan":
+		return tan
+	case "exp":
+		return exp		
 	default:
 		return orig
 	}
@@ -142,7 +148,22 @@ func egg(x, y float64) float64 {
 }
 
 func sin(x, y float64) float64 {
-	z := math.Sin(x)
+	z := math.Sin(x) + math.Sin(y)
+	return z
+}
+
+func cos(x, y float64) float64 {
+	z := math.Cos(x) + math.Cos(y)
+	return z
+}
+
+func tan(x, y float64) float64 {
+	z := math.Tan(x) * math.Tan(y)
+	return z
+}
+
+func exp(x, y float64) float64 {
+	z := math.Exp(x) + math.Exp(y)
 	return z
 }
 
@@ -155,4 +176,3 @@ func monkeySaddle(x, y float64) float64 {
 	z := math.Pow(x, 3) - 3*x*math.Pow(y, 2)
 	return z
 }
-
