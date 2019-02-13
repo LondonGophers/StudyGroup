@@ -11,14 +11,19 @@ import (
 	"strconv"
 )
 
+var (
+	height float64 = 300
+	zscale float64 = float64(height) * 0.4
+)
+
 const (
-	width, height = 600, 300
-	cells         = 100
-	xyrange       = 30.0
-	zrange        = 70.0
-	xyscale       = width / 2 / xyrange
-	zscale        = height * 0.4
-	angle         = math.Pi / 6 // 30 degrees
+	width   = 600
+	cells   = 100
+	xyrange = 30.0
+	zrange  = 70.0
+	xyscale = width / 2 / xyrange
+
+	angle = math.Pi / 6 // 30 degrees
 )
 
 var sin30, cos30 = math.Sin(angle), math.Cos(angle)
@@ -38,6 +43,10 @@ func main() {
 			if r.FormValue("zscale") != "" {
 				z, _ = strconv.ParseFloat(r.FormValue("zscale"), 64) //ignoring errors
 			}
+			if r.FormValue("height") != "" {
+				height, _ = strconv.ParseFloat(r.FormValue("height"), 64) //ignoring errors
+			}
+
 			w.Header().Set("Content-Type", "image/svg+xml")
 			render(w, z, f)
 		})
@@ -51,10 +60,14 @@ func toFunc(n string) (f func(x, y float64) float64) {
 	switch n {
 	case "well":
 		return well
+	case "circle":
+		return circle
 	case "egg":
 		return egg
 	case "monkey":
 		return monkeySaddle
+	case "sin":
+		return sin
 	default:
 		return orig
 	}
@@ -64,7 +77,7 @@ func render(out io.Writer, z float64, f func(x, y float64) float64) {
 
 	fmt.Fprintf(out, "<svg xmlns='http://www.w3.org/2000/svg' "+
 		"style='stroke: grey; fill:white; stroke-width:0.7' "+
-		"width='%d' height='%d'>", width, height)
+		"width='%d' height='%d'>", width, int(height))
 	for i := 0; i < cells; i++ {
 		for j := 0; j < cells; j++ {
 			ax, ay, colour, ok1 := corner(i+1, j, z, f)
@@ -82,12 +95,11 @@ func render(out io.Writer, z float64, f func(x, y float64) float64) {
 
 //zrange should shadow constant.. icky code..
 func corner(i int, j int, zrange float64, f func(x, y float64) float64) (float64, float64, string, bool) {
-	log.Println("zrange",zrange)
 	colour := "#00ff00"
 	x := xyrange * (float64(i)/(cells-1) - 0.5)
 	y := xyrange * (float64(j)/(cells-1) - 0.5)
 
-	z := math.Mod(f(x, y), height)
+	z := math.Mod(f(x, y), float64(height))
 	z = zrange * (float64(z) / (cells - 1))
 
 	if math.IsNaN(z) || math.IsInf(z, 0) {
@@ -103,7 +115,7 @@ func corner(i int, j int, zrange float64, f func(x, y float64) float64) (float64
 	}
 
 	sx := width/2 + (x-y)*cos30*xyscale
-	sy := height/2 + (x+y)*sin30*xyscale - z*zscale
+	sy := float64(height)/2 + (x+y)*sin30*xyscale - z*zscale
 	return sx, sy, colour, true
 }
 
@@ -125,6 +137,16 @@ func saddle(x, y float64) float64 {
 func egg(x, y float64) float64 {
 	z := math.Sin(x) * math.Sin(y)
 	return z
+}
+
+func sin(x, y float64) float64 {
+	z := math.Sin(x)
+	return z
+}
+
+func circle(x, y float64) float64 {
+	r := math.Hypot(x, y)
+	return math.Pi * r * r
 }
 
 func monkeySaddle(x, y float64) float64 {
