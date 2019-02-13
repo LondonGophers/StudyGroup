@@ -68,6 +68,8 @@ func toFunc(n string) (f func(x, y float64) float64) {
 		return monkeySaddle
 	case "sin":
 		return sin
+		case "saddle":
+		return saddle
 	default:
 		return orig
 	}
@@ -150,7 +152,7 @@ func circle(x, y float64) float64 {
 }
 
 func monkeySaddle(x, y float64) float64 {
-	//z := x*x - y*y
 	z := math.Pow(x, 3) - 3*x*math.Pow(y, 2)
 	return z
 }
+
