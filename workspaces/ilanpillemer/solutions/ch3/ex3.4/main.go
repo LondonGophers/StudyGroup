@@ -75,7 +75,9 @@ func toFunc(n string) (f func(x, y float64) float64) {
 	case "tan":
 		return tan
 	case "exp":
-		return exp		
+		return exp
+	case "exp2":
+		return exp2		
 	default:
 		return orig
 	}
@@ -164,6 +166,11 @@ func tan(x, y float64) float64 {
 
 func exp(x, y float64) float64 {
 	z := math.Exp(x) + math.Exp(y)
+	return z
+}
+
+func exp2(x, y float64) float64 {
+	z := math.Exp(x) * math.Exp(y)
 	return z
 }
 
