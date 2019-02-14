@@ -3,6 +3,7 @@ digraph prof {
 	node [style=filled];
     algorithms -> data_structures [color="0.650 0.700 0.700"];
     calculus -> linear_algebra [color="0.650 0.700 0.700"];
+    linear_algebra -> calculus [color="0.650 0.700 0.700"];
     compilers -> data_structures [color="0.650 0.700 0.700"];
     compilers -> formal_languages [color="0.650 0.700 0.700"];
     compilers -> computer_organization [color="0.650 0.700 0.700"];
