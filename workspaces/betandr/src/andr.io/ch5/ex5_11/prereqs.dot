@@ -1,0 +1,33 @@
+digraph prof {
+	ratio = fill;
+	node [style=filled];
+    algorithms -> data_structures [color="0.650 0.700 0.700"];
+    calculus -> linear_algebra [color="0.650 0.700 0.700"];
+    compilers -> data_structures [color="0.650 0.700 0.700"];
+    compilers -> formal_languages [color="0.650 0.700 0.700"];
+    compilers -> computer_organization [color="0.650 0.700 0.700"];
+    data_structures -> discrete_math [color="0.650 0.700 0.700"];
+    databases -> data_structures [color="0.650 0.700 0.700"];
+    discrete_math -> intro_to_programming [color="0.650 0.700 0.700"];
+    formal_languages -> discrete_math [color="0.650 0.700 0.700"];
+    networks -> operating_systems [color="0.650 0.700 0.700"];
+    operating_systems -> data_structures [color="0.650 0.700 0.700"];
+    operating_systems -> computer_organization [color="0.650 0.700 0.700"];
+    programming_languages -> data_structures [color="0.650 0.700 0.700"];
+    programming_languages -> computer_organization [color="0.650 0.700 0.700"];
+
+    algorithms [color="0.408 0.498 1.000"];
+    calculus [color="0.408 0.498 1.000"];
+    compilers [color="0.408 0.498 1.000"];
+    data_structures [color="0.408 0.498 1.000"];
+    databases [color="0.408 0.498 1.000"];
+    discrete_math [color="0.408 0.498 1.000"];
+    formal_languages [color="0.408 0.498 1.000"];
+    networks [color="0.408 0.498 1.000"];
+    operating_systems [color="0.408 0.498 1.000"];
+    programming_languages [color="0.408 0.498 1.000"];
+
+    linear_algebra [color="0.603 0.258 1.000"];
+    computer_organization [color="0.603 0.258 1.000"];
+    intro_to_programming [color="0.603 0.258 1.000"];
+}
