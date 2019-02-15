@@ -25,6 +25,7 @@ func main() {
 	fmt.Printf("read: %s\n", string(b))
 }
 
+// LimitedReader wraps an `io.Reader` and the number of bytes `N` to read from it.
 type LimitedReader struct {
 	R io.Reader
 	N int64
