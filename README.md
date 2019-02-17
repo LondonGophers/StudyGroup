@@ -22,10 +22,10 @@ We follow the [Go Code of Conduct](https://golang.org/conduct), in summary:
 
 Find us on Slack in the `#london` channel of the `gophers.slack.com` workspace.
 
-Our workshop text is:
+Our study material is:
 [The Go Programming Language by Alan Donovan and Brian W. Kernighan](https://www.gopl.io/)
 
-Work through the course text at a speed that suits you. We also have
+Work through the material at a speed that suits you. We also have _open space_
 meetups to meet to chat about Go and the book etc. So just join in any
 time! :)
 
