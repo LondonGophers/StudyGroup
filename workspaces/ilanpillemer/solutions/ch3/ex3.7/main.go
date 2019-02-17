@@ -21,7 +21,7 @@ var iters = make(map[int]int)
 var roots = make(map[complex128]int)
 
 var key = -1
-var colours = [5]color.RGBA{
+var colours = [4]color.RGBA{
 	color.RGBA{255, 0, 0, 255},
 	color.RGBA{0, 255, 0, 255},
 	color.RGBA{0, 0, 255, 255},
