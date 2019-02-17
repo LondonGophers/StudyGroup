@@ -1,5 +1,9 @@
 # London Gophers — Go Study Group
 
+<p align="center">
+  <img width="300" height="300" src="https://raw.githubusercontent.com/go-london-user-group/study-group/master/resources/gopher.png">
+</p>
+
 ```
 func main() {
 	fmt.Println("Hello, London Gophers!")
