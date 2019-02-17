@@ -17,7 +17,6 @@ var c = flag.String("c", "websafe", "show in colours")
 
 type Grey = color.Gray
 
-var iters = make(map[int]int)
 var roots = make(map[complex128]int)
 
 var key = -1
@@ -25,7 +24,7 @@ var colours = [4]color.RGBA{
 	color.RGBA{255, 0, 0, 255},
 	color.RGBA{0, 255, 0, 255},
 	color.RGBA{0, 0, 255, 255},
-	color.RGBA{0, 255, 255, 255},
+	color.RGBA{255, 255, 0, 255},
 }
 
 func main() {
@@ -63,7 +62,7 @@ func newton(z complex128) color.Color {
 
 	const (
 		iter     = 50
-		contrast = 20 
+		contrast = 20
 		dz       = 0.000001
 		rnd      = 6
 	)
@@ -79,7 +78,6 @@ func newton(z complex128) color.Color {
 				roots[round(z, rnd)] = key
 			}
 
-			iters[i] = iters[i] + 1
 			switch *c {
 			case "grey":
 				return Grey{255 - uint8(i)*contrast}
