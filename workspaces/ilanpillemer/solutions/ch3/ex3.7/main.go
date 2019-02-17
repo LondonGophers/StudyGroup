@@ -63,7 +63,7 @@ func newton(z complex128) color.Color {
 
 	const (
 		iter     = 50
-		contrast = 20 // 50 * 5 is 250, which is good enough for me
+		contrast = 20 
 		dz       = 0.000001
 		rnd      = 6
 	)
