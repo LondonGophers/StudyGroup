@@ -46,29 +46,40 @@ func main() {
 		//cntr          = 0.3115076602815077 + 0.0271737195013418i //very pretty buf goes down a hole
 		//	cntr          = -0.1010963638456221 + 0.9562865108091415i // precise enough
 		//cntr          = 0.2501502296489224 + 0.0000029308049747i // nice but goes off side
-		cntr          = 0.4379242413594628 + 0.3418920843381161i //precise enough
+		//cntr          = 0.4379242413594628 + 0.3418920843381161i //precise enough
+		cntr = -1i // good and precise enough so lets use this one
+		//cntr          = -0.75 + 0i
+		//cntr          = -1.401155 + 0i
+		//cntr          = -0.75 + 0.1i // sea horse valley
+		//cntr          = 0.3 + 0.1i // elephant valley
 		ymin, ymax    = -2, +2
 		xmin, xmax    = -2, +2
 		width, height = 1024, 1024
 	)
 	flag.Parse()
 
-	var fn func(z complex128) color.Color
+	var fn128 func(z complex128) color.Color
+	var fn64 func(z complex64) color.Color
 	switch *fractal {
 	case "newton":
-		fn = newton
+		fn128 = newton
 	default:
-		fn = mandelbrot
+		fn128 = mandelbrot128
+		fn64 = mandelbrot64
+
 	}
 
-	img := image.NewRGBA(image.Rect(0, 0, width, height))
+	img := image.NewRGBA(image.Rect(0, 0, width*2, height*2))
+	//img := compImg.SubImage(image.Rect(0, 0, width, height))
 	for py := 0; py < height; py++ {
 		// project py onto domain using y
 		y := (float64(py)/height*(ymax-ymin))/(*scale) + ymin/(*scale)
 		for px := 0; px < width; px++ {
 			x := float64(px)/width*(xmax-xmin)/(*scale) + xmin/(*scale)
 			z := complex(x, y)
-			img.Set(px, py, fn(cntr+z))
+			img.Set(px, py, fn128(cntr+z))
+			img.Set(px+width, py, fn64(complex64(cntr+z)))
+
 		}
 	}
 
@@ -153,13 +164,36 @@ func verbosef(format string, args ...interface{}) {
 	}
 }
 
-func mandelbrot(z complex128) color.Color {
+func mandelbrot128(z complex128) color.Color {
 	const iterations = 500
 	const contrast = 80
 	var v complex128
 	for n := 0; n < iterations; n++ {
 		v = v*v + z
 		if c := cmplx.Abs(v); c > 2 {
+			switch {
+			case c > 4.3:
+				return color.RGBA{uint8((contrast * n) % 256), 0, 0, uint8(255)}
+			case c > 2.3:
+				return color.RGBA{0, 0, uint8((contrast * n) % 256), uint8(255)}
+			default:
+				return color.RGBA{0, uint8((contrast * n) % 256), 0, uint8(255)}
+			}
+
+			//return palette.WebSafe[(255-uint(n)*contrast)%216]
+
+		}
+	}
+	return color.Black
+}
+
+func mandelbrot64(z complex64) color.Color {
+	const iterations = 500
+	const contrast = 80
+	var v complex64
+	for n := 0; n < iterations; n++ {
+		v = v*v + z
+		if c := cmplx.Abs(complex128(v)); c > 2 {
 			switch {
 			case c > 4.3:
 				return color.RGBA{uint8((contrast * n) % 256), 0, 0, uint8(255)}
