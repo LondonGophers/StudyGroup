@@ -7,7 +7,9 @@ import (
 	"image/color"
 	"image/color/palette"
 	"image/png"
+	"log"
 	"math"
+	"math/big"
 	"math/cmplx"
 	"os"
 )
@@ -54,18 +56,25 @@ func main() {
 		//cntr          = 0.3 + 0.1i // elephant valley
 		ymin, ymax    = -2, +2
 		xmin, xmax    = -2, +2
-		width, height = 1024, 1024
+		width, height = 128, 128
 	)
 	flag.Parse()
 
 	var fn128 func(z complex128) color.Color
 	var fn64 func(z complex64) color.Color
+	//var fnFloat func(rl float64, mg float64) color.Color
+	var fnBigFloat func(rl *big.Float, mg *big.Float) color.Color
+	var fnBigRat func(rl *big.Rat, mg *big.Rat) color.Color
+
 	switch *fractal {
 	case "newton":
 		fn128 = newton
 	default:
 		fn128 = mandelbrot128
 		fn64 = mandelbrot64
+		//fnFloat = mandelbrotFloat64
+		fnBigFloat = mandelbrotBigFloat
+		fnBigRat = mandelbrotBigRat
 
 	}
 
@@ -79,7 +88,9 @@ func main() {
 			z := complex(x, y)
 			img.Set(px, py, fn128(cntr+z))
 			img.Set(px+width, py, fn64(complex64(cntr+z)))
-
+			//img.Set(px, py+height, fnFloat(real(cntr)+x, imag(cntr)+y))
+			img.Set(px, py+height, fnBigFloat(big.NewFloat(real(cntr)+x), big.NewFloat(imag(cntr)+y)))
+			img.Set(px+width, py+height, fnBigRat(new(big.Rat).SetFloat64(x), new(big.Rat).SetFloat64(y)))
 		}
 	}
 
@@ -171,17 +182,7 @@ func mandelbrot128(z complex128) color.Color {
 	for n := 0; n < iterations; n++ {
 		v = v*v + z
 		if c := cmplx.Abs(v); c > 2 {
-			switch {
-			case c > 4.3:
-				return color.RGBA{uint8((contrast * n) % 256), 0, 0, uint8(255)}
-			case c > 2.3:
-				return color.RGBA{0, 0, uint8((contrast * n) % 256), uint8(255)}
-			default:
-				return color.RGBA{0, uint8((contrast * n) % 256), 0, uint8(255)}
-			}
-
-			//return palette.WebSafe[(255-uint(n)*contrast)%216]
-
+			return palette.WebSafe[(255-uint(n)*contrast)%216]
 		}
 	}
 	return color.Black
@@ -194,17 +195,98 @@ func mandelbrot64(z complex64) color.Color {
 	for n := 0; n < iterations; n++ {
 		v = v*v + z
 		if c := cmplx.Abs(complex128(v)); c > 2 {
-			switch {
-			case c > 4.3:
-				return color.RGBA{uint8((contrast * n) % 256), 0, 0, uint8(255)}
-			case c > 2.3:
-				return color.RGBA{0, 0, uint8((contrast * n) % 256), uint8(255)}
-			default:
-				return color.RGBA{0, uint8((contrast * n) % 256), 0, uint8(255)}
-			}
+			return palette.WebSafe[(255-uint(n)*contrast)%216]
 
-			//return palette.WebSafe[(255-uint(n)*contrast)%216]
+		}
+	}
+	return color.Black
+}
 
+func mandelbrotFloat64(rl float64, mg float64) color.Color {
+	const iterations = 500
+	const contrast = 80
+	var vrl float64
+	var vmg float64
+
+	for n := 0; n < iterations; n++ {
+		vrl, vmg = (vrl*vrl-vmg*vmg)+rl, (vrl*vmg+vrl*vmg)+mg
+		if c := math.Sqrt(vrl*vrl + vmg*vmg); c > 2 {
+			return palette.WebSafe[(255-uint(n)*contrast)%216]
+		}
+	}
+	return color.Black
+}
+
+func mandelbrotBigFloat(rl *big.Float, mg *big.Float) color.Color {
+
+	const iterations = 500
+	const contrast = 80
+	var vrl, vmg = big.NewFloat(0), big.NewFloat(0)
+
+	for n := 0; n < iterations; n++ {
+		//		vrl, vmg = (vrl*vrl-vmg*vmg)+rl, (vrl*vmg+vrl*vmg)+mg
+		a, b, c, d := big.NewFloat(0), big.NewFloat(0), big.NewFloat(0), big.NewFloat(0)
+		//log.Println(a, b, c, d)
+		a = a.Mul(vrl, vrl)
+		b = b.Mul(vmg, vmg)
+		c = c.Sub(a, b)
+		d = d.Add(c, rl)
+
+		e, f, g := big.NewFloat(0), big.NewFloat(0), big.NewFloat(0)
+		e = e.Mul(vrl, vmg)
+		f = f.Add(e, e)
+		g = g.Add(f, mg)
+
+		vrl = d
+		vmg = g
+
+		i, j, k, l := big.NewFloat(0), big.NewFloat(0), big.NewFloat(0), big.NewFloat(4)
+		i = i.Mul(vrl, vrl)
+		j = j.Mul(vmg, vmg)
+		k = k.Add(i, j)
+		//log.Println(i, j, k, l, k.Cmp(l))
+		if k.Cmp(l) > 0 {
+			return palette.WebSafe[(255-uint(n)*contrast)%216]
+		}
+	}
+	return color.Black
+}
+
+var cnt = 0
+
+//too slow... dont use!
+func mandelbrotBigRat(rl *big.Rat, mg *big.Rat) color.Color {
+	const iterations = 500
+	const contrast = 80
+	var vrl, vmg = big.NewRat(0, 1), big.NewRat(0, 1)
+
+	cnt++
+
+	log.Println("cnt", cnt)
+	for n := 0; n < iterations; n++ {
+		if cnt == 4028 {
+			log.Println("n", n)
+		}
+		a, b, c, d := big.NewRat(0, 1), big.NewRat(0, 1), big.NewRat(0, 1), big.NewRat(0, 1)
+		a = a.Mul(vrl, vrl)
+		b = b.Mul(vmg, vmg)
+		c = c.Sub(a, b)
+		d = d.Add(c, rl)
+
+		e, f, g := big.NewRat(0, 1), big.NewRat(0, 1), big.NewRat(0, 1)
+		e = e.Mul(vrl, vmg)
+		f = f.Add(e, e)
+		g = g.Add(f, mg)
+
+		vrl = d
+		vmg = g
+
+		i, j, k, l := big.NewRat(0, 1), big.NewRat(0, 1), big.NewRat(0, 1), big.NewRat(4, 1)
+		i = i.Mul(vrl, vrl)
+		j = j.Mul(vmg, vmg)
+		k = k.Add(i, j)
+		if k.Cmp(l) > 0 {
+			return palette.WebSafe[(255-uint(n)*contrast)%216]
 		}
 	}
 	return color.Black
