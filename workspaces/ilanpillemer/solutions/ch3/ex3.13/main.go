@@ -4,14 +4,14 @@ package main
 // there is no exponent operator
 
 const (
-	KB = 1000
-	MB = KB * 1000
-	GB = MB * 1000
-	TB = GB * 1000
-	PB = TB * 1000
-	EB = PB * 1000
-	ZB = EB * 1000
-	YB = ZB * 1000
+	KB = 1E3
+	MB = 1E6
+	GB = 1E9
+	TB = 1E12
+	PB = 1E15
+	EB = 1E18
+	ZB = 1E21
+	YB =1E24
 )
 
 const (

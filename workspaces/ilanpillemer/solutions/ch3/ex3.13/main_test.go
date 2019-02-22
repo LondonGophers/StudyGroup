@@ -12,8 +12,8 @@ func Test(t *testing.T) {
 	fmt.Println("TB", TB)
 	fmt.Println("PB", PB)
 	fmt.Println("EB", EB)
-	fmt.Println("ZB", float64(ZB))
-	fmt.Println("YB", float64(YB))
+	fmt.Println("ZB", ZB)
+	fmt.Println("YB", YB)
 	fmt.Println()
 }
 
