@@ -21,23 +21,23 @@ func main() {
 	//!+http
 	handler := func(w http.ResponseWriter, r *http.Request) {
 		r.ParseForm()
-		xMin, xMinErr := strconv.Atoi(strings.Join(r.Form["xmin"], ""))
+		xMin, xMinErr := strconv.ParseFloat(strings.Join(r.Form["xmin"], ""), 64)
 		if xMinErr != nil {
 			xMin = -2
 		}
-		yMin, yMinErr := strconv.Atoi(strings.Join(r.Form["xmax"], ""))
+		yMin, yMinErr := strconv.ParseFloat(strings.Join(r.Form["xmax"], ""), 64)
 		if yMinErr != nil {
 			yMin = -2
 		}
-		xMax, xMaxErr := strconv.Atoi(strings.Join(r.Form["ymin"], ""))
+		xMax, xMaxErr := strconv.ParseFloat(strings.Join(r.Form["ymin"], ""), 64)
 		if xMaxErr != nil {
 			xMax = +2
 		}
-		yMax, yMaxErr := strconv.Atoi(strings.Join(r.Form["ymax"], ""))
+		yMax, yMaxErr := strconv.ParseFloat(strings.Join(r.Form["ymax"], ""), 64)
 		if yMaxErr != nil {
 			yMax = +2
 		}
-		z, zErr := strconv.Atoi(strings.Join(r.Form["zoom"], ""))
+		z, zErr := strconv.ParseFloat(strings.Join(r.Form["zoom"], ""), 64)
 		if zErr != nil {
 			z = 1
 		}
@@ -50,7 +50,7 @@ func main() {
 	return
 }
 
-func draw(w io.Writer, xMin int, yMin int, xMax int, yMax int, zoom int) {
+func draw(w io.Writer, xMin, yMin, xMax, yMax, zoom float64) {
 	const (
 		// 	xmin, ymin, xmax, ymax = -2, -2, +2, +2
 		width, height = 1024, 1024
