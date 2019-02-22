@@ -1,7 +1,7 @@
 package main
 
-// you cannot use functions as the constants can exceed simple representations
-// and we dont have generics in Go! :/
+// you cannot use functions as the constants are untyped, you can only use operators
+// there is no exponent operator
 
 const (
 	KB = 1000
@@ -25,7 +25,6 @@ const (
 	ZiB
 	YiB
 )
-
 
 //$ go test
 //KB 1000
