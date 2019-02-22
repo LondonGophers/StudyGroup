@@ -11,7 +11,7 @@ const (
 	PB = 1E15
 	EB = 1E18
 	ZB = 1E21
-	YB =1E24
+	YB = 1E24
 )
 
 const (
