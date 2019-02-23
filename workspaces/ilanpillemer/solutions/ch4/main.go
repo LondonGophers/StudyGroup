@@ -1,6 +1,6 @@
 package main
 
-//DIffCount simply compares every bit of 256
+//DiffCount simply compares every bit of 256
 func DiffCount(left [32]byte, right [32]byte) int {
 	n := 0
 	for i := 0; i < 32; i++ {
@@ -19,4 +19,3 @@ func DiffCount(left [32]byte, right [32]byte) int {
 //PASS
 //ok  	_/Users/ilanpillemer/git/study-group/workspaces/ilanpillemer/solutions/ch4	0.005s
 //$
-
