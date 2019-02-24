@@ -30,8 +30,7 @@ func rotateInPlaceRight(input []int, rot int) {
 	for i := range input { // one pass
 		dest := (i + rot) % len(input)
 		remembered[dest] = input[dest]
-		value, ok := remembered[i]
-		if ok {
+		if value, ok := remembered[i]; ok {
 			input[dest] = value
 			continue
 		}
