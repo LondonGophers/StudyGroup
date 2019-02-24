@@ -38,3 +38,37 @@ func rotateInPlaceRight(input []int, rot int) {
 		input[dest] = input[i]
 	}
 }
+
+// This fails the tests. I dont understand the code clearly so not sure what the bug is.
+// Rotate rotates a slice of integers `s` at the position `pos` with a single pass
+// through the array, swapping from the last position to the first position
+// until all items are in order, running in O(n) time and using O(n) space.
+//func betandr(pos int, s []int) {
+//	k := len(s) - pos
+//	stop := 0
+//	if len(s)%2 == 0 {
+//		stop = 1
+//	}
+//
+//	for i, j := len(s)-1, pos; i > stop; i, j = i-1, j-1 {
+//		if j <= 0 {
+//			j = pos
+//			k = k - pos
+//		}
+//		l := i - k
+//		if i <= 2 {
+//			l = 0
+//		}
+//		s[l], s[i] = s[i], s[l]
+//	}
+//}
+//$ go test
+//--- FAIL: TestBetandr (0.00s)
+//    main_test.go:74: want []int{2, 3, 4, 5, 6, 0, 1}, got []int{4, 2, 3, 5, 6, 0, 1}
+//    main_test.go:74: want []int{3, 4, 5, 6, 7, 0, 1, 2}, got []int{4, 3, 5, 6, 7, 0, 1, 2}
+//FAIL
+//
+//exit status 1
+//FAIL	_/Users/ilanpillemer/git/study-group/workspaces/ilanpillemer/solutions/ch4/ex4.4	0.009s
+//go test: exit status 1
+//$
