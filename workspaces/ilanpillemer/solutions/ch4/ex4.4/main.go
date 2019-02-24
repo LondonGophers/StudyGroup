@@ -1,6 +1,6 @@
 package main
 
-// rotate operate in a single pass
+// rotate operates in a single pass
 // in order to do that the values of the slice are stored
 // elsewhere so that values that are overwritten are not lost
 // in the shuffle.
@@ -8,7 +8,7 @@ func rotateRight(input []int, rot int) []int {
 	result := make([]int, len(input), len(input))
 
 	for i := range input {
-		// using the remainder give the exact position of a rotation
+		// using the remainder gives the exact position of a rotation
 		// when moving right
 		dest := (i + rot) % len(input)
 		result[dest] = input[i]
