@@ -38,4 +38,3 @@ func rotateInPlaceRight(input []int, rot int) {
 		input[dest] = input[i]
 	}
 }
-
