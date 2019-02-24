@@ -20,7 +20,7 @@ We follow the [Go Code of Conduct](https://golang.org/conduct), in summary:
 
 ## The Workshop
 
-Find us on Slack in the `#london` channel of the `gophers.slack.com` workspace.
+Find us on Slack in the `#london-study-group` channel of the `gophers.slack.com` workspace.
 
 Our study material is:
 [The Go Programming Language by Alan Donovan and Brian W. Kernighan](https://www.gopl.io/)
