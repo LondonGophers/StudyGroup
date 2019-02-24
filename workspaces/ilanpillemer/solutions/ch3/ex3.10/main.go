@@ -5,7 +5,7 @@ import "bytes"
 func comma(s string) string {
 	var buf bytes.Buffer
 
-	// if its not divivisble by three the first part will be less than 3
+	// if its not divisble by three the first part will be less than 3
 	start := len(s) % 3
 	buf.WriteString(s[:start])
 
