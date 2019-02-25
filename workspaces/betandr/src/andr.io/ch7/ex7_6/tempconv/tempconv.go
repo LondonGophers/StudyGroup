@@ -19,7 +19,8 @@ func CToF(c Celsius) Fahrenheit { return Fahrenheit(c*9.0/5.0 + 32.0) }
 func FToC(f Fahrenheit) Celsius { return Celsius((f - 32.0) * 5.0 / 9.0) }
 func KToC(k Kelvin) Celsius     { return Celsius(k - 273.15) }
 
-func (c Celsius) String() string { return fmt.Sprintf("%g°C", c) }
+// *celsiusFlag satisfies the flag.Value interface.
+type celsiusFlag struct{ Celsius }
 
 /*
 package flag
@@ -31,8 +32,7 @@ type Value interface {
 }
 */
 
-// *celsiusFlag satisfies the flag.Value interface.
-type celsiusFlag struct{ Celsius }
+func (c Celsius) String() string { return fmt.Sprintf("%g°C", c) }
 
 func (f *celsiusFlag) Set(s string) error {
 	var unit string

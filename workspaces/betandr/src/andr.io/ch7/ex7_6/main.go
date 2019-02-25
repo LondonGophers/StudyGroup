@@ -13,7 +13,7 @@ import (
 	"andr.io/ch7/ex7_6/tempconv"
 )
 
-var temp = tempconv.CelsiusFlag("temp", 20.0, "the temperature")
+var tempFlag = tempconv.CelsiusFlag("temp", 20.0, "the temperature")
 
 /* Usage:
 tempconv -temp -18C
@@ -23,5 +23,5 @@ tempconv -temp 273.15K
 */
 func main() {
 	flag.Parse()
-	fmt.Println(*temp)
+	fmt.Println(*tempFlag)
 }
