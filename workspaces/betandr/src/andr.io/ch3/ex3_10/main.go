@@ -26,7 +26,10 @@ func comma(s string) string {
 	buf.WriteString(s[:idx])
 
 	for i := idx; i < len(s); i += 3 {
-		buf.WriteString("," + s[i:i+3])
+		if i > 0 {
+			buf.WriteString(",")
+		}
+		buf.WriteString(s[i : i+3])
 	}
 
 	return buf.String()
