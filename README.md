@@ -32,10 +32,14 @@ time! :)
 ## 1. Begin
 
 To begin, create your own directory in the [workspaces](workspaces) directory,
-work through the book exercises, and add your code there. You can add your code
-in separate directories if you're using [Go Modules](#b-running-go-with-go-modules)
-or if you're [using a GOPATH](#a-running-go-with-a-gopath) you could structure your
-code as in the [GOPATH Project Structure](#gopath-project-structure) section.
+work through the book exercises, and add your code there. When committing to the 
+repo just commit directly to `master` but before you do so make sure you run 
+`git pull -r` (`-r` to rebase) before you push, to avoid _merge commits_.
+
+You can add your code in separate directories if you're using 
+[Go Modules](#b-running-go-with-go-modules) or if you're 
+[using a GOPATH](#a-running-go-with-a-gopath) you could structure your code as 
+in the [GOPATH Project Structure](#gopath-project-structure) section.
 
 If you need the exercises from the book, they're available in
 [exercises.tar.gz](exercises.tar.gz) zipped archive but these are already in the
@@ -208,8 +212,24 @@ https://emacs.stackexchange.com/questions/10722/emacs-and-command-line-path-disa
 
 So if you edit `/etc/paths.d/go` and add the path to the bin directory of your project it should fix problem.
 
+### d. Visual Studio Code
 
-### d. Atom
+Visual Studio Code is a lightweight but powerful source code editor with support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring. Visual Studio Code is based on Electron and uses the Blink layout engine. Vscode uses the same editor component as [Atom](https://github.com/go-london-user-group/study-group#f-atom) (codenamed "Monaco").
+
+The [Go extension for Visual Studio Code](https://code.visualstudio.com/docs/languages/go), provides language features such as IntelliSense, code navigation, symbol search, bracket matching, snippets etc.
+
+### e. acme
+
+There are three kinds of IDEs:
+* A character driven IDE such as unix, emacs or vi
+* A closed environment with its own bespoke tooling such as eclipse, visual code, intellij, atom, GoLand
+* An integrating environment that integrates tools from outside inwards such as plan9 and acme.
+
+#### Vague Installation Guide
+
+* [acme](https://ilanpillemer.github.io/subjects/acme.html)
+
+### f. Atom
 
 Atom supports Go development with the
 [go-plus](https://atom.io/packages/go-plus) package.
@@ -219,18 +239,6 @@ To use Delve inside Atom, install the
 
 To run your Go code in Atom, install the
 [atom-runner](https://atom.io/packages/atom-runner) package.
-
-### e. acme
-
-There are three kinds of IDEs.
-
-* a character driven IDE such as unix, emacs or vi
-* a closed environment with its own bespoke tooling such as eclipse, visual code, intellij, atom, GoLand
-* an integrating environment that integrates tools from outside inwards such as plan9 and acme.
-
-#### Vague Installation Guide
-
-* [acme](https://ilanpillemer.github.io/subjects/acme.html)
 
 ## 6. Links
 
@@ -245,7 +253,6 @@ There are three kinds of IDEs.
 [YouTube: Concurrency is not Parallelism by Rob Pike](https://www.youtube.com/watch?v=oV9rvDllKEg)
 
 [YouTube: Go Proverbs](https://www.youtube.com/watch?v=PAAkCSZUG1c)
-
 
 ## 7. Rights
 
