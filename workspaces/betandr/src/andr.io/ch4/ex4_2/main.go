@@ -3,28 +3,34 @@
 package main
 
 import (
+	"bufio"
 	"crypto/sha256"
 	"crypto/sha512"
 	"flag"
 	"fmt"
+	"os"
 )
 
 func main() {
-
 	shaType := flag.String("a", "sha256", "The algorithm to use: sha256/sha384/sha512")
-	s := flag.String("s", "", "The string to hash.")
 	flag.Parse()
 
+	var input string
+	scanner := bufio.NewScanner(os.Stdin)
+	for scanner.Scan() {
+		input = scanner.Text()
+	}
+
 	if *shaType == "sha256" {
-		fmt.Printf("%x\n", sha256.Sum256([]byte(*s)))
+		fmt.Printf("%x\n", sha256.Sum256([]byte(input)))
 
 	} else if *shaType == "sha384" {
-		fmt.Printf("%x\n", sha512.Sum384([]byte(*s)))
+		fmt.Printf("%x\n", sha512.Sum384([]byte(input)))
 
 	} else if *shaType == "sha512" {
-		fmt.Printf("%x\n", sha512.Sum512([]byte(*s)))
+		fmt.Printf("%x\n", sha512.Sum512([]byte(input)))
 
 	} else {
-		fmt.Println("unknown algorithm %s", *shaType)
+		fmt.Printf("unknown algorithm: %s\n", *shaType)
 	}
 }
