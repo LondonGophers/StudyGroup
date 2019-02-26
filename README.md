@@ -1,7 +1,7 @@
 # GLUG — Study Group
 
 <p align="center">
-  <img width="300" height="300" src="https://raw.githubusercontent.com/go-london-user-group/study-group/master/resources/gopher.png">
+  <img width="209" height="300" src="https://raw.githubusercontent.com/go-london-user-group/study-group/master/resources/gopher-study.png">
 </p>
 
 ```
