@@ -2,12 +2,13 @@
 
 package main
 
-//When a slice is passed to function under the hood a special
-//value is passed that contains a pointer and length. Although
-//changes via the pointer can mutate the slice, the length is not
-//mutated.. The only way to change the length to to go beyond
-//the slice header and actually get a real pointer not a value pretending to be a pointer
-//see https://blog.golang.org/slices
+//When a slice is passed to function under the hood a special value is
+//passed that contains a pointer and length. Although changes via the
+//pointer can mutate the slice, the length is not mutated.. The only way
+//to change the length is to go beyond the slice header and actually get
+//a real pointer not a value pretending to be a pointer see
+//https://blog.golang.org/slices
+
 func dedup(inputPtr *[]string) {
 	input := *inputPtr
 	end := len(input)
