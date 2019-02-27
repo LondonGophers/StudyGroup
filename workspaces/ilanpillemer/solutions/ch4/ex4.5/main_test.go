@@ -13,7 +13,7 @@ func Test(t *testing.T) {
 		{[]string{"a", "a", "b", "b", "b", "c", "c", "c", "c", "d"}, []string{"a", "b", "c", "d"}},
 		{[]string{"a", "b", "c", "d"}, []string{"a", "b", "c", "d"}},
 		{[]string{}, []string{}},
-		{[]string{"Finally", "as", "as", "as", "the", "the", "sky", "began", "to", "to", "grow", "light"}, []string{"Finally", "as",  "the",  "sky", "began",  "to", "grow", "light"}},
+		{[]string{"Finally", "as", "as", "as", "the", "the", "sky", "began", "to", "to", "grow", "light"}, []string{"Finally", "as", "the", "sky", "began", "to", "grow", "light"}},
 	}
 
 	for _, z := range tests {
@@ -21,7 +21,6 @@ func Test(t *testing.T) {
 		if !equals(z.input, z.want) {
 			t.Errorf("want [%v] got [%v]\n", z.want, z.input)
 		}
-
 	}
 }
 
