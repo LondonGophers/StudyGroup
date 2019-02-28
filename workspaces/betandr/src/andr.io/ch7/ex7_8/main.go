@@ -8,39 +8,25 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 	"text/tabwriter"
 	"time"
+
+	"andr.io/ch7/ex7_8/music"
 )
 
-/////////////////////////////
-//    !! IN PROGRESS !!    //
-/////////////////////////////
-
-// Track represents a song or piece of music
-type Track struct {
-	Title  string
-	Artist string
-	Album  string
-	Year   int
-	Length time.Duration
-}
-
-var tracks = []*Track{
-	{Title: "Ready To Go", Artist: "Republica", Album: "Republica", Year: 1996, Length: length("5m01s")},
-	{Title: "Go", Artist: "Lizzo", Album: "Lizzobangers", Year: 2014, Length: length("3m45s")},
-	{Title: "Go Get It", Artist: "Slowdive", Album: "Slowdive", Year: 2017, Length: length("6m09s")},
-	{Title: "You Gotta Go!", Artist: "The Mighty Mighty Bosstones", Album: "A Jackknife to a Swan", Year: 2002, Length: length("2m43s")},
-	{Title: "Go Out", Artist: "Blur", Album: "The Magic Whip", Year: 2015, Length: length("4m41s")},
-	{Title: "Just Let Go", Artist: "Fischerspooner", Album: "Odyssey", Year: 2005, Length: length("4m15s")},
-	{Title: "Go", Artist: "Pearl Jam", Album: "Go", Year: 1993, Length: length("3m13s")},
-	{Title: "Go!", Artist: "Public Service Broadcasting", Album: "The Race For Space", Year: 2015, Length: length("2m40s")},
+var tracks = []*music.Track{
+	{Title: "Go", Artist: "Chemical Brothers", Album: "Born In The Echoes", Year: 2015, Length: length("4m20s")},
 	{Title: "(Come On) Let's Go!", Artist: "Smashing Pumpkins", Album: "Zeitgeist", Year: 2007, Length: length("3m19s")},
-	{Title: "The Go In The Go-For-It", Artist: "Grandaddy", Album: "", Year: 2003, Length: length("2m59s")},
+	{Title: "Ready To Go", Artist: "Republica", Album: "Republica", Year: 1996, Length: length("5m01s")},
+	{Title: "Go Big", Artist: "The Mighty Mighty Bosstones", Album: "A Jackknife to a Swan", Year: 2002, Length: length("2m53s")},
+	{Title: "Just Let Go", Artist: "Fischerspooner", Album: "Odyssey", Year: 2005, Length: length("4m15s")},
+	{Title: "Go!", Artist: "Public Service Broadcasting", Album: "The Race For Space", Year: 2015, Length: length("2m40s")},
 	{Title: "Lyrics to Go", Artist: "A Tribe Called Quest", Album: "Midnight Marauders", Year: 1993, Length: length("4m09s")},
 	{Title: "Boys Say Go!", Artist: "Depeche Mode", Album: "Speak & Spell", Year: 1981, Length: length("3m06s")},
 	{Title: "Go With The Flow", Artist: "Queens Of The Stone Age", Album: "Songs For The Deaf", Year: 2002, Length: length("3m08s")},
 	{Title: "Go", Artist: "blink-182", Album: "blink-182", Year: 2003, Length: length("1m53s")},
-	{Title: "Go", Artist: "Chemical Brothers", Album: "Born In The Echoes", Year: 2015, Length: length("4m20s")},
+	{Title: "Go Your Own Way", Artist: "Fleetwood Mac", Album: "Rumours", Year: 1977, Length: length("3m43s")},
 }
 
 func length(s string) time.Duration {
@@ -51,17 +37,24 @@ func length(s string) time.Duration {
 	return dur
 }
 
-func printTracks(tracks []*Track) {
+func printPlaylist(pl *music.Playlist) {
 	const format = "%v\t%v\t%v\t%v\t%v\t\n"
 	tw := new(tabwriter.Writer).Init(os.Stdout, 0, 8, 2, ' ', 0)
 	fmt.Fprintf(tw, format, "Title", "Artist", "Album", "Year", "Length")
 	fmt.Fprintf(tw, format, "-----", "------", "-----", "----", "------")
-	for _, t := range tracks {
+	for _, t := range pl.Tracks {
 		fmt.Fprintf(tw, format, t.Title, t.Artist, t.Album, t.Year, t.Length)
 	}
 	tw.Flush() // calculate column widths and print table
 }
 
 func main() {
-	printTracks(tracks)
+	pl := new(music.Playlist)
+	pl.Tracks = tracks
+
+	order := []string{"title", "artist", "album", "year", "length"}
+	fmt.Printf("Sorting %d tracks by: %s:\n", len(pl.Tracks), strings.Join(order, ", "))
+
+	pl.OrderBy(order)
+	printPlaylist(pl)
 }
