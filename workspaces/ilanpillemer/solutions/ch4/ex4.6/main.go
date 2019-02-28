@@ -21,26 +21,28 @@ func squash(s *[]byte) {
 		if unicode.IsSpace(lr) && unicode.IsSpace(rr) {
 			// they are equal copy all from the right left the
 			// length of the rightmost rune
-			for k := 0; k < ln; k++ {
-				for j := i - 1; j < len(b)-1; j++ {
-					b[j] = b[j+1]
-				}
-				// decrement end pointer
-				end--
-			}
+			shift(b, i, ln)
+			end -= ln
 		}
 		// if its the last space in the run, change it to an ascii space
 		// and shift left if necessary.
 		// this will be one less as we want to keep one byte.
 		if unicode.IsSpace(lr) && !unicode.IsSpace(rr) && lr != 32 {
 			b[i] = ' '
-			for k := 0; k < ln-1; k++ {
-				for j := i - 1; j < len(b)-1; j++ {
-					b[j] = b[j+1]
-				}
-				end--
-			}
+			shift(b, i, ln-1)
+			end -= ln - 1
 		}
 	}
 	*s = b[:end]
+}
+
+func shift(b []byte, p int, l int)  {
+
+	for k := 0; k < l; k++ {
+		for j := p - 1; j < len(b)-1; j++ {
+			b[j] = b[j+1]
+		}
+
+	}
+
 }
