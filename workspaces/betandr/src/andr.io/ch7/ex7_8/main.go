@@ -50,7 +50,7 @@ func printPlaylist(pl *music.Playlist) {
 func main() {
 	pl := new(music.Playlist)
 	pl.Tracks = tracks
-	order := []music.Attr{music.ByTitle(), music.ByArtist(), music.ByAlbum(), music.ByYear(), music.ByLength()}
+	order := []music.Attribute{music.Title, music.Artist, music.Album, music.Year, music.Length}
 
 	pl.OrderBy(order)
 	printPlaylist(pl)
