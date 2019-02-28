@@ -8,7 +8,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strings"
 	"text/tabwriter"
 	"time"
 
@@ -51,9 +50,7 @@ func printPlaylist(pl *music.Playlist) {
 func main() {
 	pl := new(music.Playlist)
 	pl.Tracks = tracks
-
-	order := []string{"title", "artist", "album", "year", "length"}
-	fmt.Printf("Sorting %d tracks by: %s:\n", len(pl.Tracks), strings.Join(order, ", "))
+	order := []music.Attr{music.ByTitle(), music.ByArtist(), music.ByAlbum(), music.ByYear(), music.ByLength()}
 
 	pl.OrderBy(order)
 	printPlaylist(pl)
