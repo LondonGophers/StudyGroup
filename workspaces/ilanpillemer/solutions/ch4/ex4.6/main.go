@@ -6,8 +6,8 @@ import (
 )
 
 //squashing spaces is just a special case of deuplicating with two
-//differences.
-//firstly it must only consider spaces
+//differences. Firstly it must only consider spaces and secondly
+//when shifting it must shift the number of bytes of the rune, not just one byte.
 func squash(s *[]byte) {
 	b := *s
 	end := len(b)
