@@ -36,13 +36,10 @@ func squash(s *[]byte) {
 	*s = b[:end]
 }
 
-func shift(b []byte, p int, l int)  {
-
+func shift(b []byte, p int, l int) {
 	for k := 0; k < l; k++ {
 		for j := p - 1; j < len(b)-1; j++ {
 			b[j] = b[j+1]
 		}
-
 	}
-
 }
