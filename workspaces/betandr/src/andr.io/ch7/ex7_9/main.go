@@ -94,9 +94,9 @@ func decodeAttr(attr music.Attribute) string {
 	case 2:
 		return "album"
 	case 3:
-		return "length"
-	case 4:
 		return "year"
+	case 4:
+		return "length"
 	default:
 		return ""
 	}
@@ -110,9 +110,9 @@ func parseOrderParams(params []string) (order []music.Attribute) {
 	return
 }
 
-func moveAttrToFront(attrToLead music.Attribute, attrs *[]music.Attribute) {
-	idx := func(al music.Attribute, as *[]music.Attribute) int {
-		for i, a := range *as {
+func moveAttrToFront(attrToLead music.Attribute, attrs []music.Attribute) {
+	idx := func(al music.Attribute, as []music.Attribute) int {
+		for i, a := range as {
 			if a == al {
 				return i
 			}
@@ -120,16 +120,15 @@ func moveAttrToFront(attrToLead music.Attribute, attrs *[]music.Attribute) {
 		return -1
 	}(attrToLead, attrs)
 
-	for i := idx; i >= 0; i-- {
-		fmt.Printf("move %d to %d\n", i-1, i)
-		// todo
+	for i := idx; i > 0; i-- {
+		attrs[i] = attrs[i-1]
 	}
 
-	//todo set first item to attrToLead
+	attrs[0] = attrToLead
 }
 
 func attributesToValues(order []music.Attribute, attrToLead music.Attribute) template.URL {
-	moveAttrToFront(attrToLead, &order)
+	moveAttrToFront(attrToLead, order)
 	v := url.Values{}
 	for _, a := range order {
 		s := decodeAttr(a)
