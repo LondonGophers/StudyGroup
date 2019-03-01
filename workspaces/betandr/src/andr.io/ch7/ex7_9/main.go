@@ -5,10 +5,12 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"io"
 	"log"
 	"net/http"
+	"net/url"
 	"path/filepath"
 	"time"
 
@@ -16,8 +18,6 @@ import (
 )
 
 var homeDir = "/Users/betandr/workspace/study-group/workspaces/betandr/src/andr.io/ch7/ex7_9"
-
-var order = []music.Attribute{music.Title, music.Artist, music.Album, music.Length, music.Year}
 
 var tracks = []*music.Track{
 	{Title: "Go", Artist: "Chemical Brothers", Album: "Born In The Echoes", Year: 2015, Length: length("4m20s")},
@@ -44,8 +44,18 @@ func length(s string) time.Duration {
 
 func main() {
 	handler := func(w http.ResponseWriter, r *http.Request) {
-		// todo get params or use default
-		renderTracks(w)
+		r.ParseForm()
+
+		order := parseOrderParams(r.Form["order"])
+
+		if len(order) == 0 {
+			order = []music.Attribute{music.Artist, music.Album, music.Title, music.Year, music.Length}
+		} else if len(order) != 5 {
+			http.Error(w, fmt.Sprintf("Bad Request: %d order params, require 5", len(order)), http.StatusBadRequest)
+			return
+		}
+
+		renderTracks(w, order)
 	}
 
 	http.Handle("/css/", http.StripPrefix("/css", http.FileServer(http.Dir(homeDir+"/css"))))
@@ -58,7 +68,79 @@ func main() {
 	http.ListenAndServe(":1337", nil)
 }
 
-func renderTracks(out io.Writer) {
+func decodeParam(param string) music.Attribute {
+	switch param {
+	case "title":
+		return music.Title
+	case "artist":
+		return music.Artist
+	case "album":
+		return music.Album
+	case "length":
+		return music.Length
+	case "year":
+		return music.Year
+	default:
+		return -1 // todo - handle default case with an "unknown"
+	}
+}
+
+func decodeAttr(attr music.Attribute) string {
+	switch attr {
+	case 0:
+		return "title"
+	case 1:
+		return "artist"
+	case 2:
+		return "album"
+	case 3:
+		return "length"
+	case 4:
+		return "year"
+	default:
+		return ""
+	}
+}
+
+func parseOrderParams(params []string) (order []music.Attribute) {
+	order = make([]music.Attribute, 0)
+	for _, p := range params {
+		order = append(order, decodeParam(p))
+	}
+	return
+}
+
+func moveAttrToFront(attrToLead music.Attribute, attrs *[]music.Attribute) {
+	idx := func(al music.Attribute, as *[]music.Attribute) int {
+		for i, a := range *as {
+			if a == al {
+				return i
+			}
+		}
+		return -1
+	}(attrToLead, attrs)
+
+	for i := idx; i >= 0; i-- {
+		fmt.Printf("move %d to %d\n", i-1, i)
+		// todo
+	}
+
+	//todo set first item to attrToLead
+}
+
+func attributesToValues(order []music.Attribute, attrToLead music.Attribute) template.URL {
+	moveAttrToFront(attrToLead, &order)
+	v := url.Values{}
+	for _, a := range order {
+		s := decodeAttr(a)
+		if s != "" {
+			v.Add("order", s)
+		}
+	}
+	return template.URL(v.Encode())
+}
+
+func renderTracks(out io.Writer, order []music.Attribute) {
 	filePrefix, _ := filepath.Abs("./src/andr.io/ch7/ex7_9/templates/")
 	tracksList := template.Must(template.ParseFiles(filePrefix + "/index.html"))
 
@@ -67,25 +149,23 @@ func renderTracks(out io.Writer) {
 
 	pl.OrderBy(order)
 
-	type Out struct {
+	var data struct {
 		Tracks      []*music.Track
-		TitleParam  string
-		ArtistParam string
-		AlbumParam  string
-		YearParam   string
-		LengthParam string
+		TitleParam  template.URL
+		ArtistParam template.URL
+		AlbumParam  template.URL
+		YearParam   template.URL
+		LengthParam template.URL
 	}
 
-	outData := Out{
-		Tracks:      pl.Tracks,
-		TitleParam:  "title,params",
-		ArtistParam: "artist,params",
-		AlbumParam:  "album,params",
-		YearParam:   "year,params",
-		LengthParam: "length,params",
-	}
+	data.Tracks = pl.Tracks
+	data.TitleParam = attributesToValues(order, music.Title)
+	data.ArtistParam = attributesToValues(order, music.Artist)
+	data.AlbumParam = attributesToValues(order, music.Album)
+	data.YearParam = attributesToValues(order, music.Year)
+	data.LengthParam = attributesToValues(order, music.Length)
 
-	if err := tracksList.Execute(out, outData); err != nil {
+	if err := tracksList.Execute(out, data); err != nil {
 		log.Fatal(err)
 	}
 }
