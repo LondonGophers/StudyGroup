@@ -18,7 +18,7 @@ Suppose you have a 3 rune unicode with
 ### Step 2
 
 Now you reverse the first and last runes... getting
-+ ``zxxxxxxx`
++ `zxxxxxxx`
 
 Now you have *lost* the second rune as it was overwritten in the swap.
 
