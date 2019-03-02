@@ -19,12 +19,10 @@ func TestUnicode(t *testing.T) {
 		{[]byte("a世a界界b世b"), []byte("b世b界界a世a")},
 		{[]byte("בראשית ברא אלקים את השמים ואת הארץ"), []byte("ץראה תאו םימשה תא םיקלא ארב תישארב")},
 	}
-
 	for _, z := range tests {
 		reverseUnicode(z.input)
 		if !bytes.Equal(z.input, z.want) {
 			t.Errorf("want %s; got %s\n", z.want, z.input)
 		}
 	}
-
 }

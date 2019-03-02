@@ -8,7 +8,6 @@ import (
 //represents a UTF-8-encoded string, in place. Can you do it without
 //allocating new memory?
 func reverseUnicode(t []byte) {
-
 	s := t
 	//convert to runes see bytes.Runes..
 	rs := make([]rune, utf8.RuneCount(s))
@@ -19,7 +18,6 @@ func reverseUnicode(t []byte) {
 		i++
 		s = s[l:]
 	}
-
 	//reverse the runes
 	for i, j := 0, len(rs)-1; i < j; i, j = i+1, j-1 {
 		rs[i], rs[j] = rs[j], rs[i]
