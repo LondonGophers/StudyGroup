@@ -5,19 +5,21 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"html/template"
 	"io"
 	"log"
 	"net/http"
 	"net/url"
+	"os"
 	"path/filepath"
 	"time"
 
 	"andr.io/ch7/ex7_9/music"
 )
 
-var homeDir = "/Users/betandr/workspace/study-group/workspaces/betandr/src/andr.io/ch7/ex7_9"
+var homeDir = flag.String("home", "", "The full path to the directory containing css, fonts, images, js, templates, and vendor directories")
 
 var tracks = []*music.Track{
 	{Title: "Go", Artist: "Chemical Brothers", Album: "Born In The Echoes", Year: 2015, Length: length("4m20s")},
@@ -34,15 +36,14 @@ var tracks = []*music.Track{
 	{Title: "Go Your Own Way", Artist: "Fleetwood Mac", Album: "Rumours", Year: 1977, Length: length("3m43s")},
 }
 
-func length(s string) time.Duration {
-	dur, err := time.ParseDuration(s)
-	if err != nil {
-		panic(s)
-	}
-	return dur
-}
-
 func main() {
+	flag.Parse()
+
+	if len(*homeDir) == 0 {
+		fmt.Println("error: home directory not specified")
+		os.Exit(0)
+	}
+
 	handler := func(w http.ResponseWriter, r *http.Request) {
 		r.ParseForm()
 
@@ -51,23 +52,34 @@ func main() {
 		if len(order) == 0 {
 			order = []music.Attribute{music.Artist, music.Album, music.Title, music.Year, music.Length}
 		} else if len(order) != 5 {
-			http.Error(w, fmt.Sprintf("Bad Request: %d order params, require 5", len(order)), http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Bad Request: %d order params found, require 5", len(order)), http.StatusBadRequest)
 			return
 		}
 
-		renderTracks(w, order)
+		renderTracks(w, tracks, order)
 	}
 
-	http.Handle("/css/", http.StripPrefix("/css", http.FileServer(http.Dir(homeDir+"/css"))))
-	http.Handle("/fonts/", http.StripPrefix("/fonts", http.FileServer(http.Dir(homeDir+"/fonts"))))
-	http.Handle("/js/", http.StripPrefix("/js", http.FileServer(http.Dir(homeDir+"/js"))))
-	http.Handle("/images/", http.StripPrefix("/images", http.FileServer(http.Dir(homeDir+"/images"))))
-	http.Handle("/vendor/", http.StripPrefix("/vendor", http.FileServer(http.Dir(homeDir+"/vendor"))))
+	http.Handle("/css/", http.StripPrefix("/css", http.FileServer(http.Dir(*homeDir+"/css"))))
+	http.Handle("/fonts/", http.StripPrefix("/fonts", http.FileServer(http.Dir(*homeDir+"/fonts"))))
+	http.Handle("/js/", http.StripPrefix("/js", http.FileServer(http.Dir(*homeDir+"/js"))))
+	http.Handle("/images/", http.StripPrefix("/images", http.FileServer(http.Dir(*homeDir+"/images"))))
+	http.Handle("/vendor/", http.StripPrefix("/vendor", http.FileServer(http.Dir(*homeDir+"/vendor"))))
 	http.HandleFunc("/", handler)
 
 	http.ListenAndServe(":1337", nil)
 }
 
+// length takes a string such as `"4m09s"` and returns a `time.Duration` representation of it.
+func length(s string) time.Duration {
+	dur, err := time.ParseDuration(s)
+	if err != nil {
+		panic(s)
+	}
+	return dur
+}
+
+// decodeParam takes a string and returns a `music.Attribute` representation of it.
+// If not matching `music.Attribute` is found a `-1` is returned.
 func decodeParam(param string) music.Attribute {
 	switch param {
 	case "title":
@@ -81,10 +93,12 @@ func decodeParam(param string) music.Attribute {
 	case "year":
 		return music.Year
 	default:
-		return -1 // todo - handle default case with an "unknown"
+		return -1 // todo - handle default case with something better than ""
 	}
 }
 
+// decodeAttr takes a `music.Attribute` enum value and returns a string representation of it.
+// If not matching `music.Attribute` is found an empty string is returned.
 func decodeAttr(attr music.Attribute) string {
 	switch attr {
 	case 0:
@@ -98,10 +112,11 @@ func decodeAttr(attr music.Attribute) string {
 	case 4:
 		return "length"
 	default:
-		return ""
+		return "" // todo - handle default case with something better than ""
 	}
 }
 
+// parseOrderParams takes a slice of strings and returns into a slice of `music.Attribute`s.
 func parseOrderParams(params []string) (order []music.Attribute) {
 	order = make([]music.Attribute, 0)
 	for _, p := range params {
@@ -110,6 +125,9 @@ func parseOrderParams(params []string) (order []music.Attribute) {
 	return
 }
 
+// moveAttrToFront moves a specified `music.Attribute` to the front of a slice of
+// `music.Attribute`s. The attribute is removed from its position and all other attributes
+// moved up one place and then the attribute is inserted into the first position of the list.
 func moveAttrToFront(attrToLead music.Attribute, attrs []music.Attribute) {
 	idx := func(al music.Attribute, as []music.Attribute) int {
 		for i, a := range as {
@@ -127,6 +145,23 @@ func moveAttrToFront(attrToLead music.Attribute, attrs []music.Attribute) {
 	attrs[0] = attrToLead
 }
 
+// attributesToValues converts a list of attributes to a string as a `template.URL`. It also
+// moves a single attribute to the front of the list. This is used to generate the URL params
+// for each column head meaning that the column head being clicked will order the `attrToLead`
+// first.
+// e.g. considering the column headers one, two, three, and four. For column one is represented
+// as the URL:
+// `?order=one&order=two&order=three&order=four`
+// For column two by the URL:
+// `?order=two&order=one&order=three&order=four`
+// For column three by the URL:
+// `?order=three&order=one&order=two&order=four`
+// For column four by the URL:
+// `?order=four&order=one&order=two&order=three`
+//
+// These URLs will order the table by the selected column and preserve the ordering of the
+// previously clicked heads, or the default.
+// This allows the separation of the table rendering and the sort order "stacking".
 func attributesToValues(order []music.Attribute, attrToLead music.Attribute) template.URL {
 	moveAttrToFront(attrToLead, order)
 	v := url.Values{}
@@ -139,7 +174,9 @@ func attributesToValues(order []music.Attribute, attrToLead music.Attribute) tem
 	return template.URL(v.Encode())
 }
 
-func renderTracks(out io.Writer, order []music.Attribute) {
+// renderTracks writes a slice of `music.Track`s represented by pointers to an `io.Writer`
+// in the order supplied by a slice of `music.Attribute`s.
+func renderTracks(out io.Writer, tracks []*music.Track, order []music.Attribute) {
 	filePrefix, _ := filepath.Abs("./src/andr.io/ch7/ex7_9/templates/")
 	tracksList := template.Must(template.ParseFiles(filePrefix + "/index.html"))
 
