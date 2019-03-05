@@ -1,11 +1,17 @@
 package echo
 
-import "testing"
+import (
+	"strconv"
+	"testing"
+)
 
 var args = generate(100)
 
 func generate(n int) []string {
 	s := make([]string, n)
+	for i := range s {
+		s[i] = strconv.Itoa(i)
+	}
 	return s
 }
 
@@ -29,13 +35,15 @@ func BenchmarkJoin(b *testing.B) {
 
 func TestCustom(t *testing.T) {
 	a := []string{"a", "b", "c", "d", "e", "f"}
-	if got, want := custom(a), join(a); got != want {
+	if got, want := custom(a, " "), join(a); got != want {
 		t.Errorf("got: %s, want %s", got, want)
 	}
 }
 
 func BenchmarkCustom(b *testing.B) {
+	var s string
 	for n := 0; n < b.N; n++ {
-		custom(args)
+		s = custom(args, " ")
 	}
+	_ = len(s)
 }

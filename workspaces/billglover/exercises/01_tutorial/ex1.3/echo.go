@@ -1,8 +1,6 @@
 package echo
 
 import (
-	"bufio"
-	"bytes"
 	"fmt"
 	"strings"
 )
@@ -33,9 +31,7 @@ func format(args []string) string {
 
 // Custom takes a slice of strings and returns a string containing the space
 // separated values. It uses custom code to join the strings.
-func custom(args []string) string {
-
-	var s = " "
+func custom(args []string, s string) string {
 	var l int
 
 	for i := range args {
@@ -43,11 +39,11 @@ func custom(args []string) string {
 	}
 	l += len(s) * (len(args) - 1)
 
-	b := bytes.Buffer{}
-	bw := bufio.NewWriterSize(&b, l)
+	b := strings.Builder{}
+	b.Grow(l)
 
 	for i := range args {
-		_, err := bw.WriteString(args[i])
+		_, err := b.WriteString(args[i])
 		if err != nil {
 			panic("unable to write string to buffer")
 		}
@@ -56,15 +52,10 @@ func custom(args []string) string {
 			break
 		}
 
-		_, err = bw.WriteString(s)
+		_, err = b.WriteString(s)
 		if err != nil {
 			panic("unable to write string to buffer")
 		}
-	}
-
-	err := bw.Flush()
-	if err != nil {
-		panic("unable to flush buffer")
 	}
 
 	return b.String()
