@@ -45,8 +45,7 @@ func reverse(t []byte) {
 	reverse(t[l1:])
 }
 
-func shiftOne(t []byte) {
-	s := t
+func shiftOne(s []byte) {
 	for len(s) > 0 {
 		r1, l1 := utf8.DecodeLastRune(s)
 		r2, l2 := utf8.DecodeLastRune(s[:len(s)-l1])
