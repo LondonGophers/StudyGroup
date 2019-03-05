@@ -33,3 +33,28 @@ func reverseUnicode(t []byte) {
 		rs = rs[1:]
 	}
 }
+
+//Can you do it without
+//allocating new memory... Yes!
+func reverse(t []byte) {
+	if len(t) == 0 {
+		return
+	}
+	shiftOne(t)
+	_, l1 := utf8.DecodeRune(t)
+	reverse(t[l1:])
+}
+
+func shiftOne(t []byte) {
+	s := t
+	for len(s) > 0 {
+		r1, l1 := utf8.DecodeLastRune(s)
+		r2, l2 := utf8.DecodeLastRune(s[:len(s)-l1])
+		if r2 == utf8.RuneError {
+			break
+		}
+		utf8.EncodeRune(t[len(s)-l2:len(s)], r2)
+		utf8.EncodeRune(t[len(s)-l1-l2:len(s)-l2], r1)
+		s = s[:len(s)-l2]
+	}
+}

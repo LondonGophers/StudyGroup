@@ -6,9 +6,14 @@ allocating new memory?
 
 ## Logic
 
-I need to find one counter example that shows this is not possible.
-In order for it not be possible I need to show of the three possible
-swaps for a carefully chosen three rune byte array all of them will lose data if no
-new memory is allocated to prevent this..
+I need to find one counter example that shows this is not possible. In
+order for it not be possible I need to show of the three possible
+swaps for a carefully chosen three rune byte array all of them will
+lose data if no new memory is allocated to prevent this..
 
-Which I am still looking for.
+Upon looking for such an example it becomes clear that although it is 
+impossible to swap "over" an rune without needing temporary storage, 
+it is always possible to swap adjacent runes.
+
+Thus, if you swap iteratively each rune from right to left, you can reverse
+a unicode byte array without allocating any new memory..
