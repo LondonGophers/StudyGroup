@@ -14,25 +14,26 @@ import (
 // reversing the sequence would not change it
 func IsPalindrome(s sort.Interface) bool {
 	for i, j := 0, s.Len()-1; i < s.Len()-1/2; i, j = i+1, j-1 {
-		if !equals(i, j, s) {
+		if !equals(s, i, j) {
 			return false
 		}
 	}
 	return true
 }
 
-// equals returns true if the elements at indices `i` and `j` are equal, false otherwise
-func equals(i, j int, s sort.Interface) bool {
+// equals returns true if the elements of `s` at indices `i` and `j` are equal,
+// false otherwise.
+func equals(s sort.Interface, i, j int) bool {
 	return !s.Less(i, j) && !s.Less(j, i)
 }
 
 func main() {
-	sequence := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-	fmt.Printf("%v is palindrome: %t\n", sequence, IsPalindrome(sort.IntSlice(sequence)))
+	sequence := sort.StringSlice([]string{"p", "a", "l", "a", "m", "i", "n", "o"})
+	fmt.Printf("%v => %t\n", sequence, IsPalindrome(sequence))
 
-	palindrome := []int{0, 1, 2, 3, 4, 4, 3, 2, 1, 0}
-	fmt.Printf("%v is palindrome: %t\n", palindrome, IsPalindrome(sort.IntSlice(palindrome)))
+	palindrome := sort.StringSlice([]string{"t", "a", "c", "o", "c", "a", "t"})
+	fmt.Printf("%v   => %t\n", palindrome, IsPalindrome(palindrome))
 
-	same := []int{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-	fmt.Printf("%v is palindrome: %t\n", same, IsPalindrome(sort.IntSlice(same)))
+	repeated := sort.StringSlice([]string{"x", "x", "x", "x", "x", "x", "x", "x"})
+	fmt.Printf("%v => %t\n", repeated, IsPalindrome(repeated))
 }
