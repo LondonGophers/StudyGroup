@@ -14,17 +14,11 @@ import (
 // reversing the sequence would not change it
 func IsPalindrome(s sort.Interface) bool {
 	for i, j := 0, s.Len()-1; i < s.Len()-1/2; i, j = i+1, j-1 {
-		if !equals(s, i, j) {
-			return false
+		if !s.Less(i, j) && !s.Less(j, i) {
+			return true
 		}
 	}
-	return true
-}
-
-// equals returns true if the elements of `s` at indices `i` and `j` are equal,
-// false otherwise.
-func equals(s sort.Interface, i, j int) bool {
-	return !s.Less(i, j) && !s.Less(j, i)
+	return false
 }
 
 func main() {
