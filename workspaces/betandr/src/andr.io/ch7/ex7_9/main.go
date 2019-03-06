@@ -52,7 +52,12 @@ func main() {
 		if len(order) == 0 {
 			order = []music.Attribute{music.Artist, music.Album, music.Title, music.Year, music.Length}
 		} else if len(order) != 5 {
-			http.Error(w, fmt.Sprintf("Bad Request: %d order params found, require 5", len(order)), http.StatusBadRequest)
+			// using `http.ResponseWriter` interface:
+			w.WriteHeader(http.StatusBadRequest)
+			fmt.Fprintf(w, "Bad Request: %d order params found but require 5", len(order))
+			// ...or could use the `http.Error` utility function
+			// msg := fmt.Sprintf("Bad Request: %d order params found but require 5", len(order))
+			// http.Error(w, msg, http.StatusBadRequest)
 			return
 		}
 
@@ -66,7 +71,7 @@ func main() {
 	http.Handle("/vendor/", http.StripPrefix("/vendor", http.FileServer(http.Dir(*homeDir+"/vendor"))))
 	http.HandleFunc("/", handler)
 
-	http.ListenAndServe(":1337", nil)
+	http.ListenAndServe(":8000", nil)
 }
 
 // length takes a string such as `"4m09s"` and returns a `time.Duration` representation of it.
