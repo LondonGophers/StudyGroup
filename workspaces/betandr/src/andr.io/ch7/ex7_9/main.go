@@ -16,7 +16,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"andr.io/ch7/ex7_9/music"
+	"andr.io/ch7/ex7_8/music"
 )
 
 var homeDir = flag.String("home", "", "The full path to the directory containing css, fonts, images, js, templates, and vendor directories")
