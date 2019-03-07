@@ -31,11 +31,11 @@ func main() {
 	log.Fatal(http.ListenAndServe("localhost:8000", nil))
 }
 
-type dollars float32
+type pounds float32
 
-func (d dollars) String() string { return fmt.Sprintf("£%.2f", d) }
+func (p pounds) String() string { return fmt.Sprintf("£%.2f", p) }
 
-type database map[string]dollars
+type database map[string]pounds
 
 func (db database) list(w http.ResponseWriter, req *http.Request) {
 	for item, price := range db {
@@ -67,7 +67,7 @@ func (db database) create(w http.ResponseWriter, req *http.Request) {
 		fmt.Fprintf(w, "invalid price: %s\n", p)
 		return
 	}
-	db[item] = dollars(price)
+	db[item] = pounds(price)
 	fmt.Fprintf(w, "%s: %s\n", item, db[item])
 }
 
@@ -93,7 +93,7 @@ func (db database) update(w http.ResponseWriter, req *http.Request) {
 	}
 
 	if _, ok := db[item]; ok {
-		db[item] = dollars(price)
+		db[item] = pounds(price)
 		fmt.Fprintf(w, "%s\n", db[item])
 	} else {
 		w.WriteHeader(http.StatusNotFound)
