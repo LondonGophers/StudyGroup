@@ -43,7 +43,7 @@ func TestConverter(t *testing.T) {
 	if err != nil {
 		t.Errorf("unexpected error: %v", err)
 	}
-	if got, want := txt, "4.00 mi is 101.60 km, 4.00 km is 0.16 mi"; got != want {
+	if got, want := txt, "4.00 mi is 6.44 km, 4.00 km is 2.49 mi"; got != want {
 		t.Errorf("\ngot:  %s\nwant: %s\n", got, want)
 	}
 }
