@@ -53,7 +53,7 @@ func main() {
 func draw(w io.Writer, xMin, yMin, xMax, yMax, zoom float64) {
 	const (
 		// 	xmin, ymin, xmax, ymax = -2, -2, +2, +2
-		width, height = 1024, 1024
+		width, height = 2880, 2880
 	)
 
 	lenX := xMax - xMin
