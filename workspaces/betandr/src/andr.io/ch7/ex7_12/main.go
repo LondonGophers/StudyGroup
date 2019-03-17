@@ -37,9 +37,6 @@ func (p pounds) String() string { return fmt.Sprintf("£%.2f", p) }
 type database map[string]pounds
 
 func (db database) list(w http.ResponseWriter, req *http.Request) {
-	// for item, price := range db {
-	// 	fmt.Fprintf(w, "%s: %s\n", item, price)
-	// }
 	render(w, db)
 }
 
@@ -68,7 +65,7 @@ func (db database) create(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	db[item] = pounds(price)
-	fmt.Fprintf(w, "%s: %s\n", item, db[item])
+	render(w, db)
 }
 
 func (db database) read(w http.ResponseWriter, req *http.Request) {
@@ -94,7 +91,7 @@ func (db database) update(w http.ResponseWriter, req *http.Request) {
 
 	if _, ok := db[item]; ok {
 		db[item] = pounds(price)
-		fmt.Fprintf(w, "%s\n", db[item])
+		render(w, db)
 	} else {
 		w.WriteHeader(http.StatusNotFound)
 		fmt.Fprintf(w, "no such item: %q\n", item)
@@ -107,7 +104,7 @@ func (db database) delete(w http.ResponseWriter, req *http.Request) {
 	if _, ok := db[item]; ok {
 		delete(db, item)
 		if _, ok := db[item]; !ok {
-			fmt.Fprintf(w, "deleted item: %q\n", item)
+			render(w, db)
 		}
 	} else {
 		w.WriteHeader(http.StatusNotFound)
