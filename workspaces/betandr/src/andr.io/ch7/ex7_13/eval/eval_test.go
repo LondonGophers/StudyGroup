@@ -27,6 +27,8 @@ func TestEval(t *testing.T) {
 		{"-1 + -x", Env{"x": 1}, "-2"},
 		{"-1 - x", Env{"x": 1}, "-2"},
 		//!+Eval
+		// This is a 'broken' version of above to check parenthesis:
+		{"5 / 9 * F - 32", Env{"F": 212}, "85.7778"},
 	}
 	var prevExpr string
 	for _, test := range tests {
