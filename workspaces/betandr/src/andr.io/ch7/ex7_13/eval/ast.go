@@ -10,6 +10,8 @@ type Expr interface {
 	Check(vars map[Var]bool) error
 	// Pretty-print the syntax tree
 	String() string
+	// Brace() reports if this Expr has an enclosing brace
+	Brace() bool
 }
 
 //!+ast
@@ -22,20 +24,23 @@ type literal float64
 
 // A unary represents a unary operator expression, e.g., -x.
 type unary struct {
-	op rune // one of '+', '-'
-	x  Expr
+	op    rune // one of '+', '-'
+	x     Expr
+	brace bool
 }
 
 // A binary represents a binary operator expression, e.g., x+y.
 type binary struct {
-	op   rune // one of '+', '-', '*', '/'
-	x, y Expr
+	op    rune // one of '+', '-', '*', '/'
+	x, y  Expr
+	brace bool
 }
 
 // A call represents a function call expression, e.g., sin(x).
 type call struct {
-	fn   string // one of "pow", "sin", "sqrt"
-	args []Expr
+	fn    string // one of "pow", "sin", "sqrt"
+	args  []Expr
+	brace bool
 }
 
 //!-ast

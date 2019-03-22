@@ -72,26 +72,26 @@ func Parse(input string) (_ Expr, err error) {
 	lex.scan.Init(strings.NewReader(input))
 	lex.scan.Mode = scanner.ScanIdents | scanner.ScanInts | scanner.ScanFloats
 	lex.next() // initial lookahead
-	e := parseExpr(lex)
+	e := parseExpr(lex, false)
 	if lex.token != scanner.EOF {
 		return nil, fmt.Errorf("unexpected %s", lex.describe())
 	}
 	return e, nil
 }
 
-func parseExpr(lex *lexer) Expr { return parseBinary(lex, 1) }
+func parseExpr(lex *lexer, brace bool) Expr { return parseBinary(lex, 1, brace) }
 
 // binary = unary ('+' binary)*
 // parseBinary stops when it encounters an
 // operator of lower precedence than prec1.
-func parseBinary(lex *lexer, prec1 int) Expr {
+func parseBinary(lex *lexer, prec1 int, brace bool) Expr {
 	lhs := parseUnary(lex)
 	for prec := precedence(lex.token); prec >= prec1; prec-- {
 		for precedence(lex.token) == prec {
 			op := lex.token
 			lex.next() // consume operator
-			rhs := parseBinary(lex, prec+1)
-			lhs = binary{op, lhs, rhs}
+			rhs := parseBinary(lex, prec+1, brace)
+			lhs = binary{op, lhs, rhs, brace}
 		}
 	}
 	return lhs
@@ -102,7 +102,7 @@ func parseUnary(lex *lexer) Expr {
 	if lex.token == '+' || lex.token == '-' {
 		op := lex.token
 		lex.next() // consume '+' or '-'
-		return unary{op, parseUnary(lex)}
+		return unary{op, parseUnary(lex), false}
 	}
 	return parsePrimary(lex)
 }
@@ -123,7 +123,7 @@ func parsePrimary(lex *lexer) Expr {
 		var args []Expr
 		if lex.token != ')' {
 			for {
-				args = append(args, parseExpr(lex))
+				args = append(args, parseExpr(lex, false))
 				if lex.token != ',' {
 					break
 				}
@@ -135,7 +135,7 @@ func parsePrimary(lex *lexer) Expr {
 			}
 		}
 		lex.next() // consume ')'
-		return call{id, args}
+		return call{id, args, false}
 
 	case scanner.Int, scanner.Float:
 		f, err := strconv.ParseFloat(lex.text(), 64)
@@ -147,7 +147,7 @@ func parsePrimary(lex *lexer) Expr {
 
 	case '(':
 		lex.next() // consume '('
-		e := parseExpr(lex)
+		e := parseExpr(lex, true)
 		if lex.token != ')' {
 			msg := fmt.Sprintf("got %s, want ')'", lex.describe())
 			panic(lexPanic(msg))

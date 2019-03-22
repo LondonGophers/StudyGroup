@@ -23,14 +23,16 @@ func (u unary) String() string {
 }
 
 func (b binary) String() string {
-	return fmt.Sprintf("%s %s %s", b.x, string(b.op), b.y)
-}
-
-func containsOperator(exprs []Expr) bool {
-	for _, expr := range exprs {
-		fmt.Printf("[%s]", expr)
+	var sb strings.Builder
+	if b.Brace() {
+		sb.WriteString("(")
 	}
-	return false
+	sb.WriteString(fmt.Sprintf("%s %s %s", b.x, string(b.op), b.y))
+	if b.Brace() {
+		sb.WriteString(")")
+	}
+
+	return sb.String()
 }
 
 func (c call) String() string {
