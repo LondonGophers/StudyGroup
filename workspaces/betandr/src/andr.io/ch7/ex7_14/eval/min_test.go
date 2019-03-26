@@ -11,9 +11,9 @@ func TestMin(t *testing.T) {
 		env  Env
 		want string
 	}{
-		{"min(x, y, z)", Env{"x": 3, "y": 4, "z": 5}, "3"},
-		{"min(z, y, x)", Env{"x": 5, "y": 4, "z": 3}, "3"},
-		{"min(x)", Env{"x": 0}, "0"},
+		{"min(x, y)", Env{"x": 3, "y": 4}, "3"},
+		{"min(y, x)", Env{"x": 5, "y": 4}, "4"},
+		{"min(x, x)", Env{"x": 0}, "0"},
 	}
 	for _, test := range tests {
 		expr, err := Parse(test.expr)
