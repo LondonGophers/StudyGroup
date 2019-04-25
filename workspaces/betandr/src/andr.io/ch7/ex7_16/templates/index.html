@@ -1,0 +1,100 @@
+<html> 
+   <head> 
+      <script> 
+         //function that display value 
+         function dis(val) 
+         { 
+             document.getElementById("result").value+=val 
+         } 
+           
+         //function that evaluates the digit and return result 
+         function solve() 
+         { 
+             let x = document.getElementById("result").value 
+             let y = eval(x) 
+             document.getElementById("result").value = y 
+         } 
+           
+         //function that clear the display 
+         function clr() 
+         { 
+             document.getElementById("result").value = "" 
+         } 
+      </script> 
+      <!-- for styling -->
+      <style>   
+         input[type="button"] 
+         { 
+            border-radius: 5px;
+            color: white; 
+            width:100% 
+         } 
+         input[type="text"] 
+         { 
+            width:100% 
+         } 
+         .digit {
+            background-color: #22E6E0;
+            border: solid #22E6E0 1px; 
+         }
+         .op {
+            background-color: #22E67E;
+            border: solid #22E67E 1px; 
+         }
+         .call {
+            background-color: #E67E22;
+            border: solid #E67E22 1px; 
+         }
+         .calc {
+            width: 300px;
+         }
+         table{
+            table-layout: fixed;
+            width: 300px;
+        }
+      </style> 
+   </head> 
+   <!-- create table -->
+   <body> 
+        <table class=calc> 
+            <tr> 
+                <td colspan="5"><input type="text" id="result"/></td> 
+            </tr> 
+            <tr> 
+                <td> </td> 
+                <td> </td> 
+                <td><input type="button" value="(" class="op" onclick="dis('(')"/> </td> 
+                <td><input type="button" value=")" class="op" onclick="dis(')')"/> </td> 
+                <td><input type="button" value="AC" class="call" onclick="clr()"/> </td> 
+            </tr> 
+            <tr>
+                <td><input type="button" value="pow" class="op" onclick="dis('pow(')"/> </td> 
+                <td><input type="button" value="7" class="digit" onclick="dis('7')"/> </td> 
+                <td><input type="button" value="8" class="digit" onclick="dis('8')"/> </td> 
+                <td><input type="button" value="9" class="digit" onclick="dis('9')"/> </td> 
+                <td><input type="button" value="/" class="op" onclick="dis('/')"/> </td> 
+            </tr>
+            <tr>
+                <td><input type="button" value="sin" class="op" onclick="dis('sin(')"/> </td> 
+                <td><input type="button" value="4" class="digit" onclick="dis('4')"/> </td> 
+                <td><input type="button" value="5" class="digit" onclick="dis('5')"/> </td> 
+                <td><input type="button" value="6" class="digit" onclick="dis('6')"/> </td> 
+                <td><input type="button" value="*" class="op" onclick="dis('*')"/> </td> 
+            </tr>
+            <tr>
+                <td><input type="button" value="sqrt" class="op" onclick="dis('sqrt(')"/> </td> 
+                <td><input type="button" value="1" class="digit" onclick="dis('1')"/> </td> 
+                <td><input type="button" value="2" class="digit" onclick="dis('2')"/> </td> 
+                <td><input type="button" value="3" class="digit" onclick="dis('3')"/> </td> 
+                <td><input type="button" value="-" class="op" onclick="dis('-')"/> </td> 
+            </tr>
+            <tr>
+                <td><input type="button" value="min" class="op" onclick="dis('min(')"/> </td> 
+                <td><input type="button" value="0" class="digit" onclick="dis('0')"/> </td> 
+                <td><input type="button" value="." class="op" onclick="dis('.')"/> </td> 
+                <td><input type="button" value="=" class="call" onclick="solve()"/> </td> 
+                <td><input type="button" value="+" class="op" onclick="dis('+')"/> </td> 
+            </tr>
+        </table> 
+   </body> 
+</html>  
