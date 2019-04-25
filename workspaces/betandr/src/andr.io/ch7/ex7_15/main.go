@@ -27,6 +27,10 @@ func promptForValue(key string) float64 {
 }
 
 func main() {
+	if len(os.Args) <= 1 {
+		fmt.Println("usage: evaluate \"{expression}\"")
+		os.Exit(0)
+	}
 	expr, err := eval.Parse(os.Args[1])
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "parse: %v\n", err)
