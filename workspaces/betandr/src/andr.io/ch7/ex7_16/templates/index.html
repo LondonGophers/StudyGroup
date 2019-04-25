@@ -7,12 +7,18 @@
              document.getElementById("result").value+=val 
          } 
            
-         //function that evaluates the digit and return result 
-         function solve() 
+         //function that evaluates the expression
+         function eval() 
          { 
-             let x = document.getElementById("result").value 
-             let y = eval(x) 
-             document.getElementById("result").value = y 
+            const Http = new XMLHttpRequest();
+            let expr = document.getElementById("result").value;
+            let url = "http://localhost:8000/eval?e=" + encodeURIComponent(expr);
+
+            Http.open("GET", url);
+            Http.send();
+            Http.onreadystatechange=(expr)=>{
+                document.getElementById("result").value = Http.responseText;
+            }
          } 
            
          //function that clear the display 
@@ -31,7 +37,8 @@
          } 
          input[type="text"] 
          { 
-            width:100% 
+            width:100%;
+            text-align: right;
          } 
          .digit {
             background-color: #22E6E0;
@@ -62,9 +69,9 @@
             </tr> 
             <tr> 
                 <td> </td> 
-                <td> </td> 
                 <td><input type="button" value="(" class="op" onclick="dis('(')"/> </td> 
                 <td><input type="button" value=")" class="op" onclick="dis(')')"/> </td> 
+                <td><input type="button" value="," class="op" onclick="dis(',')"/> </td> 
                 <td><input type="button" value="AC" class="call" onclick="clr()"/> </td> 
             </tr> 
             <tr>
@@ -92,7 +99,7 @@
                 <td><input type="button" value="min" class="op" onclick="dis('min(')"/> </td> 
                 <td><input type="button" value="0" class="digit" onclick="dis('0')"/> </td> 
                 <td><input type="button" value="." class="op" onclick="dis('.')"/> </td> 
-                <td><input type="button" value="=" class="call" onclick="solve()"/> </td> 
+                <td><input type="button" value="=" class="call" onclick="eval()"/> </td> 
                 <td><input type="button" value="+" class="op" onclick="dis('+')"/> </td> 
             </tr>
         </table> 
