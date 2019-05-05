@@ -10,11 +10,8 @@ import (
 	"os"
 )
 
-var palette = []color.Color{color.Black, color.RGBA{0x00, 0xff, 0x00, 0xff}}
-
 const (
-	blackIndex = 0 // first color in palette
-	greenIndex = 1 // next color in palette
+	greenIndex = 1
 )
 
 func main() {
@@ -22,6 +19,7 @@ func main() {
 }
 
 func lissajous(out io.Writer) {
+	var palette = []color.Color{color.Black, color.RGBA{0x00, 0xff, 0x00, 0xff}}
 	const (
 		cycles  = 5     // number of complete x oscillator revolutions
 		res     = 0.001 // angular resolution
@@ -45,5 +43,5 @@ func lissajous(out io.Writer) {
 		anim.Delay = append(anim.Delay, delay)
 		anim.Image = append(anim.Image, img)
 	}
-	gif.EncodeAll(out, &anim) // NOTE: ignoring encoding errors
+	_ = gif.EncodeAll(out, &anim) // NOTE: ignoring encoding errors
 }
