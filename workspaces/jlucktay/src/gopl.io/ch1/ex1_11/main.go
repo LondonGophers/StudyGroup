@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/csv"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -20,10 +21,9 @@ func main() {
 		log.Infof("Failed to log to file, using default stderr: %v", errOpenLog)
 	}
 
-	urls := getUrls("alexa.top50.txt")
-
-	start := time.Now()
 	ch := make(chan string)
+	urls := getUrls("alexa.top50.txt")
+	start := time.Now()
 	for _, url := range urls {
 		go fetch(url, ch) // start a goroutine
 	}
@@ -31,6 +31,16 @@ func main() {
 		log.Info(<-ch) // receive from channel ch
 	}
 	log.Infof("%.2fs elapsed", time.Since(start).Seconds())
+
+	urlsMaj := getUrlsCsv("majestic_million.1000.csv", 2)
+	startMaj := time.Now()
+	for _, url := range urlsMaj {
+		go fetch(url, ch) // start a goroutine
+	}
+	for range urlsMaj {
+		log.Info(<-ch) // receive from channel ch
+	}
+	log.Infof("%.2fs elapsed; count: %d", time.Since(startMaj).Seconds(), len(urlsMaj))
 }
 
 func fetch(url string, ch chan<- string) {
@@ -60,4 +70,28 @@ func getUrls(filename string) []string {
 		log.Fatalf("error opening '%s': %v", filename, errRead)
 	}
 	return strings.Split(string(urlBytes), "\n")
+}
+
+func getUrlsCsv(filename string, urlIndex int) []string {
+	file, errOpen := os.Open(filename)
+	if errOpen != nil {
+		log.Fatalf("Failed to open '%s': %v", filename, errOpen)
+	}
+
+	urls := make([]string, 0)
+	r := csv.NewReader(file)
+
+	for {
+		record, err := r.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		urls = append(urls, record[urlIndex])
+	}
+
+	return urls
 }
