@@ -6,6 +6,21 @@ import (
 	"os"
 )
 
+var stop = make(map[string]struct{})
+
+func init() {
+	f, err := os.Open("STOPWORDS")
+	if err != nil {
+		panic(err)
+	}
+	process := bufio.NewScanner(f)
+	process.Split(bufio.ScanWords)
+	for process.Scan() {
+		w := process.Text()
+		stop[w] = struct{}{}
+	}
+}
+
 func main() {
 	input := bufio.NewScanner(os.Stdin)
 	input.Split(bufio.ScanWords)
@@ -18,6 +33,11 @@ func main() {
 		}
 
 		word := input.Text()
+		//ignore stop words
+		if _, ok := stop[word]; ok {
+			continue
+		}
+
 		counts[word]++
 	}
 
