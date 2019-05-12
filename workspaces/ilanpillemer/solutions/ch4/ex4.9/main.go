@@ -10,6 +10,7 @@ var stop = make(map[string]struct{})
 
 func init() {
 	f, err := os.Open("STOPWORDS")
+	defer f.Close()
 	if err != nil {
 		panic(err)
 	}
