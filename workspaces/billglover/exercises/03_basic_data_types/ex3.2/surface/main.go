@@ -1,0 +1,85 @@
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+const (
+	width, height = 600, 320            // canvas size in pixels
+	cells         = 100                 // number of grid cells
+	xyrange       = 30.0                // axis ranges [-xyrange..+xyrange]
+	xyscale       = width / 2 / xyrange // pixels per x or y unit
+	zscale        = height * 0.4        // pixels per z unit
+	angle         = math.Pi / 6         // angle of x, y axes (=30°)
+)
+
+var sin30, cos30 = math.Sin(angle), math.Cos(angle) // sin(30°), cos (30°)
+
+func main() {
+	fmt.Printf("<svg xmlns='http://www.w3.org/2000/svg' "+
+		"style='stroke: grey; fill: white; stroke-width: 0.7' "+
+		"width='%d' height='%d'>\n", width, height)
+
+	shape := paper
+
+	for i := 0; i < cells; i++ {
+		for j := 0; j < cells; j++ {
+			ax, ay, oka := corner(i+1, j, shape)
+			bx, by, okb := corner(i, j, shape)
+			cx, cy, okc := corner(i, j+1, shape)
+			dx, dy, okd := corner(i+1, j+1, shape)
+			if !(oka && okb && okc && okd) {
+				continue
+			}
+
+			fmt.Printf("\t<polygon points='%g,%g %g,%g %g,%g %g,%g'/>\n",
+				ax, ay, bx, by, cx, cy, dx, dy)
+		}
+	}
+	fmt.Println("</svg>")
+}
+
+func corner(i, j int, f func(float64, float64) float64) (float64, float64, bool) {
+	// Find point (x,y) at corner of cell (i,j).
+	x := xyrange * (float64(i)/cells - 0.5)
+	y := xyrange * (float64(j)/cells - 0.5)
+
+	// Compute surface height z.
+	z := f(x, y)
+	ok := !(math.IsNaN(z) || math.IsInf(z, 0))
+
+	// Project (x,y,z) isometrically onto 2-D SVG canvas (sx,sy).
+	sx := width/2 + (x-y)*cos30*xyscale
+	sy := height/2 + (x+y)*sin30*xyscale - z*zscale
+	return sx, sy, ok
+}
+
+func original(x, y float64) float64 {
+	r := math.Hypot(x, y) // distance from (0,0)
+	return math.Sin(r) / r
+}
+
+func eggBox(x, y float64) float64 {
+	r := math.Sin(x) - math.Sin(y)
+	r = r / 10
+	return r
+}
+
+func saddle(x, y float64) float64 {
+	r := x*x - y*y
+	r = r / 500
+	return r
+}
+
+func monkeySaddle(x, y float64) float64 {
+	r := 0.5*x*x*x - 3*x*y*y
+	r = r / 10000
+	return r
+}
+
+func paper(x, y float64) float64 {
+	r := x*x*x - y*y*y
+	r = r / 10000
+	return r
+}
