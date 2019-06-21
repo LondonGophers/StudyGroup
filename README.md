@@ -36,7 +36,21 @@ time! :)
 To begin, create your own directory in the [workspaces](workspaces) directory,
 work through the book exercises, and add your code there. When committing to the 
 repo just commit directly to `master` but before you do so make sure you run 
-`git pull -r` (`-r` to rebase) before you push, to avoid _merge commits_.
+`git pull -r` (`-r` to rebase) before you push, to avoid _merge commits_. It may be 
+easier to instead run:
+```
+git config branch.autosetuprebase always
+```
+...in the repository directory to ensure that git pull always performs a rebase, 
+rather than a merge, on `git pull`.
+
+To do this for all repositories (a global setting) use:
+```
+git config --global branch.autosetuprebase always
+```
+
+[branch]
+        autosetuprebase = always
 
 You can add your code in separate directories if you're using 
 [Go Modules](#b-running-go-with-go-modules) or if you're 
