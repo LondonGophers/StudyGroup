@@ -49,9 +49,6 @@ To do this for all repositories (a global setting) use:
 git config --global branch.autosetuprebase always
 ```
 
-[branch]
-        autosetuprebase = always
-
 You can add your code in separate directories if you're using 
 [Go Modules](#b-running-go-with-go-modules) or if you're 
 [using a GOPATH](#a-running-go-with-a-gopath) you could structure your code as 
