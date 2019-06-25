@@ -15,9 +15,11 @@ import (
 	"strings"
 )
 
+// fetch http://www.w3.org/TR/2006/REC-xml11-20060816 | go run andr.io/ch7/ex7_17 div div h2
 func main() {
 	dec := xml.NewDecoder(os.Stdin)
-	var stack []string // stack of element names
+	// var stack []string // stack of element names
+	var stack []xml.StartElement
 	for {
 		tok, err := dec.Token()
 		if err == io.EOF {
@@ -28,27 +30,41 @@ func main() {
 		}
 		switch tok := tok.(type) {
 		case xml.StartElement:
-			stack = append(stack, tok.Name.Local) // push
+			stack = append(stack, tok) // push
 		case xml.EndElement:
 			stack = stack[:len(stack)-1] // pop
 		case xml.CharData:
-			if containsAll(stack, os.Args[1:]) {
-				fmt.Printf("%s: %s\n", strings.Join(stack, " "), tok)
+			if elements, ok := containsAll(stack, os.Args[1:]); ok {
+				fmt.Printf("%s: %s\n", strings.Join(elements, " "), tok)
 			}
 		}
 	}
 }
 
 // containsAll reports whether x contains the elements of y, in order.
-func containsAll(x, y []string) bool {
+func containsAll(x []xml.StartElement, y []string) ([]string, bool) {
+	elements := []string{}
+
 	for len(y) <= len(x) {
 		if len(y) == 0 {
-			return true
+			return elements, true
 		}
-		if x[0] == y[0] {
+		if x[0].Name.Local == y[0] {
+			elements = append(elements, x[0].Name.Local)
 			y = y[1:]
+		} else {
+			for _, a := range x[0].Attr {
+				if a.Name.Local == y[0] {
+					elements = append(elements, a.Name.Local)
+					y = y[1:]
+				} else if a.Value == y[0] {
+					elements = append(elements, a.Name.Local)
+					y = y[1:]
+				}
+			}
 		}
+
 		x = x[1:]
 	}
-	return false
+	return elements, false
 }
