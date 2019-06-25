@@ -3,8 +3,6 @@
 // like `<div id="page" class="wide">` could be selected by matching `id` or
 // `class` as well as its name.
 //
-// WORK IN PROGRESS
-// fetch http://www.w3.org/TR/2006/REC-xml11-20060816 | go run andr.io/ch7/ex7_17 div div h2
 package main
 
 import (
@@ -15,7 +13,16 @@ import (
 	"strings"
 )
 
-// fetch http://www.w3.org/TR/2006/REC-xml11-20060816 | go run andr.io/ch7/ex7_17 div div h2
+// fetch https://pastebin.com/raw/ePEp6w2Y | go run andr.io/ch7/ex7_17 breakfast_menu food name
+// breakfast_menu food name: Belgian Waffles
+// breakfast_menu food name: Strawberry Belgian Waffles
+// breakfast_menu food name: Berry-Berry Belgian Waffles
+// breakfast_menu food name: French Toast
+// breakfast_menu food name: Homestyle Breakfast
+//
+// fetch https://pastebin.com/raw/ePEp6w2Y | go run andr.io/ch7/ex7_17  breakfast_menu special name
+// breakfast_menu special name: Belgian Waffles
+// breakfast_menu special name: Homestyle Breakfast
 func main() {
 	dec := xml.NewDecoder(os.Stdin)
 	// var stack []string // stack of element names
