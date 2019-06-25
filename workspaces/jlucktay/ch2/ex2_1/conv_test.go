@@ -41,6 +41,34 @@ func TestCtoF(t *testing.T) {
 	}
 }
 
+func TestCtoK(t *testing.T) {
+	testCases := map[string]struct {
+		input    tempconv.Celsius
+		expected tempconv.Kelvin
+	}{
+		"Thirty two": {
+			input:    32,
+			expected: 305.15,
+		},
+		"Two hundred and twelve": {
+			input:    212,
+			expected: 485.15,
+		},
+		"Minus forty": {
+			input:    -40,
+			expected: 233.15,
+		},
+	}
+	for name, tC := range testCases {
+		tC := tC // pin!
+		t.Run(name, func(t *testing.T) {
+			if actual := tempconv.CToK(tC.input); !floatEquals(t, tC.expected, actual) {
+				t.Errorf("Expected '%v' but got '%v'.", tC.expected, actual)
+			}
+		})
+	}
+}
+
 func TestFtoC(t *testing.T) {
 	testCases := map[string]struct {
 		input    tempconv.Fahrenheit
@@ -63,6 +91,90 @@ func TestFtoC(t *testing.T) {
 		tC := tC // pin!
 		t.Run(name, func(t *testing.T) {
 			if actual := tempconv.FToC(tC.input); !floatEquals(t, tC.expected, actual) {
+				t.Errorf("Expected '%v' but got '%v'.", tC.expected, actual)
+			}
+		})
+	}
+}
+
+func TestFtoK(t *testing.T) {
+	testCases := map[string]struct {
+		input    tempconv.Fahrenheit
+		expected tempconv.Kelvin
+	}{
+		"Thirty two": {
+			input:    32,
+			expected: 273.15,
+		},
+		"Two hundred and twelve": {
+			input:    212,
+			expected: 373.15,
+		},
+		"Minus forty": {
+			input:    -40,
+			expected: 233.15,
+		},
+	}
+	for name, tC := range testCases {
+		tC := tC // pin!
+		t.Run(name, func(t *testing.T) {
+			if actual := tempconv.FToK(tC.input); !floatEquals(t, tC.expected, actual) {
+				t.Errorf("Expected '%v' but got '%v'.", tC.expected, actual)
+			}
+		})
+	}
+}
+
+func TestKtoC(t *testing.T) {
+	testCases := map[string]struct {
+		input    tempconv.Kelvin
+		expected tempconv.Celsius
+	}{
+		"Thirty two": {
+			input:    32,
+			expected: 305.15,
+		},
+		"Two hundred and twelve": {
+			input:    212,
+			expected: 485.15,
+		},
+		"Minus forty": {
+			input:    -40,
+			expected: 233.15,
+		},
+	}
+	for name, tC := range testCases {
+		tC := tC // pin!
+		t.Run(name, func(t *testing.T) {
+			if actual := tempconv.KToC(tC.input); !floatEquals(t, tC.expected, actual) {
+				t.Errorf("Expected '%v' but got '%v'.", tC.expected, actual)
+			}
+		})
+	}
+}
+
+func TestKtoF(t *testing.T) {
+	testCases := map[string]struct {
+		input    tempconv.Kelvin
+		expected tempconv.Fahrenheit
+	}{
+		"Thirty two": {
+			input:    32,
+			expected: -402.07,
+		},
+		"Two hundred and twelve": {
+			input:    212,
+			expected: -78.07,
+		},
+		"Minus forty": {
+			input:    -40,
+			expected: -531.67,
+		},
+	}
+	for name, tC := range testCases {
+		tC := tC // pin!
+		t.Run(name, func(t *testing.T) {
+			if actual := tempconv.KToF(tC.input); !floatEquals(t, tC.expected, actual) {
 				t.Errorf("Expected '%v' but got '%v'.", tC.expected, actual)
 			}
 		})
