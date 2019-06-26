@@ -180,15 +180,15 @@ func TestKtoC(t *testing.T) {
 	}{
 		"Thirty two": {
 			input:    32,
-			expected: 305.15,
+			expected: -241.15,
 		},
 		"Two hundred and twelve": {
 			input:    212,
-			expected: 485.15,
+			expected: -61.15,
 		},
 		"Minus forty": {
 			input:    -40,
-			expected: 233.15,
+			expected: -313.15,
 		},
 		"Absolute zero": {
 			input:    tempconv.AbsoluteZeroK,
