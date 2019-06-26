@@ -30,6 +30,18 @@ func TestCtoF(t *testing.T) {
 			input:    -40,
 			expected: -40,
 		},
+		"Absolute zero": {
+			input:    tempconv.AbsoluteZeroC,
+			expected: tempconv.AbsoluteZeroF,
+		},
+		"Freezing": {
+			input:    tempconv.FreezingC,
+			expected: tempconv.FreezingF,
+		},
+		"Boiling": {
+			input:    tempconv.BoilingC,
+			expected: tempconv.BoilingF,
+		},
 	}
 	for name, tC := range testCases {
 		tC := tC // pin!
@@ -57,6 +69,18 @@ func TestCtoK(t *testing.T) {
 		"Minus forty": {
 			input:    -40,
 			expected: 233.15,
+		},
+		"Absolute zero": {
+			input:    tempconv.AbsoluteZeroC,
+			expected: tempconv.AbsoluteZeroK,
+		},
+		"Freezing": {
+			input:    tempconv.FreezingC,
+			expected: tempconv.FreezingK,
+		},
+		"Boiling": {
+			input:    tempconv.BoilingC,
+			expected: tempconv.BoilingK,
 		},
 	}
 	for name, tC := range testCases {
@@ -86,6 +110,18 @@ func TestFtoC(t *testing.T) {
 			input:    -40,
 			expected: -40,
 		},
+		"Absolute zero": {
+			input:    tempconv.AbsoluteZeroF,
+			expected: tempconv.AbsoluteZeroC,
+		},
+		"Freezing": {
+			input:    tempconv.FreezingF,
+			expected: tempconv.FreezingC,
+		},
+		"Boiling": {
+			input:    tempconv.BoilingF,
+			expected: tempconv.BoilingC,
+		},
 	}
 	for name, tC := range testCases {
 		tC := tC // pin!
@@ -113,6 +149,18 @@ func TestFtoK(t *testing.T) {
 		"Minus forty": {
 			input:    -40,
 			expected: 233.15,
+		},
+		"Absolute zero": {
+			input:    tempconv.AbsoluteZeroF,
+			expected: tempconv.AbsoluteZeroK,
+		},
+		"Freezing": {
+			input:    tempconv.FreezingF,
+			expected: tempconv.FreezingK,
+		},
+		"Boiling": {
+			input:    tempconv.BoilingF,
+			expected: tempconv.BoilingK,
 		},
 	}
 	for name, tC := range testCases {
@@ -142,6 +190,18 @@ func TestKtoC(t *testing.T) {
 			input:    -40,
 			expected: 233.15,
 		},
+		"Absolute zero": {
+			input:    tempconv.AbsoluteZeroK,
+			expected: tempconv.AbsoluteZeroC,
+		},
+		"Freezing": {
+			input:    tempconv.FreezingK,
+			expected: tempconv.FreezingC,
+		},
+		"Boiling": {
+			input:    tempconv.BoilingK,
+			expected: tempconv.BoilingC,
+		},
 	}
 	for name, tC := range testCases {
 		tC := tC // pin!
@@ -169,6 +229,18 @@ func TestKtoF(t *testing.T) {
 		"Minus forty": {
 			input:    -40,
 			expected: -531.67,
+		},
+		"Absolute zero": {
+			input:    tempconv.AbsoluteZeroK,
+			expected: tempconv.AbsoluteZeroF,
+		},
+		"Freezing": {
+			input:    tempconv.FreezingK,
+			expected: tempconv.FreezingF,
+		},
+		"Boiling": {
+			input:    tempconv.BoilingK,
+			expected: tempconv.BoilingF,
 		},
 	}
 	for name, tC := range testCases {
