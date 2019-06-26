@@ -1,4 +1,4 @@
-# GLUG — Study Group
+# Go London Study Group
 
 <p align="center">
   <img width="209" height="300" src="https://raw.githubusercontent.com/go-london-user-group/study-group/master/resources/gopher-study.png">
@@ -20,7 +20,7 @@ We follow the [Go Code of Conduct](https://golang.org/conduct), in summary:
 
 ## The Workshop
 
-Visit the [London Gophers Study Group Meetup](https://www.meetup.com/London-Gophers-Study-Group/) for details of our IRL study group meetings.
+Visit the [Go London Study Group Meetup](https://www.meetup.com/Go-London-Study-Group/) for details of our IRL study group meetings.
 
 Find us on Slack in the `#london-study-group` channel of the `gophers.slack.com` workspace.
 
