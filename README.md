@@ -12,7 +12,7 @@ func main() {
 
 ## Code of Conduct
 
-We follow the [Go Code of Conduct](https://golang.org/conduct), in summary:
+We follow the [Go Code of Conduct](https://golang.org/conduct) and the [Contributor Covenant](https://github.com/go-london-user-group/study-group/blob/master/CONTRIBUTING.md), in summary:
 
 - Treat everyone with respect and kindness.
 - Be thoughtful in how you communicate.
