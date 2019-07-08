@@ -25,9 +25,12 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 )
 
 type Node interface{} // CharData or *Element
+
+type stack []Node
 
 type CharData string
 
@@ -37,28 +40,73 @@ type Element struct {
 	Children []Node
 }
 
+// push adds an element onto the LIFO stack
+func (s stack) push(element *Element) {
+	s = append(s, element)
+}
+
+// pop removes the last element from a LIFO stack
+func (s stack) pop() {
+	s = s[:len(s)-1]
+}
+
+// peek returns the last element from a LIFO stack
+func (s stack) peek() *Element {
+	n := s[len(s)-1]
+	e := n.(Element)
+	return &e
+}
+
+func construct(dec *xml.Decoder, s stack) {
+	tok, err := dec.Token()
+
+	if err == io.EOF {
+		return
+	} else if err != nil {
+		fmt.Fprintf(os.Stderr, "error constructing: %v\n", err)
+		os.Exit(1)
+	}
+
+	switch tok := tok.(type) {
+	case xml.StartElement:
+		element := Element{
+			Type: tok.Name,
+			Attr: tok.Attr,
+		}
+		e := s.peek()
+		e.Children = append(e.Children, element)
+		s.push(&element)
+
+	case xml.CharData:
+		data := strings.Trim(strings.Trim(string([]byte(tok)), " "), "\n")
+		if len(data) > 0 {
+			e := s.peek()
+			e.Children = append(e.Children, data)
+		}
+
+	case xml.EndElement:
+		s.pop()
+	}
+
+	construct(dec, s)
+}
+
+func traverse(node Node) {
+	switch n := node.(type) {
+	case Element:
+		fmt.Println(n.Type.Local)
+		for c := range n.Children {
+			traverse(c)
+		}
+	case CharData:
+		fmt.Println(n)
+	}
+}
+
 // fetch https://pastebin.com/raw/ePEp6w2Y | go run andr.io/ch7/ex7_18
 func main() {
-	dec := xml.NewDecoder(os.Stdin)
-
-	for {
-		tok, err := dec.Token()
-
-		if err == io.EOF {
-			break
-		} else if err != nil {
-			fmt.Fprintf(os.Stderr, "xmlselect: %v\n", err)
-			os.Exit(1)
-		}
-		switch tok := tok.(type) {
-		case xml.StartElement:
-			element := Element{
-				Type: tok.Name,
-				Attr: tok.Attr,
-			}
-			fmt.Printf("%v ", element)
-		case xml.CharData:
-			fmt.Printf("%s", tok)
-		}
-	}
+	stack := make([]Node, 1)
+	stack[0] = Element{}
+	construct(xml.NewDecoder(os.Stdin), stack)
+	traverse(stack[0])
 }
