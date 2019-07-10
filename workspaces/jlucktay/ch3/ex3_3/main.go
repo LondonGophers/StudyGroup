@@ -23,20 +23,28 @@ func main() {
 		"width='%d' height='%d'>", width, height)
 	for i := 0; i < cells; i++ {
 		for j := 0; j < cells; j++ {
-			ax, ay, errA := corner(i+1, j)
-			bx, by, errB := corner(i, j)
-			cx, cy, errC := corner(i, j+1)
-			dx, dy, errD := corner(i+1, j+1)
+			ax, ay, z, errA := corner(i+1, j)
+			bx, by, _, errB := corner(i, j)
+			cx, cy, _, errC := corner(i, j+1)
+			dx, dy, _, errD := corner(i+1, j+1)
 
-			if errA == nil && errB == nil && errC == nil && errD == nil {
-				fmt.Printf("<polygon points='%g,%g %g,%g %g,%g %g,%g'/>\n", ax, ay, bx, by, cx, cy, dx, dy)
+			if errA != nil || errB != nil || errC != nil || errD != nil {
+				continue
+			}
+
+			if z > 0 {
+				fmt.Printf("<polygon points='%g,%g %g,%g %g,%g %g,%g' style='stroke: red'/>\n",
+					ax, ay, bx, by, cx, cy, dx, dy)
+			} else {
+				fmt.Printf("<polygon points='%g,%g %g,%g %g,%g %g,%g' style='stroke: blue'/>\n",
+					ax, ay, bx, by, cx, cy, dx, dy)
 			}
 		}
 	}
 	fmt.Println("</svg>")
 }
 
-func corner(i, j int) (float64, float64, error) {
+func corner(i, j int) (float64, float64, float64, error) {
 	// Find point (x,y) at corner of cell (i,j).
 	x := xyrange * (float64(i)/cells - 0.5)
 	y := xyrange * (float64(j)/cells - 0.5)
@@ -45,16 +53,16 @@ func corner(i, j int) (float64, float64, error) {
 	z := f(x, y)
 
 	if math.IsInf(z, 0) || math.IsNaN(z) {
-		return 0, 0, errors.New("non-finite value calculated")
+		return 0, 0, 0, errors.New("non-finite value calculated")
 	}
 
 	// Project (x,y,z) isometrically onto 2-D SVG canvas (sx,sy).
 	sx := width/2 + (x-y)*cos30*xyscale
 	sy := height/2 + (x+y)*sin30*xyscale - z*zscale
-	return sx, sy, nil
+	return sx, sy, z, nil
 }
 
 func f(x, y float64) float64 {
 	r := math.Hypot(x, y) // distance from (0,0)
-	return math.Cbrt(r) / r
+	return math.Sin(r) / r
 }
