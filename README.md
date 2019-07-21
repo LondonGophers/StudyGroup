@@ -96,7 +96,50 @@ location or using _Go Modules_ which allow you to split your code into separate
 locations. It might be easier to use a GOPATH pointing to all of your workshop
 code but you might find modules more appropriate.
 
-### a. Running Go with a GOPATH
+### a. Running Go with Go Modules)
+
+_Go modules_ are available in Go 1.11 onwards which removes the need to
+have a `$GOPATH` set.
+
+To use modules in your project directory, run:
+
+```
+go mod init $MODULE
+```
+...where `$MODULE` is the name of your module. For these exercises this could be something 
+simple but in production code would be a domain name and path, such as 
+`github.com/somebody/component`. This will create a file called `go.mod`.
+
+To include an external dependency to your project just add the import, such as:
+```
+package main
+
+import "github.com/some/dependency"
+
+func main() {
+    dependency.f()
+}
+```
+
+When running your code this module should be automatically downloaded and added to your
+`go.mod` file which could look like:
+```
+module github.com/somebody/component
+
+require (
+    github.com/some/dependency v1.2.3
+)
+```
+
+Because we have a number of separate components in one place we probably want to run things 
+individually rather than all samples together. Something like this will run one exercise:
+
+```
+go run ./$MODULE/ch1/ex1_1
+```
+...assuming your code is in the path `./$MODULE/ch1/ex1_1` underneath your `go.mod` file.
+
+### b. Running Go with a GOPATH
 
 The traditional way to run/build Go code (prior to _Go Modules_) is using a
 GOPATH. You should set your `$GOPATH` to your current directory, such as:
@@ -138,54 +181,6 @@ workspaces
                         main.go
                 ...
 ```
-
-
-### b. Running Go with Go Modules)
-
-_Go modules_ are an new feature in Go 1.11 which removes the need to
-have a `$GOPATH` set.
-
-To use modules in your project directory, run:
-
-```
-go mod init example.com/foo
-```
-...where `example.com` is replaced with your own domain name (or something like
-`github.com` if your code is in a github repo) and `foo` is your package/component name.
-This will create a file called `go.mod`.
-
-If you have a main function in your project directory you can also run your code using:
-```
-go run .
-```
-...and build it using:
-```
-go build .
-```
-...etc.
-
-To include a module to your project you can add the external module to your
-`go.mod` file which would look like:
-```
-module example.com/foo
-
-require (
-    github.com/some/dependency v1.2.3
-)
-```
-...then import it and use it in your code:
-```
-package main
-
-import "github.com/some/dependency"
-
-func main() {
-    dependency.f()
-}
-```
-
-Your own local packages are imported such as `import "example.com/foo/package"`.
-
 
 ## 5. Development Environments
 
