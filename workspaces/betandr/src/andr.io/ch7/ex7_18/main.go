@@ -28,85 +28,73 @@ import (
 	"strings"
 )
 
-type Node interface{} // CharData or *Element
+// Node is either a CharData or *Element
+type Node interface{}
 
-type stack []Node
-
+// CharData represents XML character data (raw text), in which XML
+// escape sequences have been replaced by the characters they represent.
 type CharData string
 
+// Element represents an XML node with attributes and child nodes.
 type Element struct {
 	Type     xml.Name
 	Attr     []xml.Attr
 	Children []Node
 }
 
-// push adds an element onto the LIFO stack
-func (s stack) push(element *Element) {
-	s = append(s, element)
-}
+func parse(dec *xml.Decoder) *Element {
+	var stack []*Element
+	root := &Element{Type: xml.Name{Local: "root"}} // add a root node we can return
+	stack = append(stack, root)
 
-// pop removes the last element from a LIFO stack
-func (s stack) pop() {
-	s = s[:len(s)-1]
-}
+	for {
+		tok, err := dec.Token()
 
-// peek returns the last element from a LIFO stack
-func (s stack) peek() *Element {
-	n := s[len(s)-1]
-	e := n.(Element)
-	return &e
-}
-
-func construct(dec *xml.Decoder, s stack) {
-	tok, err := dec.Token()
-
-	if err == io.EOF {
-		return
-	} else if err != nil {
-		fmt.Fprintf(os.Stderr, "error constructing: %v\n", err)
-		os.Exit(1)
-	}
-
-	switch tok := tok.(type) {
-	case xml.StartElement:
-		element := Element{
-			Type: tok.Name,
-			Attr: tok.Attr,
-		}
-		e := s.peek()
-		e.Children = append(e.Children, element)
-		s.push(&element)
-
-	case xml.CharData:
-		data := strings.Trim(strings.Trim(string([]byte(tok)), " "), "\n")
-		if len(data) > 0 {
-			e := s.peek()
-			e.Children = append(e.Children, data)
+		if err == io.EOF { // end of input
+			return root
+		} else if err != nil {
+			fmt.Fprintf(os.Stderr, "error constructing: %v\n", err)
+			os.Exit(1)
 		}
 
-	case xml.EndElement:
-		s.pop()
-	}
+		switch tok := tok.(type) {
+		case xml.StartElement:
+			child := &Element{
+				Type: tok.Name,
+				Attr: tok.Attr,
+			}
+			parent := stack[len(stack)-1]                    // pop
+			parent.Children = append(parent.Children, child) // push
+			stack = append(stack, child)
+		case xml.CharData:
+			parent := stack[len(stack)-1] // pop
+			parent.Children = append(parent.Children, CharData(tok))
 
-	construct(dec, s)
+		case xml.EndElement:
+			stack = stack[:len(stack)-1] // pop
+		}
+	}
 }
 
-func traverse(node Node) {
+// print starts from the specified node and prints nodes and traverses to child nodes
+func print(node Node) {
 	switch n := node.(type) {
-	case Element:
-		fmt.Println(n.Type.Local)
-		for c := range n.Children {
-			traverse(c)
+	case *Element:
+		fmt.Printf("element: %s has %d child(ren):\n", n.Type.Local, len(n.Children))
+		for _, child := range n.Children {
+			print(child)
 		}
 	case CharData:
-		fmt.Println(n)
+		data := strings.Trim(strings.Trim(string([]byte(n)), " "), "\n")
+		if len(data) > 1 {
+			fmt.Printf("\tdata: %s\n", data)
+		}
+		return
 	}
 }
 
 // fetch https://pastebin.com/raw/ePEp6w2Y | go run andr.io/ch7/ex7_18
 func main() {
-	stack := make([]Node, 1)
-	stack[0] = Element{}
-	construct(xml.NewDecoder(os.Stdin), stack)
-	traverse(stack[0])
+	node := parse(xml.NewDecoder(os.Stdin))
+	print(node)
 }
