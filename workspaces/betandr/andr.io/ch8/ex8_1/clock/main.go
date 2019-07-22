@@ -5,44 +5,46 @@
 // run instances remotely; otherwise run local instances on different ports with
 // fake time-zones.
 // ```
-//   $ TZ=US/Eastern     ./clock2 -port 8010 &
-//   $ TZ=Asia/Tokyo     ./clock2 -port 8020 &
-//   $ TZ=Europe/London  ./clock2 -port 8030 &
-//   $ clockwall NewYork=localhost:8010 Tokyo=localhost:8010 London=localhost:8010
+//   $ TZ=US/Eastern     ./clock -port 8010 &
+//   $ TZ=Asia/Tokyo     ./clock -port 8020 &
+//   $ TZ=Europe/London  ./clock -port 8030 &
+//   $ clockwall NewYork=localhost:8010 Tokyo=localhost:8020 London=localhost:8030
 // ```
 package main
 
 import (
+	"flag"
+	"fmt"
 	"io"
 	"log"
 	"net"
 	"time"
 )
 
-func handleConn(c net.Conn) {
+var port = flag.Int("port", 8000, "Port number to run clock")
+
+func sendTime(c net.Conn) {
 	defer c.Close()
 	for {
 		_, err := io.WriteString(c, time.Now().Format("15:04:05\n"))
 		if err != nil {
-			return // e.g., client disconnected
+			return
 		}
 		time.Sleep(1 * time.Second)
 	}
 }
 
 func main() {
-	listener, err := net.Listen("tcp", "localhost:8000")
+	flag.Parse()
+
+	address := fmt.Sprintf("localhost:%d", *port)
+
+	conn, err := net.Dial("tcp", address)
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
-	//!+
+
 	for {
-		conn, err := listener.Accept()
-		if err != nil {
-			log.Print(err) // e.g., connection aborted
-			continue
-		}
-		go handleConn(conn) // handle connections concurrently
+		sendTime(conn)
 	}
-	//!-
 }
