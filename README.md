@@ -58,6 +58,11 @@ If you need the exercises from the book, they're available in
 [exercises.tar.gz](exercises.tar.gz) zipped archive but these are already in the
 book so you might not need them.
 
+To obtain all of the source code examples used in the book (many of which are code 
+examples to be amended) you can get this by running:
+```
+git clone https://github.com/adonovan/gopl.io.git
+```
 
 ## 2. Installing Go
 
