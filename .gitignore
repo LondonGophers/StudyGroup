@@ -3,7 +3,7 @@
 pkg/
 
 workspaces/betandr/bin
-workspaces/betandr/src/github.com
-workspaces/betandr/src/gopl.io
-workspaces/betandr/src/golang.org
-workspaces/betandr/src/andr.io/ch4/ex4_12/index
+workspaces/betandr/github.com
+workspaces/betandr/gopl.io
+workspaces/betandr/golang.org
+workspaces/betandr/andr.io/ch4/ex4_12/index
