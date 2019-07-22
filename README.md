@@ -96,10 +96,9 @@ go get gopl.io/ch1/helloworld
 
 ## 4. Building and Running Go
 
-There are two main options, by setting a `GOPATH` and having all of your code in one
-location or using _Go Modules_ which allow you to split your code into separate
-locations. It might be easier to use a GOPATH pointing to all of your workshop
-code but you might find modules more appropriate.
+There are two main options, by using _Go Modules_ or by setting a `GOPATH`. You may 
+wish to use a GOPATH pointing to all of your workshop code but you might find modules 
+more appropriate and this is now the recommended approach.
 
 ### a. Running Go with Go Modules)
 
