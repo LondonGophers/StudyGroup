@@ -20,7 +20,9 @@ import (
 	"os"
 	"sort"
 	"strings"
+	"text/tabwriter"
 	"time"
+	"unicode"
 )
 
 // clockTimes is the map of times recieved from clocks, in name => time format
@@ -40,16 +42,34 @@ func handleConn(c net.Conn, clockName string) {
 	}
 }
 
+// expandTitle turns a string like NewYork into New York by finding a capital
+// letter and inserting a space.
+func camelToTitle(name string) string {
+	for i, c := range name {
+		if unicode.IsUpper(c) && i > 0 {
+			name = name[:i] + " " + name[i:]
+		}
+	}
+
+	return name
+}
+
 // updateTime updates the screen wallclock by clearing the screen then creating
 // an ordered list of wallclocks.
 func updateTime() {
 	fmt.Println("\033[2J") // clear screen
-	times := make([]string, 0, len(clockTimes))
-	for name, time := range clockTimes {
-		times = append(times, fmt.Sprintf("%s in %s\n", time, name))
+	names := make([]string, 0, len(clockTimes))
+	for name := range clockTimes { // get names as sort key
+		names = append(names, name)
 	}
-	sort.Strings(times)
-	fmt.Println(strings.Join(times, ""))
+	sort.Strings(names)
+
+	const format = "%v\t%v\n"
+	tw := new(tabwriter.Writer).Init(os.Stdout, 0, 8, 2, '\t', 0)
+	for _, name := range names {
+		fmt.Fprintf(tw, format, camelToTitle(name), clockTimes[name])
+	}
+	tw.Flush()
 }
 
 // listen creates a listener
@@ -63,7 +83,6 @@ func listen(clockName, address string) {
 		conn, err := listener.Accept()
 		defer conn.Close()
 		if err != nil {
-			log.Print(err)
 			continue
 		}
 		go handleConn(conn, clockName)
