@@ -49,7 +49,7 @@ func handleConn(c net.Conn, clockName string) {
 
 func updateTime() {
 	fmt.Println("\033[2J") // clear screen
-	fmt.Printf("New York: %s\nTokyo: %s\nLondon: %s", newYorkTime, tokyoTime, londonTime)
+	fmt.Printf("New York: %s\nTokyo: %s\nLondon: %s\n\n", newYorkTime, tokyoTime, londonTime)
 }
 
 // listen creates a listener
@@ -71,8 +71,9 @@ func listen(clockName, address string) {
 }
 
 func main() {
-	if len(os.Args) == 1 {
+	if len(os.Args) <= 1 {
 		fmt.Fprintln(os.Stderr, "usage: clockwall Place=hostname:8010 ...")
+		os.Exit(0)
 	}
 
 	for _, clock := range os.Args[1:] { // start all clock listeners
