@@ -21,7 +21,7 @@ import (
 	"time"
 )
 
-var hostname = flag.Int("hostname", "localhost", "Hostname of wallclock server")
+var hostname = flag.String("hostname", "localhost", "Hostname of wallclock server")
 var port = flag.Int("port", 8000, "Port number of wallclock server")
 
 func sendTime(c net.Conn) {
