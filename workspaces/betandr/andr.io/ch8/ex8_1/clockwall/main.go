@@ -22,9 +22,7 @@ import (
 	"time"
 )
 
-var newYorkTime string = "waiting..."
-var tokyoTime string = "waiting..."
-var londonTime string = "waiting..."
+var clockTimes map[string]string
 
 func handleConn(c net.Conn, clockName string) {
 	bufReader := bufio.NewReader(c)
@@ -35,21 +33,16 @@ func handleConn(c net.Conn, clockName string) {
 			return
 		}
 
-		switch clockName {
-		case "NewYork":
-			newYorkTime = strings.TrimSuffix(string(bytes), "\n")
-		case "Tokyo":
-			tokyoTime = strings.TrimSuffix(string(bytes), "\n")
-		case "London":
-			londonTime = strings.TrimSuffix(string(bytes), "\n")
-		}
+		clockTimes[clockName] = strings.TrimSuffix(string(bytes), "\n")
 		updateTime()
 	}
 }
 
 func updateTime() {
 	fmt.Println("\033[2J") // clear screen
-	fmt.Printf("New York: %s\nTokyo: %s\nLondon: %s\n\n", newYorkTime, tokyoTime, londonTime)
+	for name, time := range clockTimes {
+		fmt.Printf("%s: %s\n", name, time)
+	}
 }
 
 // listen creates a listener
@@ -76,6 +69,8 @@ func main() {
 		os.Exit(0)
 	}
 
+	clockTimes = make(map[string]string)
+
 	for _, clock := range os.Args[1:] { // start all clock listeners
 		address := strings.Split(clock, "=")
 
@@ -83,6 +78,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "cannot handle arg: %s", clock)
 			continue
 		}
+		clockTimes[address[0]] = "waiting..."
 		go listen(address[0], address[1])
 	}
 
