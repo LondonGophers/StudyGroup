@@ -18,10 +18,12 @@ import (
 	"log"
 	"net"
 	"os"
+	"sort"
 	"strings"
 	"time"
 )
 
+// clockTimes is the map of times recieved from clocks, in name => time format
 var clockTimes map[string]string
 
 func handleConn(c net.Conn, clockName string) {
@@ -38,11 +40,16 @@ func handleConn(c net.Conn, clockName string) {
 	}
 }
 
+// updateTime updates the screen wallclock by clearing the screen then creating
+// an ordered list of wallclocks.
 func updateTime() {
 	fmt.Println("\033[2J") // clear screen
+	times := make([]string, 0, len(clockTimes))
 	for name, time := range clockTimes {
-		fmt.Printf("%s: %s\n", name, time)
+		times = append(times, fmt.Sprintf("%s in %s\n", time, name))
 	}
+	sort.Strings(times)
+	fmt.Println(strings.Join(times, ""))
 }
 
 // listen creates a listener
@@ -78,7 +85,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "cannot handle arg: %s", clock)
 			continue
 		}
-		clockTimes[address[0]] = "waiting..."
+		clockTimes[address[0]] = "...\t"
 		go listen(address[0], address[1])
 	}
 
