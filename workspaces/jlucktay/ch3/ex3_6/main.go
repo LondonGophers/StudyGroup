@@ -38,18 +38,7 @@ func main() {
 		log.Fatalf("error encoding PNG: %v", errEncode)
 	}
 
-	var writeMe string
-	keys := []int{}
-	for key := range results {
-		keys = append(keys, int(key))
-	}
-	sort.Ints(keys)
-	for _, key := range keys {
-		writeMe += fmt.Sprintf("%7d=%7d\n", key, results[uint8(key)])
-	}
-	if errWrite := ioutil.WriteFile("text.log", []byte(writeMe), 0644); errWrite != nil {
-		log.Fatal(errors.Wrap(errWrite, "goodbye!"))
-	}
+	writeNumbersToTextFile()
 }
 
 func mandelbrot(z complex128) color.Color {
@@ -68,4 +57,19 @@ func mandelbrot(z complex128) color.Color {
 	}
 
 	return color.Black
+}
+
+func writeNumbersToTextFile() {
+	var writeMe string
+	keys := []int{}
+	for key := range results {
+		keys = append(keys, int(key))
+	}
+	sort.Ints(keys)
+	for _, key := range keys {
+		writeMe += fmt.Sprintf("%7d=%7d\n", key, results[uint8(key)])
+	}
+	if errWrite := ioutil.WriteFile("text.log", []byte(writeMe), 0644); errWrite != nil {
+		log.Fatal(errors.Wrap(errWrite, "goodbye!"))
+	}
 }
