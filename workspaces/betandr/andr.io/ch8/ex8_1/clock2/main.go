@@ -5,9 +5,9 @@
 // run instances remotely; otherwise run local instances on different ports with
 // fake time-zones.
 // ```
-//   $ TZ=US/Eastern     ./clock -port 8010 &
-//   $ TZ=Asia/Tokyo     ./clock -port 8020 &
-//   $ TZ=Europe/London  ./clock -port 8030 &
+//   $ TZ=US/Eastern     ./clock2 -port 8010 &
+//   $ TZ=Asia/Tokyo     ./clock2 -port 8020 &
+//   $ TZ=Europe/London  ./clock2 -port 8030 &
 //   $ clockwall NewYork=localhost:8010 Tokyo=localhost:8020 London=localhost:8030
 // ```
 package main
