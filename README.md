@@ -18,6 +18,9 @@ We follow the [Go Code of Conduct](https://golang.org/conduct) and the [Contribu
 - Be thoughtful in how you communicate.
 - Don’t be destructive or inflammatory.
 
+From [GopherCon 2018: Natalie Pistunovich - The Importance of Beginners](https://www.youtube.com/watch?v=7yMXs9TRvVI):
+_"No question is stupid. When you're [...] answering beginners questions, do it will, be nice, be informative, and mainly be patient. If you see a question for the hundredth time, you don't have to answer. Answers like 'just use the standard library' are not helpful and they're not friendly. Somebody else can do this who is maybe a bit more fresh."_
+
 ## The Workshop
 
 Visit the [Go London Study Group Meetup](https://www.meetup.com/Go-London-Study-Group/) for details of our IRL study group meetings.
