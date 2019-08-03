@@ -25,7 +25,7 @@ func Comma(s string) string {
 	unsignedLen := len(s)
 
 	if strings.HasPrefix(s, "+") || strings.HasPrefix(s, "-") {
-		signStart = 1
+		signStart++
 		unsignedLen--
 		b.WriteByte(s[0])
 	}
@@ -39,8 +39,6 @@ func Comma(s string) string {
 			b.WriteByte(s[index])
 		}
 	} else {
-		point -= signStart
-
 		for index := signStart; index < point; index++ {
 			if (point-index)%3 == 0 && index > signStart {
 				b.WriteRune(',')
