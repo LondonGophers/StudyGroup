@@ -20,37 +20,32 @@ func Comma(s string) string {
 		panic(errParse)
 	}
 
-	b := bytes.Buffer{}
-	signStart := 0
-	unsignedLen := len(s)
+	buf := bytes.Buffer{}
 
 	if strings.HasPrefix(s, "+") || strings.HasPrefix(s, "-") {
-		signStart++
-		unsignedLen--
-		b.WriteByte(s[0])
+		buf.WriteByte(s[0])
+		s = s[1:]
 	}
 
-	if point := strings.IndexRune(s, '.'); point == -1 {
-		for index := signStart; index < unsignedLen; index++ {
-			if (unsignedLen-index)%3 == 0 && index > signStart {
-				b.WriteRune(',')
-			}
+	unsignedLen := len(s)
+	point := strings.IndexRune(s, '.')
 
-			b.WriteByte(s[index])
-		}
-	} else {
-		for index := signStart; index < point; index++ {
-			if (point-index)%3 == 0 && index > signStart {
-				b.WriteRune(',')
-			}
-
-			b.WriteByte(s[index])
-		}
-
-		for index := point; index < len(s); index++ {
-			b.WriteByte(s[index])
-		}
+	if point > 0 {
+		unsignedLen = point
 	}
 
-	return b.String()
+	for index := 0; index < unsignedLen; index++ {
+		if index > 0 && (unsignedLen-index)%3 == 0 {
+			buf.WriteRune(',')
+		}
+
+		buf.WriteByte(s[index])
+	}
+
+	for 0 <= point && point < len(s) {
+		buf.WriteByte(s[point])
+		point++
+	}
+
+	return buf.String()
 }
