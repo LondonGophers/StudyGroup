@@ -85,7 +85,7 @@ func handle(c net.Conn, request string) {
 		send(c, "502 not implemented.")
 		return
 	}
-	// args := req[1:]
+	args := req[1:]
 	cmd := req[0]
 
 	switch cmd {
@@ -102,9 +102,11 @@ func handle(c net.Conn, request string) {
 		send(c, fmt.Sprintf("227 =%s", addr))
 	case "NOOP":
 		send(c, "200 Command okay.")
-	case "STOR":
-		// todo: implement STOR
-		send(c, fmt.Sprintf("502 STOR not yet implemented."))
+	case "LIST":
+		p
+		if len(args
+		// todo: implement LIST
+		send(c, fmt.Sprintf("502 LIST not yet implemented."))
 	case "PORT":
 		// todo: implement PORT
 		send(c, fmt.Sprintf("502 PORT not yet implemented."))
@@ -120,8 +122,8 @@ func handle(c net.Conn, request string) {
 	case "RETR":
 		// todo: implement RETR
 		send(c, fmt.Sprintf("502 RETR not yet implemented."))
-	case "LIST":
-		// todo: implement LIST
+	case "STOR":
+		// todo: implement STOR
 		send(c, fmt.Sprintf("502 STOR not yet implemented."))
 	case "CWD":
 		// todo: implement CWD
