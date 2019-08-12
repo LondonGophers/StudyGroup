@@ -37,6 +37,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		// try to set cycles, nframes, delay from http request params
 		cycles, nframes, delay = parseParams(r.Form, cycles, nframes, delay)
 	}
+	fmt.Printf("Will be running with cycles: %v, nframes: %v, delay: %v\n", cycles, nframes, delay)
 	lissajous(w, cycles, nframes, delay)
 }
 
@@ -71,15 +72,14 @@ func parseParams(form url.Values, cycles, nframes, delay int) (int, int, int) {
 	for k, v := range form {
 		if c, set := checkForParam(k, v, "cycles"); set {
 			cycles = c
-			break
+			continue
 		}
 		if nf, set := checkForParam(k, v, "nframes"); set {
 			nframes = nf
-			break
+			continue
 		}
 		if d, set := checkForParam(k, v, "delay"); set {
 			delay = d
-			break
 		}
 	}
 	return cycles, nframes, delay
