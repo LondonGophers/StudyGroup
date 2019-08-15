@@ -23,7 +23,7 @@ _"No question is stupid. When you're [...] answering beginners' questions, do it
 
 ## The Workshop
 
-Visit the [Go London Study Group Meetup](https://www.meetup.com/Go-London-Study-Group/) for details of our IRL study group meetings.
+Visit the [London Gophers Study Group Meetup](https://www.meetup.com/LondonGophersStudyGroup/) for details of our IRL study group meetings.
 
 Find us on Slack in the `#london-study-group` channel of the `gophers.slack.com` workspace.
 
