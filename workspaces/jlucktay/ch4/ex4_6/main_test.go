@@ -39,8 +39,8 @@ func ExampleEliminate_numbers() {
 func ExampleEliminateSpaces() {
 	s := []byte("This   string    has  extra     spaces!")
 	adjacent.EliminateSpaces(&s)
-	fmt.Printf("%s\n", s)
-	// Output: This string has extra spaces!
+	fmt.Printf("\"%s\"\n", s)
+	// Output: "This string has extra spaces!"
 }
 
 func ExampleEliminateSpaces_newlines() {
@@ -62,11 +62,11 @@ extra
 
 newlines!`)
 	adjacent.EliminateSpaces(&s)
-	fmt.Printf("%s\n", s)
+	fmt.Printf("\"%s\"\n", s)
 	// Output:
-	// This
+	// "This
 	// string
 	// has
 	// extra
-	// newlines!
+	// newlines!"
 }
