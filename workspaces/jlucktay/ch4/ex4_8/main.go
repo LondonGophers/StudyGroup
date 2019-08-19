@@ -12,43 +12,16 @@ import (
 	"unicode/utf8"
 )
 
-const (
-	IsControl int = iota
-	IsDigit
-	IsGraphic
-	IsLetter
-	IsLower
-	IsMark
-	IsNumber
-	IsPrint
-	IsPunct
-	IsSpace
-	IsSymbol
-	IsTitle
-	IsUpper
-)
-
-var isKeyNames = [...]string{
-	"IsControl",
-	"IsDigit",
-	"IsGraphic",
-	"IsLetter",
-	"IsLower",
-	"IsMark",
-	"IsNumber",
-	"IsPrint",
-	"IsPunct",
-	"IsSpace",
-	"IsSymbol",
-	"IsTitle",
-	"IsUpper",
-}
-
 func main() {
 	counts := make(map[rune]int)    // counts of Unicode characters
 	var utflen [utf8.UTFMax + 1]int // count of lengths of UTF-8 encodings
 	invalid := 0                    // count of invalid UTF-8 characters
-	isUnicode := make(map[int]uint) // count of rune types per unicode.Is* funcs
+
+	uiKeys := []string{}
+	for uiKey := range unicodeIs {
+		uiKeys = append(uiKeys, uiKey)
+	}
+	sort.Strings(uiKeys)
 
 	in := bufio.NewReader(os.Stdin)
 	for {
@@ -67,47 +40,15 @@ func main() {
 		counts[r]++
 		utflen[n]++
 
-		if unicode.IsControl(r) {
-			isUnicode[IsControl]++
+		for _, uik := range uiKeys {
+			if unicodeIs[uik].check(r) {
+				u := unicodeIs[uik]
+				u.count++
+				unicodeIs[uik] = u
+			}
 		}
-		if unicode.IsDigit(r) {
-			isUnicode[IsDigit]++
-		}
-		if unicode.IsGraphic(r) {
-			isUnicode[IsGraphic]++
-		}
-		if unicode.IsLetter(r) {
-			isUnicode[IsLetter]++
-		}
-		if unicode.IsLower(r) {
-			isUnicode[IsLower]++
-		}
-		if unicode.IsMark(r) {
-			isUnicode[IsMark]++
-		}
-		if unicode.IsNumber(r) {
-			isUnicode[IsNumber]++
-		}
-		if unicode.IsPrint(r) {
-			isUnicode[IsPrint]++
-		}
-		if unicode.IsPunct(r) {
-			isUnicode[IsPunct]++
-		}
-		if unicode.IsSpace(r) {
-			isUnicode[IsSpace]++
-		}
-		if unicode.IsSymbol(r) {
-			isUnicode[IsSymbol]++
-		}
-		if unicode.IsTitle(r) {
-			isUnicode[IsTitle]++
-		}
-		if unicode.IsUpper(r) {
-			isUnicode[IsUpper]++
-		}
-
 	}
+
 	countKeys := []rune{}
 	for countKey := range counts {
 		countKeys = append(countKeys, countKey)
@@ -125,14 +66,9 @@ func main() {
 		}
 	}
 
-	isKeys := []int{}
-	for isKey := range isUnicode {
-		isKeys = append(isKeys, isKey)
-	}
-	sort.Ints(isKeys)
-	fmt.Printf("\n%-10s\tcount\n", "is iota")
-	for _, is := range isKeys {
-		fmt.Printf("%-10s\t%5d\n", isKeyNames[is], isUnicode[is])
+	fmt.Printf("\n%-11s %9s\n", "unicode.Is*", "count")
+	for _, is := range uiKeys {
+		fmt.Printf("%-11s %9d\n", is, unicodeIs[is].count)
 	}
 
 	if invalid > 0 {
