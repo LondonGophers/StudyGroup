@@ -6,18 +6,38 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 
 	"gopl.io/ch4/github"
 )
 
 func main() {
+	var monthOld, yearOld, older []*github.Issue
+
 	result, err := github.SearchIssues(os.Args[1:])
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("%d issues:\n", result.TotalCount)
 	for _, item := range result.Items {
-		fmt.Printf("#%-5d %9.9s %.55s\n",
+		if time.Since(item.CreatedAt) < time.Hour*24*30 {
+			monthOld = append(monthOld, item)
+		} else if time.Since(item.CreatedAt) < time.Hour*24*365 {
+			yearOld = append(yearOld, item)
+		} else {
+			older = append(older, item)
+		}
+	}
+
+	fmt.Printf("Less than a month old:\n%s\n", toString(monthOld))
+	fmt.Printf("Less than a year old:\n%s\n", toString(yearOld))
+	fmt.Printf("More than a year old:\n%s\n", toString(older))
+}
+
+func toString(ghi []*github.Issue) (s string) {
+	for _, item := range ghi {
+		s += fmt.Sprintf("#%-5d %9.9s %.55s\n",
 			item.Number, item.User.Login, item.Title)
 	}
+	return
 }
