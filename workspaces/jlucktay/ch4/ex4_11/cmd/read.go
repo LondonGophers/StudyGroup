@@ -2,8 +2,11 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 
+	"github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch4/ex4_11/pkg/github"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 // readCmd represents the read command
@@ -17,7 +20,8 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("read called")
+		fmt.Printf("'%s' called.\n", cmd.Name())
+		read(args)
 	},
 }
 
@@ -33,4 +37,14 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// readCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+}
+
+func read(searchTerms []string) {
+	viper.GetString("githubToken") // PAT
+
+	result, err := github.SearchIssues(searchTerms)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%d issues:\n", result.TotalCount)
 }
