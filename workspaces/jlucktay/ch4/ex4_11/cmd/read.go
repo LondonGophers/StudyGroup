@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"log"
+	"strings"
 
 	"github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch4/ex4_11/pkg/github"
 	"github.com/spf13/cobra"
@@ -12,15 +13,20 @@ import (
 // readCmd represents the read command
 var readCmd = &cobra.Command{
 	Use:   "read",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "Search GitHub issues from the command line",
+	Long: `Search for GitHub issues from the command line.
+All arguments are passed through to GitHub search.
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+For example:
+
+$ ghissues read author:foo language:bar comments:>50
+
+Further reading on search syntax:
+- https://help.github.com/articles/searching-issues-and-pull-requests
+- https://help.github.com/articles/understanding-the-search-syntax
+`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("'%s' called.\n", cmd.Name())
+		fmt.Printf("'%s %s' called.\n", cmd.CommandPath(), strings.Join(args, " "))
 		read(args)
 	},
 }
@@ -42,9 +48,12 @@ func init() {
 func read(searchTerms []string) {
 	viper.GetString("githubToken") // PAT
 
-	result, err := github.SearchIssues(searchTerms)
+	issues, err := github.SearchIssues(searchTerms)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("%d issues:\n", result.TotalCount)
+	fmt.Printf("%d issues:\n\n", issues.TotalCount)
+	for _, issue := range issues.Items {
+		fmt.Printf("[%6d] %-12s: %s\n         %s\n\n", issue.Number, issue.User.Login, issue.Title, issue.HTMLURL)
+	}
 }
