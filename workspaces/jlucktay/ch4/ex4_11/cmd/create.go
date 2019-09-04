@@ -2,7 +2,9 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 
+	"github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch4/ex4_11/pkg/github"
 	"github.com/spf13/cobra"
 )
 
@@ -39,4 +41,15 @@ func init() {
 
 func create(title, comment string) {
 	fmt.Printf("Creating an issue with title '%s' and comment '%s'!\n", title, comment)
+
+	newIssue := github.IssueCreate{
+		Title: title,
+		Body:  comment,
+	}
+	result, err := github.CreateIssue(newIssue, "jlucktay", "stack")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("New issue created: %s\n", result.HTMLURL)
 }

@@ -4,14 +4,16 @@ package github
 
 import "time"
 
-const IssuesURL = "https://api.github.com/search/issues"
+const GitHubAPIPrefix = "https://api.github.com"
+const IssuesSearchURL = GitHubAPIPrefix + "/search/issues"
+const IssueCreateURL = GitHubAPIPrefix + "/repos/%s/%s/issues"
 
 type IssuesSearchResult struct {
 	TotalCount int `json:"total_count"`
-	Items      []*Issue
+	Items      []*IssueSearchResult
 }
 
-type Issue struct {
+type IssueSearchResult struct {
 	Number    int
 	HTMLURL   string `json:"html_url"`
 	Title     string
@@ -23,5 +25,14 @@ type Issue struct {
 
 type User struct {
 	Login   string
+	HTMLURL string `json:"html_url"`
+}
+
+type IssueCreate struct {
+	Title string // The title of the issue.
+	Body  string // The contents of the issue.
+}
+
+type IssueCreateResult struct {
 	HTMLURL string `json:"html_url"`
 }

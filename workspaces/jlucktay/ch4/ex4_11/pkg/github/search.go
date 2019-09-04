@@ -12,7 +12,7 @@ import (
 func SearchIssues(terms []string) (*IssuesSearchResult, error) {
 	q := url.QueryEscape(strings.Join(terms, " "))
 
-	req, err := http.NewRequest("GET", IssuesURL+"?q="+q, nil)
+	req, err := http.NewRequest("GET", IssuesSearchURL+"?q="+q, nil)
 	if err != nil {
 		return nil, err
 	}
