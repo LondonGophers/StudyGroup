@@ -7,7 +7,6 @@ import (
 
 	"github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch4/ex4_11/pkg/github"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 // readCmd represents the read command
@@ -46,8 +45,6 @@ func init() {
 }
 
 func read(searchTerms []string) {
-	viper.GetString("githubToken") // PAT
-
 	issues, err := github.SearchIssues(searchTerms)
 	if err != nil {
 		log.Fatal(err)

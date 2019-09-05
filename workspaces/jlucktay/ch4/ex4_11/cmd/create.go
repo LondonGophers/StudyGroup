@@ -6,6 +6,7 @@ import (
 
 	"github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch4/ex4_11/pkg/github"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 // Flags
@@ -46,7 +47,11 @@ func create(title, comment string) {
 		Title: title,
 		Body:  comment,
 	}
-	result, err := github.CreateIssue(newIssue, "jlucktay", "stack")
+	auth := github.GitHubAuth{
+		Username: "jlucktay",
+		Password: viper.GetString("githubToken"),
+	}
+	result, err := github.CreateIssue(newIssue, auth, "jlucktay", "stack")
 	if err != nil {
 		log.Fatal(err)
 	}

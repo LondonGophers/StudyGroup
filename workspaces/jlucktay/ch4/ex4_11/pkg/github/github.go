@@ -29,10 +29,14 @@ type User struct {
 }
 
 type IssueCreate struct {
-	Title string // The title of the issue.
-	Body  string // The contents of the issue.
+	Title string `json:"title"` // The title of the issue.
+	Body  string `json:"body"`  // The contents of the issue.
 }
 
 type IssueCreateResult struct {
 	HTMLURL string `json:"html_url"`
+}
+
+type GitHubAuth struct {
+	Username, Password string
 }
