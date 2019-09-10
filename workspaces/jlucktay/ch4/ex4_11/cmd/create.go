@@ -10,7 +10,7 @@ import (
 )
 
 // Flags
-var fTitle, fComment *string
+var fOwner, fRepo, fTitle, fComment *string
 
 // createCmd represents the create command
 var createCmd = &cobra.Command{
@@ -18,8 +18,9 @@ var createCmd = &cobra.Command{
 	Short: "Create GitHub issues from the command line",
 	Long:  `Create a new GitHub issue from the command line.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("\"%s --title '%s' --comment '%s'\" called.\n", cmd.CommandPath(), *fTitle, *fComment)
-		create(*fTitle, *fComment)
+		fmt.Printf("\"%s --owner '%s' --repo '%s' --title '%s' --comment '%s'\" called.\n",
+			cmd.CommandPath(), *fOwner, *fRepo, *fTitle, *fComment)
+		create(*fOwner, *fRepo, *fTitle, *fComment)
 	},
 }
 
@@ -36,22 +37,40 @@ func init() {
 	// is called directly, e.g.:
 	// createCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
+	fOwner = createCmd.Flags().StringP("owner", "o", "", "The repo owner")
+	fRepo = createCmd.Flags().StringP("repo", "r", "", "The repo name")
 	fTitle = createCmd.Flags().StringP("title", "t", "", "The title line")
 	fComment = createCmd.Flags().StringP("comment", "c", "", "The comment body")
 }
 
-func create(title, comment string) {
-	fmt.Printf("Creating an issue with title '%s' and comment '%s'!\n", title, comment)
+func create(owner, repo, title, comment string) {
+	if owner == "" {
+		log.Fatal("must define owner")
+	}
+
+	if repo == "" {
+		log.Fatal("must define repo")
+	}
+
+	if title == "" {
+		log.Fatal("must define title")
+	}
+
+	if comment == "" {
+		log.Fatal("must define comment")
+	}
+
+	fmt.Printf("Creating an issue in %s/%s with title '%s' and comment '%s'!\n", owner, repo, title, comment)
 
 	newIssue := github.IssueCreate{
 		Title: title,
 		Body:  comment,
 	}
 	auth := github.GitHubAuth{
-		Username: "jlucktay",
+		Username: viper.GetString("githubUsername"),
 		Password: viper.GetString("githubToken"),
 	}
-	result, err := github.CreateIssue(newIssue, auth, "jlucktay", "stack")
+	result, err := github.CreateIssue(newIssue, auth, owner, repo)
 	if err != nil {
 		log.Fatal(err)
 	}
