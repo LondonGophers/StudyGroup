@@ -42,25 +42,29 @@ Write a program `wordfreq` to report the frequency of each word in an input text
 file. Call `input.Split(bufio.ScanWords)` before the first call to `Scan` to
 break the input into words instead of lines.
 
+## JSON
+
 ### Exercise 4.10
+
 Modify `issues` to report the results in age categories, say less than a month
 old, less than a year old, and more than a year old.
 
 ### Exercise 4.11
+
 Build a tool that lets users create, read, update, and close GitHub issues from
 the command line, invoking their preferred text editor when substantial text
 input is required.
 
-## JSON
-
 ### Exercise 4.12
+
 The popular web comic _xkcd_ has a JSON interface. For example, a request to
-`https://xkcd.com/517/info.0.json` produces a detailed description of comic 571,
+`https://xkcd.com/571/info.0.json` produces a detailed description of comic 571,
 one of many favourites. Download each URL (once!) and build an offline index.
 Write a tool `xkcd` that, using this index, prints the URL and transcript of
 each comic that matches a search term provided on the command line.
 
-### Exercise 4.14
+### Exercise 4.13
+
 The JSON-based web service of the Open Movie Database lets you search
 `https://omdapi.com` for a movie by name and download its poster image. Write a
 tool `poster` that downloads the poster image for the movie named on the command
