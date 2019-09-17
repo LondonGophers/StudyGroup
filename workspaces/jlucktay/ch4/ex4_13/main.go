@@ -19,7 +19,7 @@ func main() {
 	if errSearch != nil {
 		panic(errSearch)
 	}
-	fmt.Printf("Total results: %d\n", result.TotalResults)
+	fmt.Printf("Total results: %d\n\n", result.TotalResults)
 
 	posters(result.Movies)
 
@@ -42,6 +42,10 @@ func main() {
 
 func posters(movies []Movie) {
 	for _, movie := range movies {
-		fmt.Printf("%s (%d)\n\t%s\n\n", movie.Title, movie.Year, movie.Poster)
+		fmt.Printf("%s (%d)\n", movie.Title, movie.Year)
+
+		if strings.ToLower(movie.Poster) != "n/a" {
+			download(movie)
+		}
 	}
 }
