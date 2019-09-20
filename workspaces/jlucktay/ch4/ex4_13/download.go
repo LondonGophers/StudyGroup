@@ -14,10 +14,10 @@ func download(m Movie) {
 	filename := fmt.Sprintf("%s.%d.%s", m.Title, m.Year, extension)
 
 	if _, errStat := os.Stat(filename); errStat == nil {
-		fmt.Printf("'%s' already exists!\n", filename)
+		fmt.Printf("[Download] '%s' already exists!\n", filename)
 		return
 	} else if os.IsNotExist(errStat) {
-		fmt.Printf("Downloading poster for %s (%d) to '%s'... ", m.Title, m.Year, filename)
+		fmt.Printf("[Download] Started for %s (%d) to '%s'.\n", m.Title, m.Year, filename)
 	} else {
 		panic(errStat)
 	}
@@ -41,5 +41,5 @@ func download(m Movie) {
 		panic(errCopy)
 	}
 
-	fmt.Printf("%d byte(s) downloaded.\n", n)
+	fmt.Printf("[Download] Finished for %s (%d) to '%s'. (%d byte(s))\n", m.Title, m.Year, filename, n)
 }

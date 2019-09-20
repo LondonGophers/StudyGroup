@@ -5,6 +5,7 @@ import (
 	"net/url"
 	"os"
 	"strings"
+	"sync"
 )
 
 func main() {
@@ -21,7 +22,9 @@ func main() {
 	}
 	fmt.Printf("Total results: %d\n\n", result.TotalResults)
 
-	posters(result.Movies)
+	var wg sync.WaitGroup
+
+	posters(result.Movies, &wg)
 
 	countResults := len(result.Movies)
 	page := 2
@@ -33,19 +36,25 @@ func main() {
 			panic(errS)
 		}
 
-		posters(resultPage.Movies)
+		posters(resultPage.Movies, &wg)
 
 		countResults += len(resultPage.Movies)
 		page++
 	}
+
+	wg.Wait()
 }
 
-func posters(movies []Movie) {
+func posters(movies []Movie, wg *sync.WaitGroup) {
 	for _, movie := range movies {
 		fmt.Printf("%s (%d)\n", movie.Title, movie.Year)
 
 		if strings.ToLower(movie.Poster) != "n/a" {
-			download(movie)
+			wg.Add(1)
+			go func(m Movie) {
+				download(m)
+				wg.Done()
+			}(movie)
 		}
 	}
 }
