@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <title> Go GET GitHub search</title>
+</head>
+
+<body>
+    <form action="/" method="get">
+        <input type="text" name="q" required>
+        <input type="submit" value="Search!">
+    </form>
+
+    {{range .}}
+    [{{.Number}}] {{.Title}}<br/>
+    {{else}}
+    Search for something!
+    {{end}}
+
+</body>
+
+</html>
