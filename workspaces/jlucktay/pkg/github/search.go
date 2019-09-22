@@ -12,25 +12,29 @@ import (
 func SearchIssues(terms []string) (*IssuesSearchResult, error) {
 	q := url.QueryEscape(strings.Join(terms, " "))
 
-	req, err := http.NewRequest("GET", IssuesSearchURL+"?q="+q, nil)
-	if err != nil {
-		return nil, err
+	req, errNewReq := http.NewRequest("GET", IssuesSearchURL+"?q="+q, nil)
+	if errNewReq != nil {
+		return nil, errNewReq
 	}
 	// Add an HTTP request header indicating that only version 3 of the GitHub API is acceptable.
 	req.Header.Set("Accept", "application/vnd.github.v3.text-match+json")
-	resp, err := http.DefaultClient.Do(req)
-	if err != nil {
-		return nil, err
+	resp, errDo := http.DefaultClient.Do(req)
+	if errDo != nil {
+		return nil, errDo
 	}
 	defer resp.Body.Close()
+
+	var result IssuesSearchResult
+	if resp.StatusCode == http.StatusUnprocessableEntity {
+		return &result, nil
+	}
 
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("search query failed: %s", resp.Status)
 	}
 
-	var result IssuesSearchResult
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		return nil, err
+	if errDecode := json.NewDecoder(resp.Body).Decode(&result); errDecode != nil {
+		return nil, errDecode
 	}
 
 	return &result, nil
