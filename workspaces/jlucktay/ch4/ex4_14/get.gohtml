@@ -1,7 +1,10 @@
-<html>
+<!DOCTYPE html>
+
+<html lang="en">
 
 <head>
-    <title> Go GET GitHub search</title>
+    <meta charset="UTF-8">
+    <title>Go GET GitHub search</title>
 </head>
 
 <body>
@@ -10,12 +13,15 @@
         <input type="submit" value="Search!">
     </form>
 
-    {{range .}}
-    [{{.Number}}] {{.Title}}<br/>
-    {{else}}
+    <hr />
+{{range .}}
+    <a href="{{.HTMLURL}}">[{{.Number}}] {{.Title}}</a>
+    from <a href="{{.User.HTMLURL}}">{{.User.Login}}</a>{{if .Milestone}}
+        (milestone <a href="{{.Milestone.HTMLURL}}">{{.Milestone.Title}}</a>
+        by <a href="{{.Milestone.Creator.HTMLURL}}">{{.Milestone.Creator.Login}}</a>){{end}}
+    <br />{{else}}
     Search for something!
     {{end}}
-
 </body>
 
 </html>
