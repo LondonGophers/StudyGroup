@@ -5,7 +5,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch4/ex4_11/pkg/github"
+	"github.com/LondonGophers/StudyGroup/workspaces/jlucktay/pkg/github"
 	"github.com/spf13/cobra"
 )
 

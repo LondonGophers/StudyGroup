@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch4/ex4_11/pkg/github"
+	"github.com/LondonGophers/StudyGroup/workspaces/jlucktay/pkg/github"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )

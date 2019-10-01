@@ -19,8 +19,9 @@ type IssueSearchResult struct {
 	Title     string
 	State     string
 	User      *User
-	CreatedAt time.Time `json:"created_at"`
-	Body      string    // in Markdown format
+	CreatedAt time.Time  `json:"created_at"`
+	Body      string     // in Markdown format
+	Milestone *Milestone `json:"milestone"`
 }
 
 type User struct {
@@ -39,4 +40,10 @@ type IssueCreateResult struct {
 
 type GitHubAuth struct {
 	Username, Password string
+}
+
+type Milestone struct {
+	HTMLURL string `json:"html_url"`
+	Title   string `json:"title"`
+	Creator *User  `json:"creator"`
 }
