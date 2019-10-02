@@ -57,10 +57,6 @@ func CountWordsAndImages(url string) (words, images int, err error) {
 }
 
 func countWordsAndImages(n *html.Node) (words, images int) {
-	if n == nil {
-		return
-	}
-
 	if n.Type == html.TextNode {
 		trimmed := strings.TrimSpace(n.Data)
 
@@ -72,8 +68,13 @@ func countWordsAndImages(n *html.Node) (words, images int) {
 		}
 	}
 
-	if n.Type == html.ElementNode && n.Data == "img" {
-		images++
+	if n.Type == html.ElementNode {
+		switch n.Data {
+		case "img":
+			images++
+		case "script", "style":
+			return
+		}
 	}
 
 	if n.FirstChild != nil {
