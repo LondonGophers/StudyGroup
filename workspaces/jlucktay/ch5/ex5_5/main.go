@@ -83,7 +83,7 @@ func countWordsAndImages(n *html.Node) (words, images int) {
 	}
 
 	if n.NextSibling != nil {
-		w, i := countWordsAndImages(n.FirstChild)
+		w, i := countWordsAndImages(n.NextSibling)
 		words += w
 		images += i
 	}
