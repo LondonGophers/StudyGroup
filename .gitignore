@@ -8,3 +8,5 @@ workspaces/betandr/github.com
 workspaces/betandr/gopl.io
 workspaces/betandr/golang.org
 workspaces/betandr/andr.io/ch4/ex4_12/index
+
+.idea
