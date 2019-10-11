@@ -60,15 +60,29 @@ func forEachNode(n *html.Node, pre, post func(n *html.Node)) {
 var depth int
 
 func startElement(n *html.Node) {
-	if n.Type == html.ElementNode {
-		fmt.Printf("%*s<%s>\n", depth*2, "", n.Data)
-		depth++
+	switch n.Type {
+	case html.ElementNode:
+		fmt.Printf("%*s<%s", depth*2, "", n.Data)
+
+		for _, a := range n.Attr {
+			fmt.Printf(" %s=%s", a.Key, a.Val)
+		}
+
+		if n.FirstChild == nil {
+			fmt.Println(" />")
+		} else {
+			fmt.Println(">")
+			depth++
+		}
 	}
 }
 
 func endElement(n *html.Node) {
-	if n.Type == html.ElementNode {
-		depth--
-		fmt.Printf("%*s</%s>\n", depth*2, "", n.Data)
+	switch n.Type {
+	case html.ElementNode:
+		if n.FirstChild != nil {
+			depth--
+			fmt.Printf("%*s</%s>\n", depth*2, "", n.Data)
+		}
 	}
 }
