@@ -8,9 +8,11 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"net/http"
 	"os"
+	"strings"
 
 	"golang.org/x/net/html"
 )
@@ -61,11 +63,25 @@ var depth int
 
 func startElement(n *html.Node) {
 	switch n.Type {
+	case html.DoctypeNode:
+		fmt.Printf("<!doctype %v>\n", n.Data)
+	case html.CommentNode:
+		fmt.Printf("%*s<!-- %v -->\n", depth*2, "", n.Data)
+	case html.TextNode:
+		trimmed := strings.TrimSpace(n.Data)
+		if len(trimmed) > 0 {
+			scanner := bufio.NewScanner(strings.NewReader(trimmed))
+			scanner.Split(bufio.ScanLines)
+			for scanner.Scan() {
+				text := scanner.Text()
+				fmt.Printf("%*s%s\n", depth*2, "", text)
+			}
+		}
 	case html.ElementNode:
 		fmt.Printf("%*s<%s", depth*2, "", n.Data)
 
 		for _, a := range n.Attr {
-			fmt.Printf(" %s=%s", a.Key, a.Val)
+			fmt.Printf(` %s="%s"`, a.Key, a.Val)
 		}
 
 		if n.FirstChild == nil {
