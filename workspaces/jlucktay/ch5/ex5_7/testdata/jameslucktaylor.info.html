@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en-AU">
+
+<head>
+
+<!-- Metadata -->
+<meta charset="utf-8" />
+<meta name="description" content="Single point of contact for my various profiles and endeavours">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Core and Roboto font CSS -->
+<style>
+ 
+@font-face {
+    font-display: optional;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+ 
+@font-face {
+    font-display: optional;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu5mxKKTU1Kvnz.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+ 
+@font-face {
+    font-display: optional;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu7mxKKTU1Kvnz.woff2) format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+ 
+@font-face {
+    font-display: optional;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4WxKKTU1Kvnz.woff2) format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+   
+@font-face {
+    font-display: optional;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu7WxKKTU1Kvnz.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+   
+@font-face {
+    font-display: optional;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu7GxKKTU1Kvnz.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+   
+@font-face {
+    font-display: optional;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    vertical-align: baseline;
+}
+
+a {
+    color: rgb(248, 249, 250);
+    text-decoration-line: none;
+}
+
+body {
+    background-color: rgb(33, 37, 40);
+    color: rgb(248, 249, 250);
+}
+
+div {
+    position: relative;
+    z-index: 2;
+}
+
+div#greeting {
+    padding: 20px;
+}
+
+div.social {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    min-height: 5vh;
+    width: 100%;
+}
+
+picture#me {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ 
+ 
+
+ 
+.toggle-icons {
+    display: block;
+    position: relative;
+}
+
+ 
+.toggle-icons .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: opacity .25s ease-in;
+}
+
+ 
+.toggle-icons .icon-default {
+    opacity: 1.0;
+}
+
+ 
+.toggle-icons .icon-hover {
+    opacity: 0;
+}
+
+ 
+.toggle-icons:hover .icon-default,
+.toggle-icons:focus .icon-default {
+    opacity: 0;
+}
+
+.toggle-icons:hover .icon-hover,
+.toggle-icons:focus .icon-hover {
+    opacity: 1.0;
+}
+
+ 
+.toggle-icons:not(:last-child) {
+    margin-right: 4rem;
+}
+
+ 
+.toggle-icons {
+    color: inherit;
+}
+
+ 
+.envelope-open .icon-hover {
+    color: rgb(212, 70, 56);
+}
+
+ 
+.linkedin .icon-hover {
+    color: rgb(0, 119, 181);
+}
+
+ 
+.stack-overflow .icon-hover {
+    color: rgb(244, 128, 36);
+}
+
+ 
+.twitter .icon-hover {
+    color: rgb(29, 161, 242);
+}
+
+ 
+.facebook .icon-hover {
+    color: rgb(66, 103, 179);
+}
+
+</style>
+
+<!-- This is favicon country -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+<link rel="manifest" href="/static/site.webmanifest">
+<link rel="mask-icon" href="/static/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#1ca5a0">
+<meta name="theme-color" content="#ffffff">
+
+
+<!-- Open Graph metadata -->
+<meta property="fb:app_id" content="631183073924771" />
+<meta property="og:description" content="Single point of contact for my various profiles and endeavours" />
+<meta property="og:image:alt" content="This is me" />
+<meta property="og:image:height" content="279" />
+<meta property="og:image:secure_url" content="https://jameslucktaylor.info/static/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="279" />
+<meta property="og:image" content="https://jameslucktaylor.info/static/og-image.png" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:title" content="James Lucktaylor - Info" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://jameslucktaylor.info" />
+
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "name": "James Lucktaylor",
+        "url": "https://jameslucktaylor.info",
+        "sameAs": [
+            "https://linkedin.com/in/jlucktay",
+            "https://github.com/jlucktay",
+            "https://stackoverflow.com/users/380599/jlucktay",
+            "https://twitter.com/jlucktay",
+            "https://facebook.com/jlucktay"
+        ]
+    }
+</script>
+
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "url": "https://jameslucktaylor.info",
+        "logo": "https://jameslucktaylor.info/static/og-image.png"
+    }
+</script>
+
+
+<!-- Font Awesome -->
+<link rel="preconnect" href="//kit-free.fontawesome.com">
+<script defer src="//kit.fontawesome.com/fc1e859d99.js"
+    integrity="sha384-7cupKsyf1krt0hPaFhz7o347RIzmECgbuiiOTe+NbIi9eA5z8RSNuYFdTDgRTZHH"
+    crossorigin="anonymous"></script>
+
+<title>
+    James Lucktaylor - Info
+</title>
+
+</head>
+
+<body>
+    <h1>jameslucktaylor.info</h1>
+
+<!-- GitHub ribbon -->
+<a href="https://github.com/jlucktay/jameslucktaylor.info">
+    <img style="position: fixed; top: 0; right: 0; border: 0;" src="/static/github_forkme_right_white_ffffff.png" alt="Fork me on GitHub">
+</a>
+
+
+<!-- This site runs on Google Cloud using Go in App Engine! -->
+
+    <a href="//docs.google.com/document/d/1ODjjBb2bt38gMAmZy-lE-iaOIUXS41BFkp0WA2_MTP4/edit?usp=sharing"
+        rel="noreferrer" target="_blank" title="CV">
+        <picture id="me">
+            <source srcset="/static/og-image.webp" title="Click here for my CV!" type="image/webp">
+            <img alt="Me" src="/static/og-image.png" title="Click here for my CV!" />
+        </picture>
+        <div id="greeting">My CV</div>
+    </a>
+
+    <div class="social">
+        <a href="mailto:contact@jameslucktaylor.info" title="E-mail" class="toggle-icons envelope-open"
+            aria-label="Send me an e-mail">
+            <span class="icon icon-default"><span class="fas fa-envelope-open fa-fw fa-3x"></span></span>
+            <span class="icon icon-hover"><span class="fas fa-envelope-open fa-fw fa-4x"></span></span>
+        </a>
+        <a href="//linkedin.com/in/jlucktay" title="LinkedIn" class="toggle-icons linkedin"
+            aria-label="Visit my LinkedIn profile">
+            <span class="icon icon-default"><span class="fab fa-linkedin fa-fw fa-3x"></span></span>
+            <span class="icon icon-hover"><span class="fab fa-linkedin fa-fw fa-4x"></span></span>
+        </a>
+        <a href="//github.com/jlucktay" title="GitHub" class="toggle-icons github"
+            aria-label="Visit my GitHub profile">
+            <span class="icon icon-default"><span class="fab fa-github fa-fw fa-3x"></span></span>
+            <span class="icon icon-hover"><span class="fab fa-github fa-fw fa-4x"></span></span>
+        </a>
+        <a href="//stackoverflow.com/users/380599/jlucktay" title="Stack Overflow" class="toggle-icons stack-overflow"
+            aria-label="Visit my Stack Overflow profile">
+            <span class="icon icon-default"><span class="fab fa-stack-overflow fa-fw fa-3x"></span></span>
+            <span class="icon icon-hover"><span class="fab fa-stack-overflow fa-fw fa-4x"></span></span>
+        </a>
+        <a href="//twitter.com/jlucktay" title="Twitter" class="toggle-icons twitter"
+            aria-label="Visit my Twitter profile">
+            <span class="icon icon-default"><span class="fab fa-twitter fa-fw fa-3x"></span></span>
+            <span class="icon icon-hover"><span class="fab fa-twitter fa-fw fa-4x"></span></span>
+        </a>
+        <a href="//facebook.com/jlucktay" title="Facebook" class="toggle-icons facebook"
+            aria-label="Visit my Facebook profile">
+            <span class="icon icon-default"><span class="fab fa-facebook fa-fw fa-3x"></span></span>
+            <span class="icon icon-hover"><span class="fab fa-facebook fa-fw fa-4x"></span></span>
+        </a>
+    </div>
+</body>
+
+</html>

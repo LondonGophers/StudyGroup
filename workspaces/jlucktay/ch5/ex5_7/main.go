@@ -10,6 +10,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 	"strings"
@@ -26,13 +27,21 @@ func main() {
 }
 
 func outline(url string) error {
-	resp, err := http.Get(url)
-	if err != nil {
-		return err
+	resp, errGet := http.Get(url)
+	if errGet != nil {
+		return errGet
 	}
 	defer resp.Body.Close()
 
-	doc, err := html.Parse(resp.Body)
+	if errProcess := process(resp.Body); errProcess != nil {
+		return errProcess
+	}
+
+	return nil
+}
+
+func process(r io.Reader) error {
+	doc, err := html.Parse(r)
 	if err != nil {
 		return err
 	}
