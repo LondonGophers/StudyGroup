@@ -79,7 +79,7 @@ func startElement(n *html.Node) {
 	case html.TextNode:
 		trimmed := strings.TrimSpace(n.Data)
 		if len(trimmed) > 0 {
-			scanner := bufio.NewScanner(strings.NewReader(trimmed))
+			scanner := bufio.NewScanner(strings.NewReader(n.Data))
 			scanner.Split(bufio.ScanLines)
 			for scanner.Scan() {
 				text := scanner.Text()
