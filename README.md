@@ -44,10 +44,12 @@ meetups to meet to chat about Go and the book etc. So just join in any time! :)
 
 ## 1. Begin
 
-To begin, create your own directory in the [workspaces](workspaces) directory,
-work through the book exercises, and add your code there. When committing to
-the repo just commit directly to `master` but before you do so make sure you
-run `git pull -r` (`-r` to rebase) before you push, to avoid _merge commits_.
+To get access to the repo ask an organiser at one of the meetups to add you. 
+Then to begin, create your own directory in the [workspaces](workspaces) 
+directory, work through the book exercises, and add your code there. When 
+committing to the repo just commit directly to `master` but before you do 
+so make sure you run `git pull -r` (`-r` to rebase) before you push, to 
+avoid _merge commits_.
 
 It may be easier to instead run:
 
