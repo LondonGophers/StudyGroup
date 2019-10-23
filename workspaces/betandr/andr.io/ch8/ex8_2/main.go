@@ -21,15 +21,19 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"os"
 	"strconv"
 	"strings"
 )
+
+var globalPortBadThing string
 
 func main() {
 	listener, err := net.Listen("tcp4", "localhost:8021")
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("%s listener started: [%s]", listener.Addr().Network(), listener.Addr())
 
 	for {
 		conn, err := listener.Accept()
@@ -78,6 +82,17 @@ func handleListener(ln net.Listener) error {
 	}
 }
 
+// decodes a port string such as 127,0,0,1,205,138 to an IP/port such as 127.0.0.1:52618
+func addressFromPort(port string) (string, error) {
+	var a, b, c, d byte
+	var p1, p2 int
+	_, err := fmt.Sscanf(port, "%d,%d,%d,%d,%d,%d", &a, &b, &c, &d, &p1, &p2)
+	if err != nil {
+		return "", err
+	}
+	return fmt.Sprintf("%d.%d.%d.%d:%d", a, b, c, d, 256*p1+p2), nil
+}
+
 // handle a request and send an appropriate response via the supplied net.Conn
 func handle(c net.Conn, request string) {
 	req := strings.Split(request, " ")
@@ -85,7 +100,7 @@ func handle(c net.Conn, request string) {
 		send(c, "502 not implemented.")
 		return
 	}
-	// args := req[1:]
+	args := req[1:]
 	cmd := req[0]
 
 	switch cmd {
@@ -103,11 +118,49 @@ func handle(c net.Conn, request string) {
 	case "NOOP":
 		send(c, "200 Command okay.")
 	case "LIST":
-		// todo: implement LIST
-		send(c, fmt.Sprintf("502 LIST not yet implemented."))
+		filename := "."
+		var filenames []string
+		if len(args) > 0 {
+			filename = args[0]
+		}
+		file, err := os.Open(filename)
+		if err != nil {
+			send(c, "550 File not found.")
+			return
+		}
+		stat, err := file.Stat()
+		if stat.IsDir() {
+			filenames, err = file.Readdirnames(0)
+			if err != nil {
+				send(c, "550 File unavailable.")
+				return
+			}
+		}
+
+		send(c, "150 Here comes the directory listing.")
+		conn, err := net.Dial("tcp", globalPortBadThing)
+		defer conn.Close()
+		if err != nil {
+			send(c, fmt.Sprintf("425 Can't open data connection."))
+			return
+		}
+
+		for _, f := range filenames {
+			_, err = fmt.Fprint(conn, f, "\r\n")
+		}
+
+		if err != nil {
+			send(c, "426 Connection closed: transfer aborted.")
+			return
+		}
+
+		send(c, "226 Closing data connection. List successful.")
 	case "PORT":
-		// todo: implement PORT
-		send(c, fmt.Sprintf("502 PORT not yet implemented."))
+		port, _ := addressFromPort(args[0])
+		log.Printf("port: [%s]", port)
+		// store port globally, bad bad bad but it's work in progress! ;)
+		globalPortBadThing = port
+		send(c, fmt.Sprintf("200 PORT command successful."))
 	case "TYPE":
 		// todo: implement TYPE
 		send(c, fmt.Sprintf("502 TYPE not yet implemented."))
@@ -141,7 +194,7 @@ func send(c net.Conn, cmd string) {
 
 func handleConnection(c net.Conn) {
 	defer c.Close()
-	log.Printf("new connection: %v", c.RemoteAddr())
+	log.Printf("new connection: [%v]", c.RemoteAddr())
 	send(c, "220 Service ready for new user.")
 
 	scanner := bufio.NewScanner(c)
@@ -152,6 +205,6 @@ func handleConnection(c net.Conn) {
 	}
 
 	if err := scanner.Err(); err != nil {
-		log.Fatal("reading standard input:", err)
+		log.Fatal("reading standard input: ", err)
 	}
 }
