@@ -1,4 +1,4 @@
-# Go London Study Group
+# London Gophers Study Group
 
 <p align="center">
   <img width="239" height="300" src="https://raw.githubusercontent.com/LondonGophers/StudyGroup/master/resources/study-gopher.png">
