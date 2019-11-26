@@ -12,8 +12,8 @@ func main() {
 
 ## Code of Conduct
 
-We follow the [Go Code of Conduct](https://golang.org/conduct) and the
-[Contributor Covenant]; in summary:
+We follow the [Go Code of Conduct](https://golang.org/conduct) adapted from the
+[Contributor Covenant], version 1.4; in summary:
 
 - Treat everyone with respect and kindness.
 - Be thoughtful in how you communicate.
