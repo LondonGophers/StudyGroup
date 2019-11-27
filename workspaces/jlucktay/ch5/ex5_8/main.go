@@ -11,76 +11,84 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"golang.org/x/net/html"
 )
 
 func main() {
-	for _, url := range os.Args[1:] {
-		outline(url)
+	if len(os.Args) < 3 {
+		fmt.Println("You must specify at least 2 arguments:")
+		fmt.Println("1) the ID of an HTML node")
+		fmt.Println("2) one or more URLs to fetch and parse")
+		os.Exit(1)
+	}
+
+	for _, url := range os.Args[2:] {
+		doc, errFetch := fetch(url)
+		if errFetch != nil {
+			log.Fatalf("Error fetching '%s': %v", url, errFetch)
+		}
+
+		ele := ElementById(doc, os.Args[1])
+		if ele != nil {
+			fmt.Printf("Found element at '%s' with attributes: '%+v'\n", url, ele.Attr)
+		} else {
+			fmt.Printf("Element with ID '%s' not found at '%s'.\n", os.Args[1], url)
+		}
 	}
 }
 
-func outline(url string) error {
+func fetch(url string) (*html.Node, error) {
 	resp, err := http.Get(url)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	defer resp.Body.Close()
 
 	doc, err := html.Parse(resp.Body)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	forEachNode(doc, startElement, endElement)
-
-	return nil
+	return doc, nil
 }
 
 func ElementById(doc *html.Node, id string) *html.Node {
-	return nil
+	return forEachNode(doc, id, checkElementId)
 }
 
-// forEachNode calls the functions pre(x) and post(x) for each node x in the tree rooted at n.
-// Both functions are optional.
-// pre is called before the children are visited (preorder) and post is called after (postorder).
-func forEachNode(n *html.Node, pre, post func(n *html.Node) bool) {
+// forEachNode calls the function pre(x) for each node x in the tree rooted at n.
+// This function is optional.
+// pre is called before the children are visited (preorder).
+func forEachNode(n *html.Node, id string, pre func(*html.Node, string) bool) *html.Node {
 	if pre != nil {
-		if pre(n) {
-			return
+		if pre(n, id) {
+			return n
 		}
 	}
 
 	for c := n.FirstChild; c != nil; c = c.NextSibling {
-		forEachNode(c, pre, post)
-	}
-
-	if post != nil {
-		if post(n) {
-			return
+		recurse := forEachNode(c, id, pre)
+		if recurse != nil {
+			return recurse
 		}
 	}
+
+	return nil
 }
 
-var depth int
-
-func startElement(n *html.Node) bool {
+func checkElementId(n *html.Node, id string) bool {
 	if n.Type == html.ElementNode {
-		fmt.Printf("%*s<%s>\n", depth*2, "", n.Data)
-		depth++
+		for _, a := range n.Attr {
+			if strings.ToLower(a.Key) == "id" && strings.EqualFold(a.Val, id) {
+				return true
+			}
+		}
 	}
 
-	return
-}
-
-func endElement(n *html.Node) bool {
-	if n.Type == html.ElementNode {
-		depth--
-		fmt.Printf("%*s</%s>\n", depth*2, "", n.Data)
-	}
-
-	return
+	return false
 }
