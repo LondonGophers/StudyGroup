@@ -4,7 +4,7 @@ import (
 	"crypto/sha256"
 	"fmt"
 
-	popcount "github.com/go-london-user-group/study-group/workspaces/jlucktay/ch2/ex2_5"
+	popcount "github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch2/ex2_5"
 )
 
 func main() {

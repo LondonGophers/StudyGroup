@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	tempconv "github.com/go-london-user-group/study-group/workspaces/jlucktay/ch2/ex2_1"
+	tempconv "github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch2/ex2_1"
 )
 
 func main() {

@@ -4,7 +4,7 @@ import (
 	"math/bits"
 	"testing"
 
-	popcount "github.com/go-london-user-group/study-group/workspaces/jlucktay/ch2/ex2_4"
+	popcount "github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch2/ex2_4"
 	"github.com/matryer/is"
 )
 

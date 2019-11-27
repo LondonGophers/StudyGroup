@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sort"
 
-	adjacent "github.com/go-london-user-group/study-group/workspaces/jlucktay/ch4/ex4_5"
+	adjacent "github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch4/ex4_5"
 )
 
 func ExampleEliminate() {

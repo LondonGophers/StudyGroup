@@ -3,7 +3,7 @@ package main_test
 import (
 	"fmt"
 
-	ex "github.com/go-london-user-group/study-group/workspaces/jlucktay/ch3/ex3_10"
+	ex "github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch3/ex3_10"
 )
 
 func ExampleCommaRecurse() {

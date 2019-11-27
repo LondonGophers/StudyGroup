@@ -3,7 +3,7 @@ package main_test
 import (
 	"fmt"
 
-	ex "github.com/go-london-user-group/study-group/workspaces/jlucktay/ch4/ex4_3"
+	ex "github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch4/ex4_3"
 )
 
 func ExampleReverse() {

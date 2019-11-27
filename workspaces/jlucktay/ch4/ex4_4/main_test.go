@@ -3,7 +3,7 @@ package rotate_test
 import (
 	"fmt"
 
-	rotate "github.com/go-london-user-group/study-group/workspaces/jlucktay/ch4/ex4_4"
+	rotate "github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch4/ex4_4"
 )
 
 func ExampleLeft_one_length_five() {

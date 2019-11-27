@@ -3,7 +3,7 @@ package tempconv_test
 import (
 	"testing"
 
-	tempconv "github.com/go-london-user-group/study-group/workspaces/jlucktay/ch2/ex2_1"
+	tempconv "github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch2/ex2_1"
 )
 
 // floatEquals came from this gem of a gist: https://gist.github.com/cevaris/bc331cbe970b03816c6b
