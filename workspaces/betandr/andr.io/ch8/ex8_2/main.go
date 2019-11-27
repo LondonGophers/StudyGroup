@@ -4,7 +4,9 @@
 // connection. You can use the standard `ftp` command as the client, or write your
 // own.
 //
-// RFC959 https://tools.ietf.org/html/rfc959
+// Useful:
+// https://tools.ietf.org/html/rfc959
+// https://en.wikipedia.org/wiki/List_of_FTP_server_return_codes
 //
 // Minimum commands:
 // USER, QUIT, PORT, TYPE, MODE, STRU, RETR, STOR, NOOP
@@ -26,7 +28,12 @@ import (
 	"strings"
 )
 
-var globalPortBadThing string
+var port string
+
+type connection struct {
+	port       string
+	binaryMode bool
+}
 
 func main() {
 	listener, err := net.Listen("tcp4", "localhost:8021")
@@ -94,7 +101,7 @@ func addressFromPort(port string) (string, error) {
 }
 
 // handle a request and send an appropriate response via the supplied net.Conn
-func handle(c net.Conn, request string) {
+func (conn *connection) handle(c net.Conn, request string) {
 	req := strings.Split(request, " ")
 	if len(req) < 1 {
 		send(c, "502 not implemented.")
@@ -138,7 +145,11 @@ func handle(c net.Conn, request string) {
 		}
 
 		send(c, "150 Here comes the directory listing.")
-		conn, err := net.Dial("tcp", globalPortBadThing)
+		if conn.port == "" {
+			log.Printf("error: no port for LIST")
+			return
+		}
+		conn, err := net.Dial("tcp", conn.port)
 		defer conn.Close()
 		if err != nil {
 			send(c, fmt.Sprintf("425 Can't open data connection."))
@@ -154,16 +165,27 @@ func handle(c net.Conn, request string) {
 			return
 		}
 
-		send(c, "226 Closing data connection. List successful.")
+		send(c, "226 LIST successful.")
 	case "PORT":
-		port, _ := addressFromPort(args[0])
-		log.Printf("port: [%s]", port)
-		// store port globally, bad bad bad but it's work in progress! ;)
-		globalPortBadThing = port
+		conn.port, _ = addressFromPort(args[0])
+		log.Printf("port: [%s]", conn.port)
 		send(c, fmt.Sprintf("200 PORT command successful."))
 	case "TYPE":
-		// todo: implement TYPE
-		send(c, fmt.Sprintf("502 TYPE not yet implemented."))
+		if len(args) > 0 {
+			switch args[0] {
+			case "I":
+				conn.binaryMode = true
+				send(c, fmt.Sprintf("200 Command OK."))
+				break
+			case "A":
+				conn.binaryMode = false
+				send(c, fmt.Sprintf("200 Command OK."))
+				break
+			default:
+				send(c, fmt.Sprintf("501 Syntax error in parameters or arguments."))
+			}
+		}
+
 	case "MODE":
 		// todo: implement MODE
 		send(c, fmt.Sprintf("502 MODE not yet implemented."))
@@ -171,20 +193,23 @@ func handle(c net.Conn, request string) {
 		// todo: implement STRU
 		send(c, fmt.Sprintf("502 STRU not yet implemented."))
 	case "RETR":
-		// todo: implement RETR
+
 		send(c, fmt.Sprintf("502 RETR not yet implemented."))
 	case "STOR":
 		// todo: implement STOR
 		send(c, fmt.Sprintf("502 STOR not yet implemented."))
 	case "CWD":
-		// todo: implement CWD
-		send(c, fmt.Sprintf("502 STOR not yet implemented."))
+		dir := "."
+		if len(args) > 0 {
+			dir = args[0]
+		}
+		os.Chdir(dir)
+		send(c, fmt.Sprintf("250 CWD command successful."))
 	default:
 		send(c, fmt.Sprintf("502 %s not implemented.", cmd))
 	}
 }
 
-// send a
 func send(c net.Conn, cmd string) {
 	_, err := fmt.Fprint(c, fmt.Sprintf("%s\r\n", cmd))
 	if err != nil {
@@ -197,11 +222,12 @@ func handleConnection(c net.Conn) {
 	log.Printf("new connection: [%v]", c.RemoteAddr())
 	send(c, "220 Service ready for new user.")
 
+	conn := new(connection)
 	scanner := bufio.NewScanner(c)
 	for scanner.Scan() {
 		request := scanner.Text()
 		log.Printf("recieved: [%s]", request)
-		handle(c, request)
+		conn.handle(c, request)
 	}
 
 	if err := scanner.Err(); err != nil {
