@@ -21,6 +21,7 @@ func lissajous(out io.Writer) {
 		color.RGBA{0x00, 0xff, 0x00, 0xff},
 		color.RGBA{0x00, 0x00, 0xff, 0xff},
 	}
+
 	const (
 		cycles  = 5     // number of complete x oscillator revolutions
 		res     = 0.001 // angular resolution
@@ -28,6 +29,7 @@ func lissajous(out io.Writer) {
 		nframes = 64    // number of animation frames
 		delay   = 8     // delay between frames in 10ms units
 	)
+
 	freq := rand.Float64() * 3.0 // relative frequency of y oscillator
 	anim := gif.GIF{LoopCount: nframes}
 	phase := 0.0 // phase difference
