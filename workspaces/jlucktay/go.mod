@@ -3,6 +3,7 @@ module github.com/LondonGophers/StudyGroup/workspaces/jlucktay
 go 1.13
 
 require (
+	github.com/jlucktay/golang-workbench v0.0.0-20191107102625-37137b74fbb1
 	github.com/matryer/is v1.2.0
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/pkg/errors v0.8.1

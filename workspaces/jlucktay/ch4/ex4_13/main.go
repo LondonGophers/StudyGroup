@@ -6,15 +6,19 @@ import (
 	"os"
 	"strings"
 	"sync"
+
+	"github.com/jlucktay/golang-workbench/secrets"
 )
 
 func main() {
 	const queryBase = "http://www.omdbapi.com/?apikey=%s&s=%s&type=movie"
 
-	s := url.QueryEscape(strings.Join(os.Args[1:], " "))
-	searchURL := fmt.Sprintf(queryBase, APIkey, s)
+	apiKey := secrets.ReadTokenFromSecrets("omdb-api.json")
 
-	fmt.Printf("Search URL: %s\n", strings.ReplaceAll(searchURL, APIkey, "<redacted>"))
+	s := url.QueryEscape(strings.Join(os.Args[1:], " "))
+	searchURL := fmt.Sprintf(queryBase, apiKey, s)
+
+	fmt.Printf("Search URL: %s\n", strings.ReplaceAll(searchURL, apiKey, "<redacted>"))
 
 	result, errSearch := search(searchURL)
 	if errSearch != nil {
