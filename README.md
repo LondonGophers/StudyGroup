@@ -127,11 +127,11 @@ _Go modules_ are available in Go 1.11 onwards which removes the need to have a
 To use modules in your project directory, run:
 
 ``` shell
-go mod init $MODULE
+go mod init MODULE
 ```
 
-...where `$MODULE` is the name of your module. For these exercises this could
-be something simple but in production code would be a domain name and path,
+...where `MODULE` is the name of your module. For these exercises this could
+be something simple such as `studygroup` but could be a domain name and path
 such as `github.com/somebody/component`. This will create a file called
 `go.mod`.
 
