@@ -21,6 +21,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"log"
 	"net"
 	"os"
@@ -30,7 +31,7 @@ import (
 
 var port string
 
-type connection struct {
+type client struct {
 	port       string
 	binaryMode bool
 }
@@ -101,7 +102,7 @@ func addressFromPort(port string) (string, error) {
 }
 
 // handle a request and send an appropriate response via the supplied net.Conn
-func (conn *connection) handle(c net.Conn, request string) {
+func (cl *client) handle(c net.Conn, request string) {
 	req := strings.Split(request, " ")
 	if len(req) < 1 {
 		send(c, "502 not implemented.")
@@ -144,12 +145,12 @@ func (conn *connection) handle(c net.Conn, request string) {
 			}
 		}
 
-		send(c, "150 Here comes the directory listing.")
-		if conn.port == "" {
+		send(c, "150 File status okay; about to open data connection.")
+		if cl.port == "" {
 			log.Printf("error: no port for LIST")
 			return
 		}
-		conn, err := net.Dial("tcp", conn.port)
+		conn, err := net.Dial("tcp", cl.port)
 		defer conn.Close()
 		if err != nil {
 			send(c, fmt.Sprintf("425 Can't open data connection."))
@@ -167,18 +168,18 @@ func (conn *connection) handle(c net.Conn, request string) {
 
 		send(c, "226 LIST successful.")
 	case "PORT":
-		conn.port, _ = addressFromPort(args[0])
-		log.Printf("port: [%s]", conn.port)
+		cl.port, _ = addressFromPort(args[0])
+		log.Printf("port: [%s]", cl.port)
 		send(c, fmt.Sprintf("200 PORT command successful."))
 	case "TYPE":
 		if len(args) > 0 {
 			switch args[0] {
 			case "I":
-				conn.binaryMode = true
+				cl.binaryMode = true
 				send(c, fmt.Sprintf("200 Command OK."))
 				break
 			case "A":
-				conn.binaryMode = false
+				cl.binaryMode = false
 				send(c, fmt.Sprintf("200 Command OK."))
 				break
 			default:
@@ -188,23 +189,56 @@ func (conn *connection) handle(c net.Conn, request string) {
 
 	case "MODE":
 		// todo: implement MODE
-		send(c, fmt.Sprintf("502 MODE not yet implemented."))
+		send(c, "502 MODE not yet implemented.")
 	case "STRU":
 		// todo: implement STRU
-		send(c, fmt.Sprintf("502 STRU not yet implemented."))
+		send(c, "502 STRU not yet implemented.")
 	case "RETR":
+		if len(args) != 1 {
+			send(c, "501 Syntax error in parameters or arguments.")
+		}
+		filename := args[0]
+		file, err := os.Open(filename)
+		if err != nil {
+			send(c, "550 Requested action not taken. File unavailable.")
+			return
+		}
 
-		send(c, fmt.Sprintf("502 RETR not yet implemented."))
+		send(c, "150 File status okay; about to open data connection.")
+		if cl.port == "" {
+			log.Printf("error: no port for LIST")
+			return
+		}
+
+		conn, err := net.Dial("tcp", cl.port)
+		defer conn.Close()
+		if err != nil {
+			send(c, fmt.Sprintf("425 Can't open data connection."))
+			return
+		}
+
+		if cl.binaryMode {
+			_, err := io.Copy(conn, file)
+			if err != nil {
+				send(c, "450 Requested file action not taken.")
+			}
+
+		} else {
+			log.Printf("starting ascii transfer")
+		}
+
+		send(c, "226 Requested file action successful.")
+
 	case "STOR":
 		// todo: implement STOR
-		send(c, fmt.Sprintf("502 STOR not yet implemented."))
+		send(c, "502 STOR not yet implemented.")
 	case "CWD":
 		dir := "."
 		if len(args) > 0 {
 			dir = args[0]
 		}
 		os.Chdir(dir)
-		send(c, fmt.Sprintf("250 CWD command successful."))
+		send(c, "250 CWD command successful.")
 	default:
 		send(c, fmt.Sprintf("502 %s not implemented.", cmd))
 	}
@@ -222,7 +256,7 @@ func handleConnection(c net.Conn) {
 	log.Printf("new connection: [%v]", c.RemoteAddr())
 	send(c, "220 Service ready for new user.")
 
-	conn := new(connection)
+	conn := new(client)
 	scanner := bufio.NewScanner(c)
 	for scanner.Scan() {
 		request := scanner.Text()
