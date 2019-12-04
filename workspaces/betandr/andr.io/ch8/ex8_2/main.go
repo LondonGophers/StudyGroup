@@ -222,9 +222,25 @@ func (cl *client) handle(c net.Conn, request string) {
 			if err != nil {
 				send(c, "450 Requested file action not taken.")
 			}
-
 		} else {
-			log.Printf("starting ascii transfer")
+			r := bufio.NewReader(file)
+			w := bufio.NewWriter(conn)
+
+			for {
+				l, isPrefix, err := r.ReadLine()
+				if err != nil {
+					if err == io.EOF {
+						break
+					}
+					send(c, "450 Requested file action not taken.")
+					return
+				}
+				w.Write(l)
+				if !isPrefix {
+					w.Write([]byte("\r\n"))
+				}
+			}
+			w.Flush()
 		}
 
 		send(c, "226 Requested file action successful.")
