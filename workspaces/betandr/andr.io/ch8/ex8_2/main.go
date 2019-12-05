@@ -123,9 +123,6 @@ func validPath(newDir string) bool {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("%s\n", filepath.Join(wd, newDir))
-	fmt.Printf("%s\n", *dir)
-
 	if strings.Contains(filepath.Join(wd, newDir), *dir) {
 		return true
 	}
