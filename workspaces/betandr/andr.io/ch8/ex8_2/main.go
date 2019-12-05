@@ -8,28 +8,25 @@
 // https://tools.ietf.org/html/rfc959
 // https://en.wikipedia.org/wiki/List_of_FTP_server_return_codes
 //
-// Minimum commands:
-// USER, QUIT, PORT, TYPE, MODE, STRU, RETR, STOR, NOOP
 //
-// Other supported commands:
-// PASV, LIST, CWD
-//
-// go run ./andr.io/ch8/ex8_2 &
+// go run ./andr.io/ch8/ex8_2 -dir=/path/to/working/directory &
 // ftp localhost -p 8021
 package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"io"
 	"log"
 	"net"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 )
 
-var port string
+var dir = flag.String("dir", ".", "Working incoming directory for files.")
 
 type client struct {
 	port       string
@@ -37,11 +34,25 @@ type client struct {
 }
 
 func main() {
+	flag.Parse()
+
 	listener, err := net.Listen("tcp4", "localhost:8021")
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("%s listener started: [%s]", listener.Addr().Network(), listener.Addr())
+
+	err = os.Chdir(*dir)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Printf("incoming directory: [%s]", wd)
 
 	for {
 		conn, err := listener.Accept()
@@ -90,7 +101,7 @@ func handleListener(ln net.Listener) error {
 	}
 }
 
-// decodes a port string such as 127,0,0,1,205,138 to an IP/port such as 127.0.0.1:52618
+// addressFromPort decodes a port string such as 127,0,0,1,205,138 to an IP/port such as 127.0.0.1:52618
 func addressFromPort(port string) (string, error) {
 	var a, b, c, d byte
 	var p1, p2 int
@@ -99,6 +110,26 @@ func addressFromPort(port string) (string, error) {
 		return "", err
 	}
 	return fmt.Sprintf("%d.%d.%d.%d:%d", a, b, c, d, 256*p1+p2), nil
+}
+
+// validPath ensures that you can't chdir above the starting dir
+func validPath(newDir string) bool {
+	if strings.HasPrefix(newDir, "/") {
+		return false
+	}
+
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("%s\n", filepath.Join(wd, newDir))
+	fmt.Printf("%s\n", *dir)
+
+	if strings.Contains(filepath.Join(wd, newDir), *dir) {
+		return true
+	}
+	return false
 }
 
 // handle a request and send an appropriate response via the supplied net.Conn
@@ -186,13 +217,6 @@ func (cl *client) handle(c net.Conn, request string) {
 				send(c, fmt.Sprintf("501 Syntax error in parameters or arguments."))
 			}
 		}
-
-	case "MODE":
-		// todo: implement MODE
-		send(c, "502 MODE not yet implemented.")
-	case "STRU":
-		// todo: implement STRU
-		send(c, "502 STRU not yet implemented.")
 	case "RETR":
 		if len(args) != 1 {
 			send(c, "501 Syntax error in parameters or arguments.")
@@ -200,7 +224,7 @@ func (cl *client) handle(c net.Conn, request string) {
 		filename := args[0]
 		file, err := os.Open(filename)
 		if err != nil {
-			send(c, "550 Requested action not taken. File unavailable.")
+			send(c, "550 File unavailable.")
 			return
 		}
 
@@ -246,15 +270,76 @@ func (cl *client) handle(c net.Conn, request string) {
 		send(c, "226 Requested file action successful.")
 
 	case "STOR":
-		// todo: implement STOR
-		send(c, "502 STOR not yet implemented.")
-	case "CWD":
-		dir := "."
-		if len(args) > 0 {
-			dir = args[0]
+		if len(args) != 1 {
+			send(c, "501 Syntax error in parameters or arguments.")
+			return
 		}
-		os.Chdir(dir)
-		send(c, "250 CWD command successful.")
+
+		filename := args[0]
+		file, err := os.Create(filename)
+		if err != nil {
+			send(c, "550 No file access.")
+			return
+		}
+
+		send(c, "150 File status okay; about to open data connection.")
+		if cl.port == "" {
+			log.Printf("error: no port for LIST")
+			return
+		}
+
+		conn, err := net.Dial("tcp", cl.port)
+		defer conn.Close()
+		if err != nil {
+			send(c, "425 Can't open data connection.")
+		}
+		_, err = io.Copy(file, conn)
+		if err != nil {
+			send(c, "450 Requested file action not taken.")
+		}
+
+		send(c, "226 Requested file action successful.")
+	case "CWD":
+		newDir := *dir
+		if len(args) > 0 {
+			newDir = args[0]
+		}
+		if validPath(newDir) {
+			os.Chdir(newDir)
+			send(c, "250 Requested file action okay, completed.")
+		} else {
+			send(c, "550 Requested action not taken.")
+		}
+	case "RMD":
+		if len(args) != 1 {
+			send(c, "550 Requested action not taken.")
+			return
+		}
+		filename := args[0]
+
+		file, err := os.Open(filename)
+		if err != nil {
+			send(c, "550 File not found.")
+			return
+		}
+
+		stat, err := file.Stat()
+		if !stat.IsDir() {
+			if validPath(filename) {
+				err := os.Remove(filename)
+				if err != nil {
+					send(c, "550 Requested action not taken.")
+					return
+				}
+
+				send(c, "250 Requested file action okay, completed.")
+				return
+			}
+
+		}
+
+		send(c, "450 Requested file action not taken.")
+
 	default:
 		send(c, fmt.Sprintf("502 %s not implemented.", cmd))
 	}
