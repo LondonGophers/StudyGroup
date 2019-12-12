@@ -19,6 +19,7 @@ func CommaRecurse(s string) string {
 	if n <= 3 {
 		return s
 	}
+
 	return CommaRecurse(s[:n-3]) + "," + s[n-3:]
 }
 

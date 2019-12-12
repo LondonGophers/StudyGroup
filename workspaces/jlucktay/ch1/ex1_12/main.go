@@ -54,9 +54,11 @@ func lissajous(out io.Writer, r *http.Request) {
 	freq := rand.Float64() * 3.0 // relative frequency of y oscillator
 	anim := gif.GIF{LoopCount: int(params["nframes"])}
 	phase := 0.0 // phase difference
+
 	for i := 0; i < int(params["nframes"]); i++ {
 		rect := image.Rect(0, 0, int(2*params["size"]+1), int(2*params["size"]+1))
 		img := image.NewPaletted(rect, palette)
+
 		for t := 0.0; t < params["cycles"]*2*math.Pi; t += params["res"] {
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
@@ -66,9 +68,12 @@ func lissajous(out io.Writer, r *http.Request) {
 				uint8((i/8)%(len(palette)-1))+1,
 			)
 		}
+
 		phase += 0.1
+
 		anim.Delay = append(anim.Delay, int(params["delay"]))
 		anim.Image = append(anim.Image, img)
 	}
+
 	_ = gif.EncodeAll(out, &anim) // NOTE: ignoring encoding errors
 }

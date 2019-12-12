@@ -24,22 +24,28 @@ func main() {
 	ch := make(chan string)
 	urls := getUrls("alexa.top50.txt")
 	start := time.Now()
+
 	for _, url := range urls {
 		go fetch(url, ch) // start a goroutine
 	}
+
 	for range urls {
 		log.Info(<-ch) // receive from channel ch
 	}
+
 	log.Infof("%.2fs elapsed", time.Since(start).Seconds())
 
 	urlsMaj := getUrlsCsv("majestic_million.1000.csv", 2)
 	startMaj := time.Now()
+
 	for _, url := range urlsMaj {
 		go fetch(url, ch) // start a goroutine
 	}
+
 	for range urlsMaj {
 		log.Info(<-ch) // receive from channel ch
 	}
+
 	log.Infof("%.2fs elapsed; count: %d", time.Since(startMaj).Seconds(), len(urlsMaj))
 }
 
@@ -47,8 +53,10 @@ func fetch(url string, ch chan<- string) {
 	if !strings.HasPrefix(url, "http://") && !strings.HasPrefix(url, "https://") {
 		url = "https://" + url
 	}
+
 	start := time.Now()
 	resp, errGet := http.Get(url)
+
 	if errGet != nil {
 		ch <- fmt.Sprint(errGet) // send to channel ch
 		return
@@ -56,10 +64,12 @@ func fetch(url string, ch chan<- string) {
 
 	nbytes, errCopy := io.Copy(ioutil.Discard, resp.Body)
 	resp.Body.Close() // don't leak resources
+
 	if errCopy != nil {
 		ch <- fmt.Sprintf("while reading %s: %v", url, errCopy)
 		return
 	}
+
 	secs := time.Since(start).Seconds()
 	ch <- fmt.Sprintf("%.2fs  %7d  %s", secs, nbytes, url)
 }
@@ -69,6 +79,7 @@ func getUrls(filename string) []string {
 	if errRead != nil {
 		log.Fatalf("error opening '%s': %v", filename, errRead)
 	}
+
 	return strings.Split(string(urlBytes), "\n")
 }
 
@@ -86,6 +97,7 @@ func getUrlsCsv(filename string, urlIndex int) []string {
 		if err == io.EOF {
 			break
 		}
+
 		if err != nil {
 			log.Fatal(err)
 		}

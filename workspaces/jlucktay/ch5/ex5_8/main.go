@@ -4,7 +4,7 @@
 // the traversal. Use it to write a function `ElementByID` with the following signature that finds the first HTML
 // element with the specified `id` attribute. The function should stop the traversal as soon as a match is found.
 //
-//		func ElementById(doc *html.Node, id string) *html.Node
+//		func ElementByID(doc *html.Node, id string) *html.Node
 
 // Outline prints the outline of an HTML document tree.
 package main
@@ -33,7 +33,7 @@ func main() {
 			log.Fatalf("Error fetching '%s': %v", url, errFetch)
 		}
 
-		ele := ElementById(doc, os.Args[1])
+		ele := ElementByID(doc, os.Args[1])
 		if ele != nil {
 			fmt.Printf("Found element at '%s' with attributes: '%+v'\n", url, ele.Attr)
 		} else {
@@ -57,8 +57,8 @@ func fetch(url string) (*html.Node, error) {
 	return doc, nil
 }
 
-func ElementById(doc *html.Node, id string) *html.Node {
-	return forEachNode(doc, id, checkElementId)
+func ElementByID(doc *html.Node, id string) *html.Node {
+	return forEachNode(doc, id, checkElementID)
 }
 
 // forEachNode calls the function pre(x) for each node x in the tree rooted at n.
@@ -81,7 +81,7 @@ func forEachNode(n *html.Node, id string, pre func(*html.Node, string) bool) *ht
 	return nil
 }
 
-func checkElementId(n *html.Node, id string) bool {
+func checkElementID(n *html.Node, id string) bool {
 	if n.Type == html.ElementNode {
 		for _, a := range n.Attr {
 			if strings.ToLower(a.Key) == "id" && strings.EqualFold(a.Val, id) {

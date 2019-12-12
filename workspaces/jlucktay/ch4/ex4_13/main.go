@@ -24,6 +24,7 @@ func main() {
 	if errSearch != nil {
 		panic(errSearch)
 	}
+
 	fmt.Printf("Total results: %d\n\n", result.TotalResults)
 
 	var wg sync.WaitGroup
@@ -36,6 +37,7 @@ func main() {
 	for countResults < result.TotalResults {
 		searchPage := fmt.Sprintf("%s&page=%d", searchURL, page)
 		resultPage, errS := search(searchPage)
+
 		if errS != nil {
 			panic(errS)
 		}
@@ -55,6 +57,7 @@ func posters(movies []Movie, wg *sync.WaitGroup) {
 
 		if strings.ToLower(movie.Poster) != "n/a" {
 			wg.Add(1)
+
 			go func(m Movie) {
 				download(m)
 				wg.Done()

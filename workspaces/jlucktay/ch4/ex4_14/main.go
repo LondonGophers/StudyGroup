@@ -24,6 +24,7 @@ func searchGitHub(out io.Writer, r *http.Request) {
 	}
 
 	var ghisr []*github.IssueSearchResult
+
 	searchTerms := r.Form["q"]
 
 	if len(searchTerms) > 0 {
@@ -40,5 +41,6 @@ func search(searchTerms []string) []*github.IssueSearchResult {
 	if err != nil {
 		panic(err)
 	}
+
 	return issues.Items
 }

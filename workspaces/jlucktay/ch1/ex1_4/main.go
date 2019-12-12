@@ -29,6 +29,7 @@ func main() {
 			f.Close()
 		}
 	}
+
 	for line, m := range counts {
 		total := 0
 		filenames := make([]string, 0)
@@ -55,6 +56,7 @@ func countLines(f *os.File, counts map[string]map[string]int) {
 			"error": err,
 			"file":  f,
 		}).Error("Couldn't stat file.")
+
 		return
 	}
 

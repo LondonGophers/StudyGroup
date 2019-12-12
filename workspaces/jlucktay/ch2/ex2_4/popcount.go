@@ -21,8 +21,8 @@ func PopCount(x uint64) int {
 		pc[byte(x>>(7*8))])
 }
 
-// PopCountLoop returns the population count (number of set bits) of x. The internal implementation uses a loop.
-func PopCountLoop(x uint64) (sum int) {
+// Loop returns the population count (number of set bits) of x. The internal implementation uses a loop.
+func Loop(x uint64) (sum int) {
 	for index := uint(0); index < 8; index++ {
 		sum += int(pc[byte(x>>(index*8))])
 	}
@@ -30,12 +30,12 @@ func PopCountLoop(x uint64) (sum int) {
 	return
 }
 
-// PopCountShift returns the population count (number of non-zero bits) of x, by shifting its argument through 64 bit
+// Shift returns the population count (number of non-zero bits) of x, by shifting its argument through 64 bit
 // positions, testing the rightmost bit each time.
-func PopCountShift(x uint64) (sum int) {
+func Shift(x uint64) (sum int) {
 	for index := 0; index < 64; index++ {
 		sum += int(byte(x) & 1)
-		x = x >> 1
+		x >>= 1
 	}
 
 	return

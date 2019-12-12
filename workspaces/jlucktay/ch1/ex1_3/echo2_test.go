@@ -12,6 +12,7 @@ func echo2(w io.Writer, args []string) {
 		s += sep + arg
 		sep = " "
 	}
+
 	fmt.Fprintln(w, s)
 }
 

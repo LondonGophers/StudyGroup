@@ -13,7 +13,9 @@ func main() {
 		if !strings.HasPrefix(url, "http://") && !strings.HasPrefix(url, "https://") {
 			url = "https://" + url
 		}
+
 		resp, errGet := http.Get(url)
+
 		if errGet != nil {
 			fmt.Fprintf(os.Stderr, "fetch: %v\n", errGet)
 			os.Exit(1)

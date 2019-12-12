@@ -13,12 +13,15 @@ func download(m Movie) {
 	extension := xURL[len(xURL)-1]
 	filename := fmt.Sprintf("%s.%d.%s", m.Title, m.Year, extension)
 
-	if _, errStat := os.Stat(filename); errStat == nil {
+	_, errStat := os.Stat(filename)
+
+	switch {
+	case errStat == nil:
 		fmt.Printf("[Download] '%s' already exists!\n", filename)
 		return
-	} else if os.IsNotExist(errStat) {
+	case os.IsNotExist(errStat):
 		fmt.Printf("[Download] Started for %s (%d) to '%s'.\n", m.Title, m.Year, filename)
-	} else {
+	default:
 		panic(errStat)
 	}
 

@@ -46,10 +46,10 @@ func ExampleReverse_length_two() {
 	// Output: [42 0]
 }
 
-func ExampleReverseString() {
+func ExampleString() {
 	b := []byte("Hello, 世界! 👋")
 
-	ex.ReverseString(&b)
+	ex.String(&b)
 
 	fmt.Printf("%s\n", b)
 

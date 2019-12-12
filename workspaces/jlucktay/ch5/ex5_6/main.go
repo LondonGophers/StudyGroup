@@ -25,6 +25,7 @@ func main() {
 	fmt.Printf("<svg xmlns='http://www.w3.org/2000/svg' "+
 		"style='stroke: grey; fill: white; stroke-width: 0.7' "+
 		"width='%d' height='%d'>", width, height)
+
 	for i := 0; i < cells; i++ {
 		for j := 0; j < cells; j++ {
 			ax, ay := corner(i+1, j)
@@ -49,6 +50,7 @@ func corner(i, j int) (sx float64, sy float64) {
 	// Project (x,y,z) isometrically onto 2-D SVG canvas (sx,sy).
 	sx = width/2 + (x-y)*cos30*xyscale
 	sy = height/2 + (x+y)*sin30*xyscale - z*zscale
+
 	return
 }
 

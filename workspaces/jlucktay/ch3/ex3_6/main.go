@@ -37,6 +37,7 @@ func main() {
 	}
 
 	img := image.NewRGBA(image.Rect(0, 0, width, height))
+
 	for x := 0; x < width; x++ {
 		for y := 0; y < height; y++ {
 			r1, g1, b1, a1 := super[2*x][2*y].RGBA()
@@ -63,8 +64,7 @@ func main() {
 }
 
 func mandelbrot(z complex128) color.Color {
-	const iterations = 200
-	const contrast = 15
+	const iterations, contrast = 200, 15
 
 	var v complex128
 	for n := uint8(0); n < iterations; n++ {
@@ -73,6 +73,7 @@ func mandelbrot(z complex128) color.Color {
 		if cmplx.Abs(v) > 2 {
 			result := 255 - contrast*n
 			results[result]++
+
 			return palette.Plan9[result]
 		}
 	}
@@ -82,14 +83,19 @@ func mandelbrot(z complex128) color.Color {
 
 func writeNumbersToTextFile() {
 	var writeMe string
+
 	keys := []int{}
+
 	for key := range results {
 		keys = append(keys, int(key))
 	}
+
 	sort.Ints(keys)
+
 	for _, key := range keys {
 		writeMe += fmt.Sprintf("%7d=%7d\n", key, results[uint8(key)])
 	}
+
 	if errWrite := ioutil.WriteFile("text.log", []byte(writeMe), 0644); errWrite != nil {
 		log.Fatal(errors.Wrap(errWrite, "goodbye!"))
 	}

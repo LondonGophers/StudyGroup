@@ -31,9 +31,11 @@ func main() {
 
 	fmt.Printf("URL: %s\n", u)
 	w, i, err := CountWordsAndImages(u.String())
+
 	if err != nil {
 		panic(err)
 	}
+
 	fmt.Printf("Words: %d\nImages: %d\n", w, i)
 }
 
@@ -53,6 +55,7 @@ func CountWordsAndImages(url string) (words, images int, err error) {
 	}
 
 	words, images = countWordsAndImages(doc)
+
 	return
 }
 
@@ -89,5 +92,5 @@ func countWordsAndImages(n *html.Node) (words, images int) {
 		images += i
 	}
 
-	return
+	return words, images
 }

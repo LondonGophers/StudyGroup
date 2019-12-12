@@ -5,5 +5,5 @@ traversal. Use it to write a function `ElementByID` with the following signature
 the specified `id` attribute. The function should stop the traversal as soon as a match is found.
 
 ``` go
-    func ElementById(doc *html.Node, id string) *html.Node
+    func ElementByID(doc *html.Node, id string) *html.Node
 ```

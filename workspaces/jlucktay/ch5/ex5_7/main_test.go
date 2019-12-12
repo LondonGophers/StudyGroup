@@ -33,6 +33,7 @@ func TestProcess(t *testing.T) {
 
 func catchStdOut(t *testing.T, parser func(io.Reader) error, input io.Reader) (string, error) {
 	realStdout := os.Stdout
+
 	defer func() { os.Stdout = realStdout }()
 
 	r, fakeStdout, errPipeOpen := os.Pipe()
@@ -41,6 +42,7 @@ func catchStdOut(t *testing.T, parser func(io.Reader) error, input io.Reader) (s
 	}
 
 	os.Stdout = fakeStdout
+
 	if errParse := parser(input); errParse != nil {
 		return "", errParse
 	}

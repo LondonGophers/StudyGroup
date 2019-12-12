@@ -14,6 +14,7 @@ func poly(out io.Writer, r *http.Request) {
 
 	fmt.Fprintf(out, "<svg xmlns='http://www.w3.org/2000/svg' style='stroke: grey; fill: white; stroke-width: 0.7' "+
 		"width='%d' height='%d'>", int(params["width"]), int(params["height"]))
+
 	for i := 0; i < int(params["cells"]); i++ {
 		for j := 0; j < int(params["cells"]); j++ {
 			ax, ay, z, errA := corner(i+1, j, params)
@@ -56,6 +57,7 @@ func corner(i, j int, params map[string]float64) (float64, float64, float64, err
 	// Project (x,y,z) isometrically onto 2-D SVG canvas (sx,sy).
 	sx := params["width"]/2 + (x-y)*params["cos30"]*params["xyscale"]
 	sy := params["height"]/2 + (x+y)*params["sin30"]*params["xyscale"] - z*params["zscale"]
+
 	return sx, sy, z, nil
 }
 

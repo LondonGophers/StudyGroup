@@ -66,11 +66,12 @@ func create(owner, repo, title, comment string) {
 		Title: title,
 		Body:  comment,
 	}
-	auth := github.GitHubAuth{
+	auth := github.Auth{
 		Username: viper.GetString("githubUsername"),
 		Password: viper.GetString("githubToken"),
 	}
 	result, err := github.CreateIssue(newIssue, auth, owner, repo)
+
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -8,7 +8,7 @@ import (
 )
 
 // CreateIssue creates a new issue under the designated owner/repo.
-func CreateIssue(create IssueCreate, auth GitHubAuth, owner, repo string) (*IssueCreateResult, error) {
+func CreateIssue(create IssueCreate, auth Auth, owner, repo string) (*IssueCreateResult, error) {
 	reqBodyJSON, err := json.Marshal(create)
 	if err != nil {
 		return nil, err
@@ -18,12 +18,14 @@ func CreateIssue(create IssueCreate, auth GitHubAuth, owner, repo string) (*Issu
 
 	req, err := http.NewRequest("POST", createURL, strings.NewReader(string(reqBodyJSON)))
 	req.SetBasicAuth(auth.Username, auth.Password)
+
 	if err != nil {
 		return nil, err
 	}
 	// Add an HTTP request header indicating that only version 3 of the GitHub API is acceptable.
 	req.Header.Set("Accept", "application/vnd.github.v3.text-match+json")
 	resp, err := http.DefaultClient.Do(req)
+
 	if err != nil {
 		return nil, err
 	}

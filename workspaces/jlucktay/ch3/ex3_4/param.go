@@ -7,8 +7,8 @@ import (
 	"strconv"
 )
 
-func parseParams(r *http.Request) (params map[string]float64) {
-	params = map[string]float64{
+func parseParams(r *http.Request) map[string]float64 {
+	params := map[string]float64{
 		"width":   600, // canvas size in pixels
 		"height":  320,
 		"cells":   100,  // number of grid cells
@@ -38,5 +38,5 @@ func parseParams(r *http.Request) (params map[string]float64) {
 	params["sin30"] = math.Sin(params["angle"]) // sin(30°)
 	params["cos30"] = math.Cos(params["angle"]) // cos(30°)
 
-	return
+	return params
 }

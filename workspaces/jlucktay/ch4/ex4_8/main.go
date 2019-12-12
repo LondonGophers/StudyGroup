@@ -13,26 +13,31 @@ import (
 )
 
 func main() {
-	counts := make(map[rune]int)    // counts of Unicode characters
 	var utflen [utf8.UTFMax + 1]int // count of lengths of UTF-8 encodings
-	invalid := 0                    // count of invalid UTF-8 characters
+
+	counts := make(map[rune]int) // counts of Unicode characters
+	invalid := 0                 // count of invalid UTF-8 characters
 
 	uiKeys := []string{}
 	for uiKey := range unicodeIs {
 		uiKeys = append(uiKeys, uiKey)
 	}
+
 	sort.Strings(uiKeys)
 
 	in := bufio.NewReader(os.Stdin)
+
 	for {
 		r, n, err := in.ReadRune() // returns rune, nbytes, error
 		if err == io.EOF {
 			break
 		}
+
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "charcount: %v\n", err)
 			os.Exit(1)
 		}
+
 		if r == unicode.ReplacementChar && n == 1 {
 			invalid++
 			continue
@@ -53,13 +58,16 @@ func main() {
 	for countKey := range counts {
 		countKeys = append(countKeys, countKey)
 	}
+
 	sort.Slice(countKeys, func(i, j int) bool { return countKeys[i] < countKeys[j] })
 	fmt.Printf("rune\tcount\n")
+
 	for _, ck := range countKeys {
 		fmt.Printf("%q\t%d\n", ck, counts[ck])
 	}
 
 	fmt.Print("\nlen\tcount\n")
+
 	for i, n := range utflen {
 		if i > 0 {
 			fmt.Printf("%d\t%d\n", i, n)
@@ -67,6 +75,7 @@ func main() {
 	}
 
 	fmt.Printf("\n%-11s %9s\n", "unicode.Is*", "count")
+
 	for _, is := range uiKeys {
 		fmt.Printf("%-11s %9d\n", is, unicodeIs[is].count)
 	}

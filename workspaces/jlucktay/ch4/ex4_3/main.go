@@ -4,6 +4,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -23,10 +24,22 @@ outer:
 			}
 			ints = append(ints, int(x))
 		}
-		Reverse(ints)
+
+		if len(ints) == 8 {
+			a := [8]int{}
+			copy(a[:], ints)
+			ReverseArrPtr(&a)
+			ints = a[:]
+		} else {
+			Reverse(ints)
+		}
+
 		fmt.Printf("%v\n", ints)
+
+		if errInput := input.Err(); errInput != nil {
+			log.Fatal(errInput)
+		}
 	}
-	// NOTE: ignoring potential errors from input.Err()
 }
 
 // Reverse reverses a slice of ints in place.
@@ -36,7 +49,7 @@ func Reverse(s []int) {
 	}
 }
 
-// Reverse reverses a slice of ints in place.
+// ReverseArrPtr reverses an array of ints in place, via pointer.
 func ReverseArrPtr(a *[8]int) {
 	for i, j := 0, len(a)-1; i < j; i, j = i+1, j-1 {
 		a[i], a[j] = a[j], a[i]

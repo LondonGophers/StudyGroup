@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func ExampleKB() {
+func ExamplekB() {
 	fmt.Printf("%G %d", kB, uint64(kB))
 	//Output: 1000 1000
 }

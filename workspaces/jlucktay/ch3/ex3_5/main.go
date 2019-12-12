@@ -27,6 +27,7 @@ func main() {
 
 	for py := 0; py < height; py++ {
 		y := float64(py)/height*(yMax-yMin) + yMin
+
 		for px := 0; px < height; px++ {
 			x := float64(px)/width*(xMax-xMin) + xMin
 			z := complex(x, y)
@@ -39,22 +40,26 @@ func main() {
 	}
 
 	var writeMe string
+
 	keys := []int{}
+
 	for key := range results {
 		keys = append(keys, int(key))
 	}
+
 	sort.Ints(keys)
+
 	for _, key := range keys {
 		writeMe += fmt.Sprintf("%7d=%7d\n", key, results[uint8(key)])
 	}
+
 	if errWrite := ioutil.WriteFile("text.log", []byte(writeMe), 0644); errWrite != nil {
 		log.Fatal(errors.Wrap(errWrite, "goodbye!"))
 	}
 }
 
 func mandelbrot(z complex128) color.Color {
-	const iterations = 200
-	const contrast = 15
+	const iterations, contrast = 200, 15
 
 	var v complex128
 	for n := uint8(0); n < iterations; n++ {
@@ -63,6 +68,7 @@ func mandelbrot(z complex128) color.Color {
 		if cmplx.Abs(v) > 2 {
 			result := 255 - contrast*n
 			results[result]++
+
 			return palette.Plan9[result]
 		}
 	}

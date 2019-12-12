@@ -3,7 +3,7 @@ package rotate
 
 // Left rotates a slice of ints 'n' indexes to the left in place with a single pass.
 func Left(s []int, n int) {
-	n = n % len(s)
+	n %= len(s)
 	count := 0
 
 	for start := 0; count < len(s); start++ {
@@ -23,7 +23,7 @@ func Left(s []int, n int) {
 
 // Right rotates a slice of ints 'n' indexes to the right in place with a single pass.
 func Right(s []int, n int) {
-	n = n % len(s)
+	n %= len(s)
 	count := 0
 
 	for start := 0; count < len(s); start++ {

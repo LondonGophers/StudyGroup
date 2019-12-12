@@ -19,12 +19,14 @@ func SearchIssues(terms []string) (*IssuesSearchResult, error) {
 	// Add an HTTP request header indicating that only version 3 of the GitHub API is acceptable.
 	req.Header.Set("Accept", "application/vnd.github.v3.text-match+json")
 	resp, errDo := http.DefaultClient.Do(req)
+
 	if errDo != nil {
 		return nil, errDo
 	}
 	defer resp.Body.Close()
 
 	var result IssuesSearchResult
+
 	if resp.StatusCode == http.StatusUnprocessableEntity {
 		return &result, nil
 	}

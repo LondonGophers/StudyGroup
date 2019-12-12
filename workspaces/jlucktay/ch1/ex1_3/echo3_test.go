@@ -8,7 +8,7 @@ import (
 )
 
 func echo3(w io.Writer, args []string) {
-	fmt.Fprintf(w, strings.Join(args[0:], " "))
+	fmt.Fprint(w, strings.Join(args[0:], " "))
 }
 
 func BenchmarkEcho3_2(b *testing.B)      { benchmark(b, 2, echo3) }

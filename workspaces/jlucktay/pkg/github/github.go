@@ -4,9 +4,9 @@ package github
 
 import "time"
 
-const GitHubAPIPrefix = "https://api.github.com"
-const IssuesSearchURL = GitHubAPIPrefix + "/search/issues"
-const IssueCreateURL = GitHubAPIPrefix + "/repos/%s/%s/issues"
+const APIPrefix = "https://api.github.com"
+const IssuesSearchURL = APIPrefix + "/search/issues"
+const IssueCreateURL = APIPrefix + "/repos/%s/%s/issues"
 
 type IssuesSearchResult struct {
 	TotalCount int `json:"total_count"`
@@ -38,7 +38,7 @@ type IssueCreateResult struct {
 	HTMLURL string `json:"html_url"`
 }
 
-type GitHubAuth struct {
+type Auth struct {
 	Username, Password string
 }
 

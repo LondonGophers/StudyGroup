@@ -81,6 +81,7 @@ func startElement(n *html.Node) {
 		if len(trimmed) > 0 {
 			scanner := bufio.NewScanner(strings.NewReader(n.Data))
 			scanner.Split(bufio.ScanLines)
+
 			for scanner.Scan() {
 				text := scanner.Text()
 				fmt.Printf("%*s%s\n", depth*2, "", text)

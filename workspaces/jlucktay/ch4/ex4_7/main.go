@@ -13,9 +13,9 @@ func Reverse(a *[]int) {
 	}
 }
 
-// ReverseString is a modified version of Reverse which takes a slice of bytes representing a UTF-8-encoded string and
+// String is a modified version of Reverse which takes a slice of bytes representing a UTF-8-encoded string and
 // reverses it in place.
-func ReverseString(b *[]byte) {
+func String(b *[]byte) {
 	if !utf8.Valid(*b) {
 		panic(fmt.Sprintf("input '% x' does not consist entirely of valid UTF-8-encoded runes", *b))
 	}
@@ -31,7 +31,7 @@ func ReverseString(b *[]byte) {
 		}
 
 		// Bring forward the remainder of the slice
-		copy((*b)[:], (*b)[size:len(*b)-reversedSize])
+		copy((*b), (*b)[size:len(*b)-reversedSize])
 
 		// Keep track of the number of bytes that have been reversed
 		reversedSize += size

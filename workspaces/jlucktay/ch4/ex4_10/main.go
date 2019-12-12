@@ -18,13 +18,16 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	fmt.Printf("%d issues:\n", result.TotalCount)
+
 	for _, item := range result.Items {
-		if time.Since(item.CreatedAt) < time.Hour*24*30 {
+		switch {
+		case time.Since(item.CreatedAt) < time.Hour*24*30:
 			monthOld = append(monthOld, item)
-		} else if time.Since(item.CreatedAt) < time.Hour*24*365 {
+		case time.Since(item.CreatedAt) < time.Hour*24*365:
 			yearOld = append(yearOld, item)
-		} else {
+		default:
 			older = append(older, item)
 		}
 	}
@@ -39,5 +42,6 @@ func toString(ghi []*github.Issue) (s string) {
 		s += fmt.Sprintf("#%-5d %9.9s %.55s\n",
 			item.Number, item.User.Login, item.Title)
 	}
+
 	return
 }

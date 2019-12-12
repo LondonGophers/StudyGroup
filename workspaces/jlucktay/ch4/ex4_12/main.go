@@ -19,6 +19,7 @@ func main() {
 
 	xkcdJSONPath := filepath.Join(wd, "xkcd")
 	files, err := ioutil.ReadDir(xkcdJSONPath)
+
 	if err != nil {
 		panic(err)
 	}
@@ -33,13 +34,14 @@ func main() {
 
 		jsonFilePath := filepath.Join(xkcdJSONPath, file.Name())
 		content, err := ioutil.ReadFile(jsonFilePath)
+
 		if err != nil {
 			fmt.Println("File:", file.Name())
 			panic(err)
 		}
 
 		comic := new(XKCDComic)
-		if errUm := json.Unmarshal([]byte(content), &comic); errUm != nil {
+		if errUm := json.Unmarshal(content, &comic); errUm != nil {
 			fmt.Println("Content:", content)
 			panic(errUm)
 		}

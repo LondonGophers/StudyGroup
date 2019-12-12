@@ -11,7 +11,7 @@ import (
 
 func main() {
 	for i := 1; i < len(os.Args); i++ {
-		if strings.IndexRune(os.Args[i], '/') != -1 {
+		if strings.ContainsRune(os.Args[i], '/') {
 			xs := strings.Split(os.Args[i], "/")
 			fmt.Printf("  '%s' v '%s': %v\n", xs[0], xs[1], Anagram(xs[0], xs[1]))
 		}
@@ -21,13 +21,13 @@ func main() {
 func Anagram(s1, s2 string) bool {
 	characters := make(map[rune]uint)
 
-	for _, r := range []rune(s1) {
+	for _, r := range s1 {
 		if !unicode.IsSpace(r) {
 			characters[unicode.ToLower(r)]++
 		}
 	}
 
-	for _, r := range []rune(s2) {
+	for _, r := range s2 {
 		if !unicode.IsSpace(r) {
 			if count, exists := characters[unicode.ToLower(r)]; !exists || count == 0 {
 				return false

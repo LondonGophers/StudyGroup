@@ -21,6 +21,7 @@ func main() {
 	}
 
 	fmt.Printf("%-40s count\n", "word")
+
 	for word, count := range counts {
 		fmt.Printf("%-40s %d\n", word, count)
 	}

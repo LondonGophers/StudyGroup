@@ -9,7 +9,9 @@ import (
 // floatEquals came from this gem of a gist: https://gist.github.com/cevaris/bc331cbe970b03816c6b
 func floatEquals(t *testing.T, a, b tempconv.Temperature) bool {
 	t.Helper()
+
 	var EPSILON float64 = 0.00000001
+
 	return (a.AsFloat64()-b.AsFloat64()) < EPSILON && (b.AsFloat64()-a.AsFloat64()) < EPSILON
 }
 
@@ -45,6 +47,7 @@ func TestCtoF(t *testing.T) {
 	}
 	for name, tC := range testCases {
 		tC := tC // pin!
+
 		t.Run(name, func(t *testing.T) {
 			if actual := tempconv.CToF(tC.input); !floatEquals(t, tC.expected, actual) {
 				t.Errorf("Expected '%v' but got '%v'.", tC.expected, actual)
@@ -85,6 +88,7 @@ func TestCtoK(t *testing.T) {
 	}
 	for name, tC := range testCases {
 		tC := tC // pin!
+
 		t.Run(name, func(t *testing.T) {
 			if actual := tempconv.CToK(tC.input); !floatEquals(t, tC.expected, actual) {
 				t.Errorf("Expected '%v' but got '%v'.", tC.expected, actual)
@@ -125,6 +129,7 @@ func TestFtoC(t *testing.T) {
 	}
 	for name, tC := range testCases {
 		tC := tC // pin!
+
 		t.Run(name, func(t *testing.T) {
 			if actual := tempconv.FToC(tC.input); !floatEquals(t, tC.expected, actual) {
 				t.Errorf("Expected '%v' but got '%v'.", tC.expected, actual)
@@ -165,6 +170,7 @@ func TestFtoK(t *testing.T) {
 	}
 	for name, tC := range testCases {
 		tC := tC // pin!
+
 		t.Run(name, func(t *testing.T) {
 			if actual := tempconv.FToK(tC.input); !floatEquals(t, tC.expected, actual) {
 				t.Errorf("Expected '%v' but got '%v'.", tC.expected, actual)
@@ -205,6 +211,7 @@ func TestKtoC(t *testing.T) {
 	}
 	for name, tC := range testCases {
 		tC := tC // pin!
+
 		t.Run(name, func(t *testing.T) {
 			if actual := tempconv.KToC(tC.input); !floatEquals(t, tC.expected, actual) {
 				t.Errorf("Expected '%v' but got '%v'.", tC.expected, actual)
@@ -245,6 +252,7 @@ func TestKtoF(t *testing.T) {
 	}
 	for name, tC := range testCases {
 		tC := tC // pin!
+
 		t.Run(name, func(t *testing.T) {
 			if actual := tempconv.KToF(tC.input); !floatEquals(t, tC.expected, actual) {
 				t.Errorf("Expected '%v' but got '%v'.", tC.expected, actual)
