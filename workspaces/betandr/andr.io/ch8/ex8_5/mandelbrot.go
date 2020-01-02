@@ -6,10 +6,12 @@ package main
 
 import (
 	"os"
+	"runtime"
 
 	"andr.io/andr.io/ch8/ex8_5/mandelbrot"
 )
 
 func main() {
-	mandelbrot.GenerateConcurrent(os.Stdout)
+	numWorkers := runtime.GOMAXPROCS(-1)
+	mandelbrot.GenerateConcurrent(os.Stdout, numWorkers)
 }
