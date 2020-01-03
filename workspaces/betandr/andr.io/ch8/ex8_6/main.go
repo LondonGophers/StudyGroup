@@ -15,19 +15,23 @@ import (
 
 var depth = flag.Int("depth", 3, "Only URLs reachable by this number of links will be fetched")
 
-func crawl(url string) []string {
+type link struct {
+	URL   string
+	Depth int
+}
+
+func crawl(url link) []string {
 	fmt.Println(url)
-	list, err := links.Extract(url)
+	list, err := links.Extract(url.URL)
 	if err != nil {
 		log.Print(err)
 	}
 	return list
 }
 
-//!+
 func main() {
-	worklist := make(chan []string)  // lists of URLs, may have duplicates
-	unseenLinks := make(chan string) // de-duplicated URLs
+	worklist := make(chan []string) // lists of URLs, may have duplicates
+	unseenLinks := make(chan link)  // de-duplicated URLs
 
 	// Add command-line arguments to worklist.
 	go func() { worklist <- os.Args[1:] }()
@@ -37,6 +41,7 @@ func main() {
 		go func() {
 			for link := range unseenLinks {
 				foundLinks := crawl(link)
+				// increment depth here
 				go func() { worklist <- foundLinks }()
 			}
 		}()
@@ -46,13 +51,11 @@ func main() {
 	// and sends the unseen ones to the crawlers.
 	seen := make(map[string]bool)
 	for list := range worklist {
-		for _, link := range list {
-			if !seen[link] {
-				seen[link] = true
-				unseenLinks <- link
+		for _, l := range list {
+			if !seen[l] {
+				seen[l] = true
+				unseenLinks <- link{l, 0}
 			}
 		}
 	}
 }
-
-//!-
