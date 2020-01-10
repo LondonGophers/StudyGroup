@@ -44,6 +44,12 @@ meetups to meet to chat about Go and the book etc. So just join in any time! :)
 
 ## 1. Begin
 
+### Just tell me how to write Go code
+
+There's a great how to write Go code document here -> [golang.org/doc/code.html](https://golang.org/doc/code.html) :)
+
+### Ok, the workshop...
+
 To get access to the repo ask an organiser at one of the meetups to add you. 
 Then to begin, create your own directory in the [workspaces](workspaces) 
 directory, work through the book exercises, and add your code there. When 
