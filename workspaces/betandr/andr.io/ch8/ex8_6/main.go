@@ -39,6 +39,7 @@ func main() {
 	worklist := make(chan []link)  // lists of URLs, may have duplicates
 	unseenLinks := make(chan link) // de-duplicated URLs
 	var wg sync.WaitGroup
+	wg.Add(20)
 
 	flag.Parse()
 
@@ -55,6 +56,8 @@ func main() {
 					if l.Depth <= *depth {
 						foundLinks := crawl(l)
 						worklist <- foundLinks
+					} else {
+						wg.Done()
 					}
 				}(unseenLink)
 			}
@@ -74,7 +77,6 @@ func main() {
 		for _, l := range list {
 			if !seen[l.URL] {
 				seen[l.URL] = true
-				wg.Add(1)
 				unseenLinks <- link{l.URL, l.Depth + 1}
 			}
 		}
