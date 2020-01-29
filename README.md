@@ -235,7 +235,7 @@ workspaces
 install, run:
 
 ``` shell
-go get -u github.com/derekparker/delve/cmd/dlv
+go get -u github.com/go-delve/delve/cmd/dlv
 ```
 
 To see the available commands, run `dlv` then `help` at the `(dlv)` prompt.
