@@ -81,13 +81,6 @@ If you need the exercises from the book, they're available in
 [exercises.tar.gz](exercises.tar.gz) zipped archive but these are already in
 the book so you might not need them.
 
-To obtain all of the source code examples used in the book (many of which are
-code examples to be amended) you can get this by running:
-
-``` shell
-git clone https://github.com/adonovan/gopl.io.git
-```
-
 ## 2. Installing Go
 
 ### a. Home/Linuxbrew
@@ -110,14 +103,22 @@ install them.
 
 ## 3. Getting the Workshop Code
 
-You can grab the code samples used in the book (which you update for a bunch of
-the exercises) by running such as:
+To obtain all of the source code examples used in the book (many of which are
+code examples to be amended) you can get this by running in your workspace:
 
 ``` shell
-go get gopl.io/ch1/helloworld
+git clone https://github.com/adonovan/gopl.io.git
 ```
 
-(This will get the `helloworld` code, plus the other examples).
+(This will get the `helloworld` code, plus all the other examples).
+
+Remember to add a `.gitignore` file containing:
+
+```
+gopl.io
+```
+
+...so you don't check in that example code to the repo.
 
 ## 4. Building and Running Go
 
