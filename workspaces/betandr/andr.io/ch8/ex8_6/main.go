@@ -1,7 +1,5 @@
 // Add depth-limiting to the concurrent crawler. That is, if the user sets
 // `-depth=3`, then only URLs reachable by at most three links will be fetched.
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
 package main
 
 import (
@@ -9,6 +7,7 @@ import (
 	"fmt"
 	"log"
 	"sync"
+	"time"
 
 	"gopl.io/ch5/links"
 )
@@ -22,7 +21,7 @@ type link struct {
 }
 
 func crawl(url link) []link {
-	fmt.Println(url)
+	fmt.Println(url.URL)
 	list, err := links.Extract(url.URL)
 	if err != nil {
 		log.Print(err)
@@ -39,7 +38,7 @@ func main() {
 	worklist := make(chan []link)  // lists of URLs, may have duplicates
 	unseenLinks := make(chan link) // de-duplicated URLs
 	var wg sync.WaitGroup
-	wg.Add(20)
+	wg.Add(1)
 
 	flag.Parse()
 
@@ -56,9 +55,8 @@ func main() {
 					if l.Depth <= *depth {
 						foundLinks := crawl(l)
 						worklist <- foundLinks
-					} else {
-						wg.Done()
 					}
+					wg.Done()
 				}(unseenLink)
 			}
 		}()
@@ -70,6 +68,17 @@ func main() {
 		close(worklist)
 	}()
 
+	// this feels like a kludge; because of the wg.Add(1) at the start
+	// that gives the goroutines time to start adding waitgroup items
+	// before the worklist channel is closed we need to remove this
+	// waitgroup item. So, this goroutine sleeps for a couple of seconds,
+	// to give the others time to start working, then removes the "guard"
+	// goroutine.
+	go func() {
+		time.Sleep(2 * time.Second)
+		wg.Done()
+	}()
+
 	// The main goroutine de-duplicates worklist items
 	// and sends the unseen ones to the crawlers.
 	seen := make(map[string]bool)
@@ -78,6 +87,7 @@ func main() {
 			if !seen[l.URL] {
 				seen[l.URL] = true
 				unseenLinks <- link{l.URL, l.Depth + 1}
+				wg.Add(1)
 			}
 		}
 	}
