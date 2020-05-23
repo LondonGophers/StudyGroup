@@ -53,10 +53,16 @@ func TestBitDiffCount(t *testing.T) {
 			diff:  4,
 		},
 	}
+
+	is := is.New(t)
+
 	for desc, tC := range testCases {
-		tC := tC // pin!
-		is := is.New(t)
+		// pin! ref: https://github.com/golang/go/wiki/CommonMistakes#using-reference-to-loop-iterator-variable
+		desc, tC := desc, tC
+
 		t.Run(desc, func(t *testing.T) {
+			t.Parallel() // Don't use .Parallel() without pinning.
+
 			is.Equal(ex.BitDiffCount(tC.left, tC.right), tC.diff) // actual vs expected
 		})
 	}
