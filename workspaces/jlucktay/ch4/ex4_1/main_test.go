@@ -3,8 +3,9 @@ package main_test
 import (
 	"testing"
 
-	ex "github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch4/ex4_1"
 	"github.com/matryer/is"
+
+	ex "github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch4/ex4_1"
 )
 
 func TestBitDiffCount(t *testing.T) {

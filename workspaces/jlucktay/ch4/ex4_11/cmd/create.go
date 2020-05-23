@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/LondonGophers/StudyGroup/workspaces/jlucktay/pkg/github"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+
+	"github.com/LondonGophers/StudyGroup/workspaces/jlucktay/pkg/github"
 )
 
 // Flags

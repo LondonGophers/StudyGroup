@@ -4,8 +4,9 @@ import (
 	"math/bits"
 	"testing"
 
-	popcount "github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch2/ex2_3"
 	"github.com/matryer/is"
+
+	popcount "github.com/LondonGophers/StudyGroup/workspaces/jlucktay/ch2/ex2_3"
 )
 
 // -- Alternative implementations --

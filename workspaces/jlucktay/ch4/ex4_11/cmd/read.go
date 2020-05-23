@@ -5,8 +5,9 @@ import (
 	"log"
 	"strings"
 
-	"github.com/LondonGophers/StudyGroup/workspaces/jlucktay/pkg/github"
 	"github.com/spf13/cobra"
+
+	"github.com/LondonGophers/StudyGroup/workspaces/jlucktay/pkg/github"
 )
 
 // readCmd represents the read command
