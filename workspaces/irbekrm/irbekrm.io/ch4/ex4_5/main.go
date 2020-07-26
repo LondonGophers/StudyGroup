@@ -4,11 +4,11 @@ import "fmt"
 
 func main() {
 	s := []string{"alpha", "beta", "beta", "beta", "gamma", "gamma", "gamma"}
-	s = eliminateAdjacentDuplicates(s)
+	s = RemoveAdjacentDupes(s)
 	fmt.Println(s) // [alpha beta gamma]
 }
 
-func eliminateAdjacentDuplicates(s []string) []string {
+func RemoveAdjacentDupes(s []string) []string {
 	// for each slice item at index i
 	for i := 0; i < len(s); i++ {
 		ii := i + 1
