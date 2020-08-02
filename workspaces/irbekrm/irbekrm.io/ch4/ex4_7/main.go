@@ -7,11 +7,11 @@ import (
 
 func main() {
 	b := []byte("Hello, 池")
-	bb := reverseChars(b)
+	bb := ReverseChars(b)
 	fmt.Println(string(bb))
 }
 
-func reverseChars(bytes []byte) []byte {
+func ReverseChars(bytes []byte) []byte {
 	lidx := 0              // left index
 	ridx := len(bytes) - 1 // right index
 	for {
