@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	b := []byte("alpha")
+	b := []byte("Hello, 池")
 	bb := reverseChars(b)
 	fmt.Println(string(bb))
 }
@@ -58,7 +58,7 @@ func reverseChars(bytes []byte) []byte {
 				bytes[lidx+i], bytes[ridx-rlen+i+1] = bytes[ridx-rlen+i+1], bytes[lidx+i]
 			}
 		}
-		lidx += llen
-		ridx -= rlen
+		lidx += rlen
+		ridx -= llen
 	}
 }
