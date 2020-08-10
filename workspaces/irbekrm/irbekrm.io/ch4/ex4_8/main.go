@@ -9,18 +9,17 @@ import (
 )
 
 func main() {
-	CharCount()
+	CharCount(os.Stdin, os.Stdout)
 }
 
-func CharCount() {
+func CharCount(stdin io.Reader, stdout io.Writer) {
 	types := make(map[string]int)
 	invalid := 0
 
-	in := bufio.NewReader(os.Stdin)
+	in := bufio.NewReader(stdin)
 	for {
 		r, n, err := in.ReadRune() // returns rune, nbytes, error
 		if err == io.EOF {
-			fmt.Print("Good bye")
 			break
 		}
 		if err != nil {
@@ -41,13 +40,12 @@ func CharCount() {
 		default:
 			types["other"]++
 		}
-		fmt.Printf("character\ttype\tcount\n")
-		for c, n := range types {
-			fmt.Printf("%q\t%d\n", c, n)
+		fmt.Fprintf(stdout, "%-15v%v\n", "type", "count")
+		for t, c := range types {
+			fmt.Fprintf(stdout, "%-15s%d\n", t, c)
 		}
-		fmt.Print("\nlen\tcount\n")
 		if invalid > 0 {
-			fmt.Printf("\n%d invalid UTF-8 characters\n", invalid)
+			fmt.Fprintf(stdout, "\n%d invalid UTF-8 characters\n", invalid)
 		}
 	}
 }
