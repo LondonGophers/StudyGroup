@@ -3,17 +3,18 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"io"
 	"os"
 )
 
 func main() {
-	WordFreq("example.txt", os.Stdin)
+	wf := WordFreq("example.txt")
+	for word, f := range wf {
+		fmt.Printf("%s: %d\n", word, f)
+	}
 }
 
-// WordFreq reads words from input file, calculates frequency and writes output to
-// writer accepted as parameter
-func WordFreq(path string, w io.Writer) {
+// WordFreq accepts file with whitespace separated words and returns a map of word frequencies
+func WordFreq(path string) map[string]int {
 	wf := make(map[string]int)
 	file, err := os.Open(path)
 	if err != nil {
@@ -29,7 +30,5 @@ func WordFreq(path string, w io.Writer) {
 	if err := scanner.Err(); err != nil {
 		fmt.Fprintf(os.Stderr, "Error reading input: %v\n", err)
 	}
-	for word, f := range wf {
-		fmt.Fprintf(w, "%s: %d\n", word, f)
-	}
+	return wf
 }
