@@ -11,7 +11,9 @@ import (
 )
 
 const (
-	Year  = 31536000
+	// seconds in a year
+	Year = 31536000
+	// seconds in a month
 	Month = 2626560
 )
 
