@@ -13,17 +13,19 @@ import (
 type createFlags struct {
 	Owner     string `json:"-"`
 	Repo      string `json:"-"`
-	Title     string
-	Milestone int    `json:",omitempty"`
-	Labels    string `json:",omitempty"`
-	Assignees string `json:",omitempty"`
+	Title     string `json:"title"`
+	Milestone int    `json:"milestone,omitempty"`
+	Labels    string `json:"labels,omitempty"`
+	Assignees string `json:"assignees,omitempty"`
+	Username  string `json:"-"`
+	Password  string `json:"-"`
 }
 
 // TODO: make it so that a user can pass a non-interactive flag for create (-body flag and no opening of text editor)
 var (
-	create                                = flag.NewFlagSet("create", flag.ExitOnError)
-	owner, repo, title, labels, assignees *string
-	milestone                             *int
+	create                                                    = flag.NewFlagSet("create", flag.ExitOnError)
+	owner, repo, title, labels, assignees, username, password *string
+	milestone                                                 *int
 )
 
 const baseURL = "https://api.github.com/"
@@ -35,6 +37,8 @@ func init() {
 	assignees = create.String("assignee", "", "Comma separated logins for users to assign this issue")
 	milestone = create.Int("milestone", 0, "milestone to associate issue with")
 	labels = create.String("labels", "", "Comma separated labels to associate with the issue")
+	username = create.String("username", "", "Username for basic auth")
+	password = create.String("password", "", "password for basic auth")
 }
 
 func main() {
@@ -57,20 +61,29 @@ func main() {
 
 // GitHub v3 API https://docs.github.com/en/rest/reference/issues#create-an-issue
 func createIssue() {
-	cf := &createFlags{Owner: *owner, Title: *title, Repo: *repo, Milestone: *milestone, Labels: *labels, Assignees: *assignees}
+	cf := &createFlags{Owner: *owner, Title: *title, Repo: *repo, Milestone: *milestone, Labels: *labels, Assignees: *assignees, Password: *password, Username: *username}
 	if cf.Owner == "" || cf.Repo == "" || cf.Title == "" {
 		fmt.Fprint(os.Stderr, "Usage: issuer create -owner OWNER -title TITLE -repo REPO\n")
 		os.Exit(1)
 	}
 	url := fmt.Sprintf("%srepos/%s/%s/issues", baseURL, cf.Owner, cf.Repo)
+	fmt.Println(url)
 	data, err := json.Marshal(cf)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error marshaling json: %v\n", err)
 		os.Exit(1)
 	}
+	fmt.Println(string(data))
 	r := bytes.NewReader(data)
-	fmt.Println(url)
-	resp, err := http.Post(url, "Accept: application/vnd.github.v3+json", r)
+
+	client := &http.Client{}
+	req, err := http.NewRequest("POST", url, r)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error creating a request: %v\n", err)
+	}
+	req.Header.Add("Accept", "application/vnd.github.v3+json")
+	req.SetBasicAuth(cf.Username, cf.Password)
+	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error creating an issue: %v\n", err)
 		os.Exit(1)
