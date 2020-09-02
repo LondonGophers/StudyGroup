@@ -15,7 +15,7 @@ func main() {
 	switch command := os.Args[1]; command {
 	case "create":
 		if err := createIssue(); err != nil {
-			fmt.Fprintf(os.Stderr, "Error creating an issue: %v", err)
+			fmt.Fprintf(os.Stderr, "Error creating an issue: %v\n", err)
 			os.Exit(1)
 		}
 	default:
@@ -25,4 +25,10 @@ func main() {
 
 func statusIsSuccessful(s int) bool {
 	return s >= 200 && s <= 299
+}
+
+func credsFromEnv() (string, string, bool) {
+	username, uSet := os.LookupEnv("GITHUB_USERNAME")
+	password, pSet := os.LookupEnv("GITHUB_PASSWORD")
+	return username, password, uSet && pSet
 }
