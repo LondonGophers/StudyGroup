@@ -9,7 +9,7 @@ const baseURL = "https://api.github.com/"
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Fprintln(os.Stderr, "Usage: issuer create")
+		fmt.Fprintln(os.Stderr, "Usage: issuer COMMAND FLAGS")
 		os.Exit(1)
 	}
 	switch command := os.Args[1]; command {

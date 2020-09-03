@@ -6,17 +6,20 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"os"
+	"os/exec"
 )
 
-type createFlags struct {
+type createData struct {
 	Owner     string `json:"-"`
 	Repo      string `json:"-"`
 	Title     string `json:"title"`
 	Milestone int    `json:"milestone,omitempty"`
 	Labels    string `json:"labels,omitempty"`
 	Assignees string `json:"assignees,omitempty"`
+	Body      string `json:"body,omitempty"`
 }
 
 // TODO: make it so that a user can pass a non-interactive flag for create (-body flag and no opening of text editor)
@@ -30,6 +33,7 @@ func createIssue() error {
 	var owner, repo, title, labels, assignees *string
 	var milestone *int
 
+	// TODO: a flag to specify text editor to open
 	owner = create.String("owner", "", "repository owner")
 	repo = create.String("repo", "", "GitHub repository")
 	title = create.String("title", "", "Title of the issue")
@@ -42,7 +46,7 @@ func createIssue() error {
 		return fmt.Errorf("Error parsing flags: %v\n", err)
 	}
 
-	cf := &createFlags{Owner: *owner, Title: *title, Repo: *repo, Milestone: *milestone, Labels: *labels, Assignees: *assignees}
+	cf := &createData{Owner: *owner, Title: *title, Repo: *repo, Milestone: *milestone, Labels: *labels, Assignees: *assignees}
 
 	// Check that the required flags are set
 	if cf.Owner == "" || cf.Repo == "" || cf.Title == "" {
@@ -57,6 +61,23 @@ func createIssue() error {
 		return errors.New("GITHUB_USERNAME and/or GITHUB_PASSWORD env vars for Github basic auth not set")
 	}
 
+	// Issue description
+	tmpfile, err := ioutil.TempFile("", "issue.txt")
+	if err != nil {
+		return fmt.Errorf("Error creating a new file: %v\n", err)
+	}
+	defer os.Remove(tmpfile.Name())
+	cmd := exec.Command("vim", tmpfile.Name())
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	if err = cmd.Run(); err != nil {
+		return fmt.Errorf("Error writing to a file: %v\n", err)
+	}
+	contents, err := ioutil.ReadFile(tmpfile.Name())
+	if err != nil {
+		return fmt.Errorf("Error reading file: %v\n", err)
+	}
+	cf.Body = string(contents)
 	url := fmt.Sprintf("%srepos/%s/%s/issues", baseURL, cf.Owner, cf.Repo)
 	data, err := json.Marshal(cf)
 	if err != nil {
