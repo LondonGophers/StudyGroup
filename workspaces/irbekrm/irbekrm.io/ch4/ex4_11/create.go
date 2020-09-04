@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"regexp"
 )
 
 type createData struct {
@@ -30,16 +31,13 @@ func createIssue() error {
 
 	var create = flag.NewFlagSet("create", flag.ExitOnError)
 
-	var owner, repo, title, labels, assignees *string
-	var milestone *int
-
-	// TODO: a flag to specify text editor to open
-	owner = create.String("owner", "", "repository owner")
-	repo = create.String("repo", "", "GitHub repository")
-	title = create.String("title", "", "Title of the issue")
-	assignees = create.String("assignee", "", "Comma separated logins for users to assign this issue")
-	milestone = create.Int("milestone", 0, "milestone to associate issue with")
-	labels = create.String("labels", "", "Comma separated labels to associate with the issue")
+	owner := create.String("owner", "", "repository owner")
+	repo := create.String("repo", "", "GitHub repository")
+	title := create.String("title", "", "Title of the issue")
+	assignees := create.String("assignee", "", "Comma separated logins for users to assign this issue")
+	milestone := create.Int("milestone", 0, "milestone to associate issue with")
+	labels := create.String("labels", "", "Comma separated labels to associate with the issue")
+	editor := create.String("editor", "vim", "Text editor that will be opened for user to enter issue description. Choose from vim, vi or nano")
 
 	create.Parse(os.Args[2:])
 	if err := create.Parse(os.Args[2:]); err != nil {
@@ -61,23 +59,41 @@ func createIssue() error {
 		return errors.New("GITHUB_USERNAME and/or GITHUB_PASSWORD env vars for Github basic auth not set")
 	}
 
-	// Issue description
+	// Check that the editor name is valid
+	if !isValidEditor(*editor) {
+		return fmt.Errorf("Invalid editor: %v\n", *editor)
+	}
+	// Ask user to enter issue description via the chosen text editor
 	tmpfile, err := ioutil.TempFile("", "issue.txt")
 	if err != nil {
-		return fmt.Errorf("Error creating a new file: %v\n", err)
+		return fmt.Errorf("Error creating the description file: %v\n", err)
 	}
 	defer os.Remove(tmpfile.Name())
-	cmd := exec.Command("vim", tmpfile.Name())
+	s := []byte("### Please enter issue description below. Do not remove this line. It will not be posted to GitHub. ####\n")
+	if _, err := tmpfile.Write(s); err != nil {
+		return fmt.Errorf("Error writing to the description file: %v\n", err)
+	}
+	if err := tmpfile.Close(); err != nil {
+		return fmt.Errorf("Error closing the description file: %v\n", err)
+	}
+	cmd := exec.Command(*editor, tmpfile.Name())
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	if err = cmd.Run(); err != nil {
-		return fmt.Errorf("Error writing to a file: %v\n", err)
+		return fmt.Errorf("Error opening file with editor: %v\n", err)
 	}
 	contents, err := ioutil.ReadFile(tmpfile.Name())
 	if err != nil {
 		return fmt.Errorf("Error reading file: %v\n", err)
 	}
-	cf.Body = string(contents)
+	// Remove the top line with comment
+	re := regexp.MustCompile(`####\n((.|\n)+)`)
+	c := re.FindStringSubmatch(string(contents))
+	if len(c) < 2 {
+		return errors.New("Error parsing the description file")
+	}
+	cf.Body = string(c[1])
+
 	url := fmt.Sprintf("%srepos/%s/%s/issues", baseURL, cf.Owner, cf.Repo)
 	data, err := json.Marshal(cf)
 	if err != nil {
@@ -96,7 +112,7 @@ func createIssue() error {
 	if err != nil {
 		return fmt.Errorf("Error creating an issue: %v\n", err)
 	}
-	if !(statusIsSuccessful(resp.StatusCode)) {
+	if !(isSuccessfulStatus(resp.StatusCode)) {
 		return fmt.Errorf("Request to Github API failed with status code: %v\n", resp.StatusCode)
 	}
 	fmt.Printf("Issue %q in repo %q created successfully\n", cf.Title, cf.Repo)

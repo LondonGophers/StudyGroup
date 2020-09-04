@@ -23,7 +23,7 @@ func main() {
 	}
 }
 
-func statusIsSuccessful(s int) bool {
+func isSuccessfulStatus(s int) bool {
 	return s >= 200 && s <= 299
 }
 
@@ -31,4 +31,11 @@ func credsFromEnv() (string, string, bool) {
 	username, uSet := os.LookupEnv("GITHUB_USERNAME")
 	password, pSet := os.LookupEnv("GITHUB_PASSWORD")
 	return username, password, uSet && pSet
+}
+
+func isValidEditor(e string) bool {
+	if e == "vim" || e == "vi" || e == "nano" {
+		return true
+	}
+	return false
 }
