@@ -18,6 +18,11 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Error creating an issue: %v\n", err)
 			os.Exit(1)
 		}
+	case "read":
+		if err := readIssue(); err != nil {
+			fmt.Fprintf(os.Stderr, "Error reading the issue: %v\n", err)
+			os.Exit(1)
+		}
 	default:
 		fmt.Fprintf(os.Stderr, "Unknown command %v\n", command)
 	}

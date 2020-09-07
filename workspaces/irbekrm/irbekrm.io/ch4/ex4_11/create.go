@@ -39,7 +39,6 @@ func createIssue() error {
 	labels := create.String("labels", "", "Comma separated labels to associate with the issue")
 	editor := create.String("editor", "vim", "Text editor that will be opened for user to enter issue description. Choose from vim, vi or nano")
 
-	create.Parse(os.Args[2:])
 	if err := create.Parse(os.Args[2:]); err != nil {
 		return fmt.Errorf("Error parsing flags: %v\n", err)
 	}
@@ -48,9 +47,7 @@ func createIssue() error {
 
 	// Check that the required flags are set
 	if cf.Owner == "" || cf.Repo == "" || cf.Title == "" {
-		if err := create.Parse(os.Args[2:]); err != nil {
-			return errors.New("Usage: issuer create -owner OWNER -title TITLE -repo REPO [-assignees ASSIGNEES] [-milestone MILESTONE] [-labels LABELS]\n")
-		}
+		return errors.New("Usage: issuer create -owner OWNER -title TITLE -repo REPO [-assignees ASSIGNEES] [-milestone MILESTONE] [-labels LABELS] [-editor vi|vim|nano]\n")
 	}
 
 	// Retrieve Github basic auth creds from environment
