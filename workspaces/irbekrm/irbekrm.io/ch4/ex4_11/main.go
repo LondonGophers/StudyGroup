@@ -23,6 +23,16 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Error reading the issue: %v\n", err)
 			os.Exit(1)
 		}
+	case "update":
+		if err := updateIssue(); err != nil {
+			fmt.Fprintf(os.Stderr, "Error updating the issue: %v\n", err)
+			os.Exit(1)
+		}
+	case "close":
+		if err := closeIssue(); err != nil {
+			fmt.Fprintf(os.Stderr, "Error closing the issue: %v\n", err)
+			os.Exit(1)
+		}
 	default:
 		fmt.Fprintf(os.Stderr, "Unknown command %v\n", command)
 	}
