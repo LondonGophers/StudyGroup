@@ -6,18 +6,15 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"os"
-	"os/exec"
-	"regexp"
 )
 
 type updateData struct {
 	Id        string `json:"id"`
 	Owner     string `json:"-"`
 	Repo      string `json:"-"`
-	Title     string `json:"title"`
+	Title     string `json:"title,omitempty"`
 	Milestone int    `json:"milestone,omitempty"`
 	Labels    string `json:"labels,omitempty"`
 	Assignees string `json:"assignees,omitempty"`
@@ -54,49 +51,21 @@ func updateIssue() error {
 	if !credsSet {
 		return errors.New("GITHUB_USERNAME and/or GITHUB_PASSWORD env vars for Github basic auth not set")
 	}
-
 	// Check that the editor name is valid
 	if !isValidEditor(*editor) {
 		return fmt.Errorf("Invalid editor: %v\n", *editor)
 	}
-	// Ask user to enter issue description via the chosen text editor
-	tmpfile, err := ioutil.TempFile("", "issue.txt")
+	b, err := issueDescription(*editor)
 	if err != nil {
-		return fmt.Errorf("Error creating the description file: %v\n", err)
+		return err
 	}
-	defer os.Remove(tmpfile.Name())
-	s := []byte("### Please enter issue description below. Do not remove this line. It will not be posted to GitHub. ####\n")
-	if _, err := tmpfile.Write(s); err != nil {
-		return fmt.Errorf("Error writing to the description file: %v\n", err)
-	}
-	if err := tmpfile.Close(); err != nil {
-		return fmt.Errorf("Error closing the description file: %v\n", err)
-	}
-	cmd := exec.Command(*editor, tmpfile.Name())
-	cmd.Stdin = os.Stdin
-	cmd.Stdout = os.Stdout
-	if err = cmd.Run(); err != nil {
-		return fmt.Errorf("Error opening file with editor: %v\n", err)
-	}
-	contents, err := ioutil.ReadFile(tmpfile.Name())
-	if err != nil {
-		return fmt.Errorf("Error reading file: %v\n", err)
-	}
-	// Remove the top line with comment
-	re := regexp.MustCompile(`####\n((.|\n)+)`)
-	c := re.FindStringSubmatch(string(contents))
-	if len(c) < 2 {
-		return errors.New("Error parsing the description file")
-	}
-	uf.Body = string(c[1])
-
+	uf.Body = b
 	url := fmt.Sprintf("%srepos/%s/%s/issues/%s", baseURL, uf.Owner, uf.Repo, uf.Id)
 	data, err := json.Marshal(uf)
 	if err != nil {
 		return fmt.Errorf("Error marshaling json: %v\n", err)
 	}
 	r := bytes.NewReader(data)
-
 	client := &http.Client{}
 	req, err := http.NewRequest("PATCH", url, r)
 	if err != nil {

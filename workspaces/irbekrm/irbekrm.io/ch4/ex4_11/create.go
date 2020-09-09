@@ -6,11 +6,8 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"os"
-	"os/exec"
-	"regexp"
 )
 
 type createData struct {
@@ -60,36 +57,11 @@ func createIssue() error {
 	if !isValidEditor(*editor) {
 		return fmt.Errorf("Invalid editor: %v\n", *editor)
 	}
-	// Ask user to enter issue description via the chosen text editor
-	tmpfile, err := ioutil.TempFile("", "issue.txt")
+	b, err := issueDescription(*editor)
 	if err != nil {
-		return fmt.Errorf("Error creating the description file: %v\n", err)
+		return err
 	}
-	defer os.Remove(tmpfile.Name())
-	s := []byte("### Please enter issue description below. Do not remove this line. It will not be posted to GitHub. ####\n")
-	if _, err := tmpfile.Write(s); err != nil {
-		return fmt.Errorf("Error writing to the description file: %v\n", err)
-	}
-	if err := tmpfile.Close(); err != nil {
-		return fmt.Errorf("Error closing the description file: %v\n", err)
-	}
-	cmd := exec.Command(*editor, tmpfile.Name())
-	cmd.Stdin = os.Stdin
-	cmd.Stdout = os.Stdout
-	if err = cmd.Run(); err != nil {
-		return fmt.Errorf("Error opening file with editor: %v\n", err)
-	}
-	contents, err := ioutil.ReadFile(tmpfile.Name())
-	if err != nil {
-		return fmt.Errorf("Error reading file: %v\n", err)
-	}
-	// Remove the top line with comment
-	re := regexp.MustCompile(`####\n((.|\n)+)`)
-	c := re.FindStringSubmatch(string(contents))
-	if len(c) < 2 {
-		return errors.New("Error parsing the description file")
-	}
-	cf.Body = string(c[1])
+	cf.Body = b
 
 	url := fmt.Sprintf("%srepos/%s/%s/issues", baseURL, cf.Owner, cf.Repo)
 	data, err := json.Marshal(cf)
