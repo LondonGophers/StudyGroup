@@ -31,6 +31,7 @@ func handleConn(c net.Conn) {
 			select {
 			case <-tick:
 				if !active {
+					fmt.Fprintln(c, "\t", "Goodbye!")
 					c.Close()
 					return
 				}
