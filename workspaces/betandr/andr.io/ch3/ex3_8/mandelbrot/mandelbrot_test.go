@@ -11,7 +11,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"andr.io/andr.io/ch3/ex3_8/mandelbrot"
+	"andr.io/ch3/ex3_8/mandelbrot"
 )
 
 // -- Benchmarks --
@@ -32,8 +32,8 @@ func BenchmarkGenerate128(b *testing.B) {
 //
 // goos: darwin
 // goarch: amd64
-// pkg: andr.io/andr.io/ch3/ex3_8/mandelbrot
+// pkg: andr.io/ch3/ex3_8/mandelbrot
 // BenchmarkGenerate64-2    	       3	 366542616 ns/op
 // BenchmarkGenerate128-2   	       4	 259087932 ns/op
 // PASS
-// ok  	andr.io/andr.io/ch3/ex3_8/mandelbrot	4.297s
+// ok  	andr.io/ch3/ex3_8/mandelbrot	4.297s

@@ -11,7 +11,7 @@ import (
 	"runtime"
 	"testing"
 
-	"andr.io/andr.io/ch8/ex8_5/mandelbrot"
+	"andr.io/ch8/ex8_5/mandelbrot"
 )
 
 // -- Benchmarks --
@@ -126,8 +126,8 @@ func BenchmarkGenerateConcurrentWithTenWorkers(b *testing.B) {
 //
 // goos: darwin
 // goarch: amd64
-// pkg: andr.io/andr.io/ch8/ex8_5/mandelbrot
+// pkg: andr.io/ch8/ex8_5/mandelbrot
 // BenchmarkGenerate-8             	       4	 257366328 ns/op
 // BenchmarkGenerateConcurrent-8   	      12	  92844830 ns/op
 // PASS
-// ok  	andr.io/andr.io/ch8/ex8_5/mandelbrot	3.292s
+// ok  	andr.io/ch8/ex8_5/mandelbrot	3.292s
