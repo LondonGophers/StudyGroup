@@ -8,7 +8,7 @@ import (
 	"os"
 	"runtime"
 
-	"andr.io/andr.io/ch8/ex8_5/mandelbrot"
+	"andr.io/ch8/ex8_5/mandelbrot"
 )
 
 func main() {
